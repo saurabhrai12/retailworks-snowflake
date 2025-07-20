@@ -67,6 +67,9 @@ deploy_objects() {
     local warehouse_name=$(get_env_variable warehouse)
     local schema_suffix=$(get_env_variable schema_suffix)
     
+    # Use dev connection for all environments (common in real scenarios)
+    local connection_name="retailworks-dev"
+    
     if [[ "$DRY_RUN" == "true" ]]; then
         log_info "=== DRY RUN MODE ==="
         log_info "Would deploy:"
@@ -74,6 +77,7 @@ deploy_objects() {
         log_info "- Warehouse: $warehouse_name"
         log_info "- Schemas: SALES_SCHEMA$schema_suffix, PRODUCTS_SCHEMA$schema_suffix, etc."
         log_info "- SQL objects from DDL files"
+        log_info "- Using connection: $connection_name"
         return
     fi
     
@@ -81,7 +85,7 @@ deploy_objects() {
     log_info "Deploying database: $db_name"
     snow object create database \
         --if-not-exists \
-        --connection "retailworks-${ENVIRONMENT}" \
+        --connection "$connection_name" \
         name="$db_name" \
         comment="RetailWorks Enterprise Data Platform"
     
@@ -89,7 +93,7 @@ deploy_objects() {
     log_info "Deploying warehouse: $warehouse_name"
     snow object create warehouse \
         --if-not-exists \
-        --connection "retailworks-${ENVIRONMENT}" \
+        --connection "$connection_name" \
         name="$warehouse_name" \
         warehouse_size="XSMALL" \
         auto_suspend=300 \
@@ -105,7 +109,7 @@ deploy_objects() {
         
         snow object create schema \
             --if-not-exists \
-            --connection "retailworks-${ENVIRONMENT}" \
+            --connection "$connection_name" \
             name="$schema_name" \
             database="$db_name" \
             comment="Schema for $schema"
@@ -132,7 +136,7 @@ deploy_objects() {
             snow sql -f "$file" \
                 --variable database_name="$db_name" \
                 --variable schema_suffix="$schema_suffix" \
-                --connection "retailworks-${ENVIRONMENT}" || {
+                --connection "$connection_name" || {
                 log_warning "Failed to execute $file, continuing..."
             }
         else
@@ -144,10 +148,10 @@ deploy_objects() {
     log_info "Capturing deployment state..."
     
     # List current objects
-    snow object list database --connection "retailworks-${ENVIRONMENT}" \
+    snow object list database --connection "$connection_name" \
         --format json > ".snowflake_databases_${ENVIRONMENT}.json" 2>/dev/null || true
         
-    snow object list warehouse --connection "retailworks-${ENVIRONMENT}" \
+    snow object list warehouse --connection "$connection_name" \
         --format json > ".snowflake_warehouses_${ENVIRONMENT}.json" 2>/dev/null || true
     
     log_success "GitOps deployment completed successfully!"
