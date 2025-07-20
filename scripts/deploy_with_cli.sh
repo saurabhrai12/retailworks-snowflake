@@ -116,7 +116,6 @@ validate_sql_files() {
             log_info "Validating: $file"
             if [[ "$DRY_RUN" == "true" ]]; then
                 snow sql --dry-run -f "$PROJECT_DIR/$file" \
-                    --template-syntax \
                     --variable database_name="$DATABASE_NAME" \
                     --variable schema_suffix="$SCHEMA_SUFFIX" \
                     -c "$CONNECTION_NAME" || {
@@ -139,7 +138,6 @@ deploy_schemas() {
     
     if [[ -f "$schema_file" ]]; then
         snow sql -f "$schema_file" \
-            --template-syntax \
             --variable database_name="$DATABASE_NAME" \
             --variable schema_suffix="$SCHEMA_SUFFIX" \
             -c "$CONNECTION_NAME"
@@ -178,7 +176,6 @@ deploy_tables() {
             log_info "Deploying tables from: $file"
             
             snow sql -f "$table_file" \
-                --template-syntax \
                 --variable database_name="$DATABASE_NAME" \
                 --variable schema_suffix="$SCHEMA_SUFFIX" \
                 -c "$CONNECTION_NAME"
@@ -207,7 +204,6 @@ deploy_views_and_procedures() {
             log_info "Deploying: $file"
             
             snow sql -f "$full_path" \
-                --template-syntax \
                 --variable database_name="$DATABASE_NAME" \
                 --variable schema_suffix="$SCHEMA_SUFFIX" \
                 -c "$CONNECTION_NAME"
@@ -230,7 +226,6 @@ deploy_sample_data() {
         
         if [[ -f "$date_dim_file" ]]; then
             snow sql -f "$date_dim_file" \
-                --template-syntax \
                 --variable database_name="$DATABASE_NAME" \
                 --variable schema_suffix="$SCHEMA_SUFFIX" \
                 -c "$CONNECTION_NAME"

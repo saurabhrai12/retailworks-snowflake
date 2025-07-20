@@ -1,0 +1,60 @@
+# Stage schema definitions for Snowflake CLI object management
+
+apiVersion: v1
+kind: StageList
+metadata:
+  labels:
+    environment: "<% ctx.env.name %>"
+    project: "retailworks"
+    managed-by: "snowflake-cli"
+
+items:
+  - apiVersion: v1
+    kind: Stage
+    metadata:
+      name: "RETAILWORKS_STAGE"
+      database: "<% ctx.env.database_name %>"
+      schema: "STAGING_SCHEMA<% ctx.env.schema_suffix %>"
+    spec:
+      stageType: "INTERNAL"
+      comment: "Main stage for data loading operations"
+      fileFormat:
+        type: "CSV"
+        fieldDelimiter: ","
+        skipHeader: 1
+        nullIf: ["NULL", "null", ""]
+        emptyFieldAsNull: true
+        compression: "AUTO"
+      copyOptions:
+        onError: "CONTINUE"
+        sizeLimit: 1000000000  # 1GB
+        purge: false
+        
+  - apiVersion: v1
+    kind: Stage
+    metadata:
+      name: "EXTERNAL_DATA_STAGE"
+      database: "<% ctx.env.database_name %>"
+      schema: "STAGING_SCHEMA<% ctx.env.schema_suffix %>"
+    spec:
+      stageType: "EXTERNAL"
+      comment: "External stage for cloud storage integration"
+      # URL and credentials would be environment-specific
+      url: "s3://retailworks-data-<% ctx.env.name %>/"
+      storageIntegration: "RETAILWORKS_S3_INTEGRATION"
+      fileFormat:
+        type: "PARQUET"
+        compression: "AUTO"
+        
+  - apiVersion: v1
+    kind: Stage
+    metadata:
+      name: "STREAMLIT_STAGE"
+      database: "<% ctx.env.database_name %>"
+      schema: "STAGING_SCHEMA<% ctx.env.schema_suffix %>"
+    spec:
+      stageType: "INTERNAL"
+      comment: "Stage for Streamlit application files"
+      directory:
+        enable: true
+        refreshOnCreate: true

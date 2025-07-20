@@ -1,27 +1,120 @@
 # Snowflake CLI Project Configuration
-# Following Snowflake DevOps best practices
+# Following Snowflake GitOps best practices with native resource management
 
 definition_version: 1.1
 
-# Environment configurations
+# Global project variables
+variables:
+  database_name: "RETAILWORKS_DB"
+  schema_suffix: ""
+  warehouse: "RETAILWORKS_WH"
+
+# Environment-specific configurations
 environments:
   dev:
-    database: RETAILWORKS_DB_DEV
-    schema_suffix: _DEV
-    warehouse: RETAILWORKS_DEV_WH
-    role: RETAILWORKS_DEV_ADMIN
+    variables:
+      database_name: "RETAILWORKS_DB_DEV"
+      schema_suffix: "_DEV"
+      warehouse: "RETAILWORKS_DEV_WH"
   
   test:
-    database: RETAILWORKS_DB_TEST
-    schema_suffix: _TEST
-    warehouse: RETAILWORKS_TEST_WH
-    role: RETAILWORKS_TEST_ADMIN
+    variables:
+      database_name: "RETAILWORKS_DB_TEST"
+      schema_suffix: "_TEST"
+      warehouse: "RETAILWORKS_TEST_WH"
   
   prod:
-    database: RETAILWORKS_DB
-    schema_suffix: ""
-    warehouse: RETAILWORKS_PROD_WH
-    role: RETAILWORKS_PROD_ADMIN
+    variables:
+      database_name: "RETAILWORKS_DB"
+      schema_suffix: ""
+      warehouse: "RETAILWORKS_PROD_WH"
+
+# Native Snowflake objects managed by CLI
+objects:
+  # Database management
+  - type: database
+    name: "<% ctx.env.database_name %>"
+    comment: "RetailWorks Enterprise Data Platform - Main Database"
+
+  # Schema management
+  - type: schema
+    name: "SALES_SCHEMA<% ctx.env.schema_suffix %>"
+    database: "<% ctx.env.database_name %>"
+    comment: "Sales data including orders, territories, and representatives"
+
+  - type: schema
+    name: "PRODUCTS_SCHEMA<% ctx.env.schema_suffix %>"
+    database: "<% ctx.env.database_name %>"
+    comment: "Product catalog, categories, suppliers, and inventory"
+
+  - type: schema
+    name: "CUSTOMERS_SCHEMA<% ctx.env.schema_suffix %>"
+    database: "<% ctx.env.database_name %>"
+    comment: "Customer information, addresses, and segmentation"
+
+  - type: schema
+    name: "HR_SCHEMA<% ctx.env.schema_suffix %>"
+    database: "<% ctx.env.database_name %>"
+    comment: "Human resources data including employees, departments, and payroll"
+
+  - type: schema
+    name: "ANALYTICS_SCHEMA<% ctx.env.schema_suffix %>"
+    database: "<% ctx.env.database_name %>"
+    comment: "Data warehouse dimensional model for analytics"
+
+  - type: schema
+    name: "STAGING_SCHEMA<% ctx.env.schema_suffix %>"
+    database: "<% ctx.env.database_name %>"
+    comment: "Staging area for data loading and ETL processes"
+
+  # Warehouse management
+  - type: warehouse
+    name: "<% ctx.env.warehouse %>"
+    warehouse_size: "XSMALL"
+    auto_suspend: 300
+    auto_resume: true
+    comment: "Data warehouse for RetailWorks analytics"
+
+  # Stage management
+  - type: stage
+    name: "RETAILWORKS_STAGE"
+    database: "<% ctx.env.database_name %>"
+    schema: "STAGING_SCHEMA<% ctx.env.schema_suffix %>"
+    comment: "Main stage for data loading operations"
+
+# SQL script deployment configuration
+sql:
+  # Schema deployment order
+  schemas:
+    - file: "ddl/schemas/01_create_database.sql"
+      
+  # Table deployment order  
+  tables:
+    - file: "ddl/tables/staging_schema_tables.sql"
+      depends_on: ["schemas"]
+      
+    - file: "ddl/tables/sales_schema_tables.sql"
+      depends_on: ["schemas"]
+      
+    - file: "ddl/tables/products_schema_tables.sql"
+      depends_on: ["schemas"]
+      
+    - file: "ddl/tables/customers_schema_tables.sql"
+      depends_on: ["schemas"]
+      
+    - file: "ddl/tables/hr_schema_tables.sql"
+      depends_on: ["schemas"]
+      
+    - file: "ddl/tables/analytics_schema_tables.sql"
+      depends_on: ["schemas", "tables"]
+      
+  # Views and procedures deployment
+  views:
+    - file: "ddl/views/sales_analytics_views.sql"
+      depends_on: ["tables"]
+      
+    - file: "ddl/procedures/business_logic_procedures.sql"
+      depends_on: ["tables"]
 
 # Snowpark applications configuration
 snowpark:
@@ -48,129 +141,26 @@ snowpark:
 
 # Streamlit applications configuration  
 streamlit:
-  apps:
-    - name: "executive_dashboard"
-      main_file: "streamlit/dashboards/executive_dashboard.py"
-      stage: "@RETAILWORKS_STAGE/streamlit"
-      
-    - name: "sales_dashboard"
-      main_file: "streamlit/dashboards/sales_dashboard.py"
-      stage: "@RETAILWORKS_STAGE/streamlit"
+  name: "retailworks_streamlit"
+  main_file: "streamlit/dashboards/executive_dashboard.py"
+  stage: "@RETAILWORKS_STAGE/streamlit"
 
-# SQL deployment configuration
-sql:
-  # Schema deployment order
-  schemas:
-    - file: "ddl/schemas/01_create_database.sql"
-      template: true
-      
-  # Table deployment order
-  tables:
-    - file: "ddl/tables/staging_schema_tables.sql"
-      template: true
-      depends_on: ["schemas"]
-      
-    - file: "ddl/tables/sales_schema_tables.sql"
-      template: true
-      depends_on: ["schemas"]
-      
-    - file: "ddl/tables/products_schema_tables.sql"
-      template: true
-      depends_on: ["schemas"]
-      
-    - file: "ddl/tables/customers_schema_tables.sql"
-      template: true
-      depends_on: ["schemas"]
-      
-    - file: "ddl/tables/hr_schema_tables.sql"
-      template: true
-      depends_on: ["schemas"]
-      
-    - file: "ddl/tables/analytics_schema_tables.sql"
-      template: true
-      depends_on: ["schemas", "tables"]
-      
-  # Views and procedures deployment
-  views:
-    - file: "ddl/views/sales_analytics_views.sql"
-      template: true
-      depends_on: ["tables"]
-      
-    - file: "ddl/procedures/business_logic_procedures.sql"
-      template: true
-      depends_on: ["tables"]
+# Git integration for infrastructure as code
+git:
+  auto_push: true
+  auto_commit: false
+  commit_message_template: "chore: update Snowflake objects via CLI"
 
-# Data loading configuration
-data:
-  sample_data:
-    - file: "dml/sample_data/populate_date_dimension.sql"
-      template: true
-      depends_on: ["analytics_tables"]
-
-# Testing configuration
-testing:
-  pytest:
-    testpaths: ["snowpark/tests"]
-    python_files: ["test_*.py"]
-    addopts: "--tb=short --strict-markers"
-    
-  performance:
-    queries:
-      - name: "monthly_sales_summary"
-        file: "tests/performance/monthly_sales_query.sql"
-        max_execution_time: 5000  # milliseconds
-        
-      - name: "customer_analytics"
-        file: "tests/performance/customer_analytics_query.sql"
-        max_execution_time: 3000  # milliseconds
-
-# CI/CD configuration
-cicd:
-  github_actions:
-    environments: ["dev", "test", "prod"]
-    auto_deploy:
-      dev: true
-      test: false  # Requires manual approval
-      prod: false  # Requires manual approval
-    
-  notifications:
-    slack:
-      channel: "#data-platform"
-      on_success: true
-      on_failure: true
-      
-    email:
-      recipients: ["data-team@company.com"]
-      on_failure: true
-
-# Security and compliance
-security:
-  rbac:
-    roles:
-      - name: "RETAILWORKS_ADMIN"
-        privileges: ["ALL"]
-        schemas: ["ALL"]
-        
-      - name: "RETAILWORKS_DEVELOPER"
-        privileges: ["USAGE", "CREATE TABLE", "CREATE VIEW"]
-        schemas: ["ALL"]
-        
-      - name: "RETAILWORKS_ANALYST"
-        privileges: ["SELECT"]
-        schemas: ["ANALYTICS_SCHEMA", "SALES_SCHEMA"]
-        
-      - name: "RETAILWORKS_READONLY"
-        privileges: ["SELECT"]
-        schemas: ["ANALYTICS_SCHEMA"]
-
-  data_classification:
-    pii_columns:
-      - "CUSTOMERS.EMAIL"
-      - "CUSTOMERS.PHONE"
-      - "EMPLOYEES.EMAIL"
-      - "EMPLOYEES.PHONE"
-    
-  monitoring:
-    query_history: true
-    access_history: true
-    data_sharing: false
+# Deployment configuration
+deployment:
+  # Enable safe deployments with CREATE OR ALTER
+  safe_mode: true
+  
+  # Validate before deployment
+  validate_before_deploy: true
+  
+  # Rollback configuration
+  enable_rollback: true
+  
+  # Drift detection
+  detect_drift: true

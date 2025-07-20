@@ -1,0 +1,67 @@
+# File format schema definitions for Snowflake CLI object management
+
+apiVersion: v1
+kind: FileFormatList
+metadata:
+  labels:
+    environment: "<% ctx.env.name %>"
+    project: "retailworks"
+    managed-by: "snowflake-cli"
+
+items:
+  - apiVersion: v1
+    kind: FileFormat
+    metadata:
+      name: "CSV_FORMAT"
+      database: "<% ctx.env.database_name %>"
+      schema: "STAGING_SCHEMA<% ctx.env.schema_suffix %>"
+    spec:
+      formatType: "CSV"
+      fieldDelimiter: ","
+      recordDelimiter: "\n"
+      skipHeader: 1
+      fieldOptionallyEnclosedBy: '"'
+      nullIf: ["NULL", "null", ""]
+      emptyFieldAsNull: true
+      compression: "AUTO"
+      encoding: "UTF8"
+      comment: "Standard CSV format for data imports"
+      
+  - apiVersion: v1
+    kind: FileFormat
+    metadata:
+      name: "JSON_FORMAT"
+      database: "<% ctx.env.database_name %>"
+      schema: "STAGING_SCHEMA<% ctx.env.schema_suffix %>"
+    spec:
+      formatType: "JSON"
+      compression: "AUTO"
+      enableOctal: false
+      allowDuplicate: false
+      stripOuterArray: true
+      stripNullValues: false
+      ignoreUtf8Errors: false
+      comment: "Standard JSON format for API data imports"
+      
+  - apiVersion: v1
+    kind: FileFormat
+    metadata:
+      name: "PARQUET_FORMAT"
+      database: "<% ctx.env.database_name %>"
+      schema: "STAGING_SCHEMA<% ctx.env.schema_suffix %>"
+    spec:
+      formatType: "PARQUET"
+      compression: "AUTO"
+      binaryAsText: false
+      comment: "Parquet format for efficient data storage and processing"
+      
+  - apiVersion: v1
+    kind: FileFormat
+    metadata:
+      name: "AVRO_FORMAT"
+      database: "<% ctx.env.database_name %>"
+      schema: "STAGING_SCHEMA<% ctx.env.schema_suffix %>"
+    spec:
+      formatType: "AVRO"
+      compression: "AUTO"
+      comment: "Avro format for schema evolution support"

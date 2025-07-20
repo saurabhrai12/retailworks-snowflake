@@ -1,0 +1,46 @@
+# Database schema definition for Snowflake CLI object management
+# This file defines the database structure for GitOps deployment
+
+apiVersion: v1
+kind: Database
+metadata:
+  name: "<% ctx.env.database_name %>"
+  labels:
+    environment: "<% ctx.env.name %>"
+    project: "retailworks"
+    managed-by: "snowflake-cli"
+spec:
+  comment: "RetailWorks Enterprise Data Platform - Main Database"
+  dataRetentionTimeInDays: 7
+  
+  # Schemas within the database
+  schemas:
+    - name: "SALES_SCHEMA<% ctx.env.schema_suffix %>"
+      comment: "Sales data including orders, territories, and representatives"
+      managedAccess: false
+      dataRetentionTimeInDays: 30
+      
+    - name: "PRODUCTS_SCHEMA<% ctx.env.schema_suffix %>"
+      comment: "Product catalog, categories, suppliers, and inventory"
+      managedAccess: false
+      dataRetentionTimeInDays: 90
+      
+    - name: "CUSTOMERS_SCHEMA<% ctx.env.schema_suffix %>"
+      comment: "Customer information, addresses, and segmentation"
+      managedAccess: true  # Enable managed access for PII protection
+      dataRetentionTimeInDays: 365
+      
+    - name: "HR_SCHEMA<% ctx.env.schema_suffix %>"
+      comment: "Human resources data including employees, departments, and payroll"
+      managedAccess: true  # Enable managed access for sensitive HR data
+      dataRetentionTimeInDays: 2555  # 7 years for compliance
+      
+    - name: "ANALYTICS_SCHEMA<% ctx.env.schema_suffix %>"
+      comment: "Data warehouse dimensional model for analytics"
+      managedAccess: false
+      dataRetentionTimeInDays: 365
+      
+    - name: "STAGING_SCHEMA<% ctx.env.schema_suffix %>"
+      comment: "Staging area for data loading and ETL processes"
+      managedAccess: false
+      dataRetentionTimeInDays: 7  # Short retention for staging data

@@ -1,0 +1,89 @@
+# GitOps deployment configuration for Snowflake CLI
+# This file defines the deployment pipeline and validation rules
+
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  name: "retailworks-gitops"
+  labels:
+    project: "retailworks"
+    managed-by: "snowflake-cli"
+
+spec:
+  # Deployment strategy
+  strategy:
+    type: "RollingUpdate"
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+    
+  # Validation rules
+  validation:
+    preDeployment:
+      - name: "syntax-validation"
+        command: "snow sql --validate"
+        required: true
+        
+      - name: "object-dependencies"
+        command: "snow object validate --check-dependencies"
+        required: true
+        
+      - name: "security-scan"
+        command: "snow object scan --security-rules"
+        required: false
+        
+    postDeployment:
+      - name: "connectivity-test"
+        command: "snow sql -q 'SELECT CURRENT_VERSION()'"
+        required: true
+        
+      - name: "object-existence"
+        command: "snow object list --verify-deployment"
+        required: true
+        
+      - name: "data-quality-checks"
+        command: "snow sql -f tests/data_quality_tests.sql"
+        required: false
+        
+  # Rollback configuration
+  rollback:
+    enabled: true
+    strategy: "automated"
+    triggers:
+      - "deployment-failure"
+      - "validation-failure"
+    maxRetries: 3
+    
+  # Drift detection
+  driftDetection:
+    enabled: true
+    schedule: "0 2 * * *"  # Daily at 2 AM
+    actions:
+      onDrift: "notify"
+      autoCorrect: false
+      
+  # Environments
+  environments:
+    dev:
+      autoPromote: true
+      requiresApproval: false
+      validationLevel: "basic"
+      
+    test:
+      autoPromote: false
+      requiresApproval: true
+      validationLevel: "enhanced"
+      approvers:
+        - "data-team"
+        
+    prod:
+      autoPromote: false
+      requiresApproval: true
+      validationLevel: "comprehensive"
+      approvers:
+        - "data-admin"
+        - "security-team"
+      maintenanceWindow:
+        start: "02:00"
+        end: "04:00"
+        timezone: "UTC"

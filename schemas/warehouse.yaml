@@ -1,0 +1,32 @@
+# Warehouse schema definition for Snowflake CLI object management
+
+apiVersion: v1
+kind: Warehouse
+metadata:
+  name: "<% ctx.env.warehouse %>"
+  labels:
+    environment: "<% ctx.env.name %>"
+    project: "retailworks"
+    managed-by: "snowflake-cli"
+spec:
+  warehouseSize: "XSMALL"
+  autoSuspend: 300  # 5 minutes
+  autoResume: true
+  initiallyTsuspended: false
+  comment: "Data warehouse for RetailWorks analytics workloads"
+  
+  # Resource monitors for cost control
+  resourceMonitor:
+    enabled: true
+    creditQuota: 100  # Adjust based on environment
+    frequency: "MONTHLY"
+    startTimestamp: "IMMEDIATELY"
+    
+  # Environment-specific scaling policies
+  scalingPolicy:
+    minClusterCount: 1
+    maxClusterCount: 
+      dev: 2
+      test: 3
+      prod: 10
+    scalingPolicy: "STANDARD"
