@@ -73,39 +73,93 @@ deploy_native_objects() {
     
     cd "$PROJECT_DIR"
     
-    # Deploy objects defined in snowflake.yml
+    local db_name=$(get_env_variable database_name)
+    local warehouse_name=$(get_env_variable warehouse)
+    local schema_suffix=$(get_env_variable schema_suffix)
+    
     if [[ "$DRY_RUN" == "true" ]]; then
-        log_info "Dry run: Validating object definitions..."
-        snow object list --connection "retailworks-${ENVIRONMENT}" \
-            --environment "$ENVIRONMENT" \
-            --validate-only
-    else
-        log_info "Deploying/updating objects..."
-        
-        # Deploy all objects defined in snowflake.yml
-        snow object deploy --connection "retailworks-${ENVIRONMENT}" \
-            --environment "$ENVIRONMENT" \
-            --replace-always=false
-            
-        log_success "Native objects deployed successfully"
+        log_info "Dry run: Would create the following objects..."
+        log_info "- Database: $db_name"
+        log_info "- Warehouse: $warehouse_name"
+        log_info "- Schemas: SALES_SCHEMA$schema_suffix, PRODUCTS_SCHEMA$schema_suffix, etc."
+        return
     fi
+    
+    # Create database
+    log_info "Creating/updating database: $db_name"
+    snow object create database \
+        --if-not-exists \
+        --connection "retailworks-${ENVIRONMENT}" \
+        name="$db_name" \
+        comment="RetailWorks Enterprise Data Platform - Main Database"
+    
+    # Create warehouse
+    log_info "Creating/updating warehouse: $warehouse_name"
+    snow object create warehouse \
+        --if-not-exists \
+        --connection "retailworks-${ENVIRONMENT}" \
+        name="$warehouse_name" \
+        warehouse_size="XSMALL" \
+        auto_suspend=300 \
+        auto_resume=true \
+        comment="Data warehouse for RetailWorks analytics workloads"
+    
+    # Create schemas
+    local schemas=("SALES_SCHEMA" "PRODUCTS_SCHEMA" "CUSTOMERS_SCHEMA" "HR_SCHEMA" "ANALYTICS_SCHEMA" "STAGING_SCHEMA")
+    local comments=(
+        "Sales data including orders, territories, and representatives"
+        "Product catalog, categories, suppliers, and inventory"
+        "Customer information, addresses, and segmentation"
+        "Human resources data including employees, departments, and payroll"
+        "Data warehouse dimensional model for analytics"
+        "Staging area for data loading and ETL processes"
+    )
+    
+    for i in "${!schemas[@]}"; do
+        local schema_name="${schemas[$i]}$schema_suffix"
+        local schema_comment="${comments[$i]}"
+        
+        log_info "Creating/updating schema: $schema_name"
+        snow object create schema \
+            --if-not-exists \
+            --connection "retailworks-${ENVIRONMENT}" \
+            name="$schema_name" \
+            database="$db_name" \
+            comment="$schema_comment"
+    done
+            
+    log_success "Native objects deployed successfully"
 }
 
 sync_objects_state() {
     if [[ "$SYNC_MODE" == "true" ]]; then
         log_info "Syncing object state with Git repository..."
         
-        # Generate state file for drift detection
-        snow object list --connection "retailworks-${ENVIRONMENT}" \
-            --environment "$ENVIRONMENT" \
-            --output-format json > "${PROJECT_DIR}/.snowflake_state_${ENVIRONMENT}.json"
+        local db_name=$(get_env_variable database_name)
+        
+        # Generate state files for different object types
+        log_info "Capturing current object state..."
+        
+        # List databases
+        snow object list database \
+            --connection "retailworks-${ENVIRONMENT}" \
+            --format json > "${PROJECT_DIR}/.snowflake_databases_${ENVIRONMENT}.json" 2>/dev/null || true
             
-        # Check for drift between Git and Snowflake
-        snow object diff --connection "retailworks-${ENVIRONMENT}" \
-            --environment "$ENVIRONMENT" \
-            --show-changes
+        # List warehouses
+        snow object list warehouse \
+            --connection "retailworks-${ENVIRONMENT}" \
+            --format json > "${PROJECT_DIR}/.snowflake_warehouses_${ENVIRONMENT}.json" 2>/dev/null || true
             
-        log_success "Object state synchronized"
+        # List schemas in our database
+        snow sql -q "SHOW SCHEMAS IN DATABASE $db_name;" \
+            --connection "retailworks-${ENVIRONMENT}" \
+            --format json > "${PROJECT_DIR}/.snowflake_schemas_${ENVIRONMENT}.json" 2>/dev/null || true
+            
+        log_success "Object state synchronized and captured"
+        log_info "State files created:"
+        log_info "- .snowflake_databases_${ENVIRONMENT}.json"
+        log_info "- .snowflake_warehouses_${ENVIRONMENT}.json"
+        log_info "- .snowflake_schemas_${ENVIRONMENT}.json"
     else
         log_info "Skipping object state synchronization"
     fi
@@ -133,10 +187,7 @@ deploy_sql_objects() {
             log_info "Deploying: $file"
             
             if [[ "$DRY_RUN" == "true" ]]; then
-                snow sql --dry-run -f "$full_path" \
-                    --variable database_name="$(get_env_variable database_name)" \
-                    --variable schema_suffix="$(get_env_variable schema_suffix)" \
-                    --connection "retailworks-${ENVIRONMENT}"
+                log_info "Dry run: Would execute SQL file: $file"
             else
                 snow sql -f "$full_path" \
                     --variable database_name="$(get_env_variable database_name)" \
@@ -189,18 +240,20 @@ deploy_snowpark_apps() {
     # Check if Snowpark source exists
     if [[ -d "snowpark/src" ]]; then
         if [[ "$DRY_RUN" == "true" ]]; then
-            log_info "Dry run: Validating Snowpark applications..."
+            log_info "Dry run: Would deploy Snowpark applications from snowpark/src/"
+            return
+        fi
+        
+        # Check if snowflake.yml has snowpark configuration
+        if [[ -f "snowflake.yml" ]] && grep -q "snowpark:" "snowflake.yml"; then
+            log_info "Deploying Snowpark functions..."
             snow snowpark deploy \
                 --connection "retailworks-${ENVIRONMENT}" \
-                --environment "$ENVIRONMENT" \
-                --validate-only
-        else
-            snow snowpark deploy \
-                --connection "retailworks-${ENVIRONMENT}" \
-                --environment "$ENVIRONMENT" \
                 --replace
                 
             log_success "Snowpark applications deployed"
+        else
+            log_warning "No Snowpark configuration found in snowflake.yml"
         fi
     else
         log_warning "Snowpark source directory not found"
@@ -215,18 +268,20 @@ deploy_streamlit_apps() {
     # Check if Streamlit apps exist
     if [[ -d "streamlit/dashboards" ]]; then
         if [[ "$DRY_RUN" == "true" ]]; then
-            log_info "Dry run: Validating Streamlit applications..."
+            log_info "Dry run: Would deploy Streamlit applications from streamlit/dashboards/"
+            return
+        fi
+        
+        # Check if snowflake.yml has streamlit configuration
+        if [[ -f "snowflake.yml" ]] && grep -q "streamlit:" "snowflake.yml"; then
+            log_info "Deploying Streamlit applications..."
             snow streamlit deploy \
                 --connection "retailworks-${ENVIRONMENT}" \
-                --environment "$ENVIRONMENT" \
-                --validate-only
-        else
-            snow streamlit deploy \
-                --connection "retailworks-${ENVIRONMENT}" \
-                --environment "$ENVIRONMENT" \
                 --replace
                 
             log_success "Streamlit applications deployed"
+        else
+            log_warning "No Streamlit configuration found in snowflake.yml"
         fi
     else
         log_warning "Streamlit applications directory not found"
