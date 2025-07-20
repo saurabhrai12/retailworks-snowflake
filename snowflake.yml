@@ -1,0 +1,176 @@
+# Snowflake CLI Project Configuration
+# Following Snowflake DevOps best practices
+
+definition_version: 1.1
+
+# Environment configurations
+environments:
+  dev:
+    database: RETAILWORKS_DB_DEV
+    schema_suffix: _DEV
+    warehouse: RETAILWORKS_DEV_WH
+    role: RETAILWORKS_DEV_ADMIN
+  
+  test:
+    database: RETAILWORKS_DB_TEST
+    schema_suffix: _TEST
+    warehouse: RETAILWORKS_TEST_WH
+    role: RETAILWORKS_TEST_ADMIN
+  
+  prod:
+    database: RETAILWORKS_DB
+    schema_suffix: ""
+    warehouse: RETAILWORKS_PROD_WH
+    role: RETAILWORKS_PROD_ADMIN
+
+# Snowpark applications configuration
+snowpark:
+  project_name: "RetailWorks"
+  stage_name: "RETAILWORKS_STAGE"
+  src: "snowpark/src"
+  
+  functions:
+    - name: "etl_pipeline"
+      handler: "etl_pipeline.main"
+      signature: 
+        - name: "table_name"
+          type: "string"
+        - name: "environment"
+          type: "string"
+      returns: "string"
+      
+    - name: "customer_ltv_prediction"
+      handler: "ml_models.predict_customer_ltv"
+      signature:
+        - name: "customer_id"
+          type: "number"
+      returns: "number"
+
+# Streamlit applications configuration  
+streamlit:
+  apps:
+    - name: "executive_dashboard"
+      main_file: "streamlit/dashboards/executive_dashboard.py"
+      stage: "@RETAILWORKS_STAGE/streamlit"
+      
+    - name: "sales_dashboard"
+      main_file: "streamlit/dashboards/sales_dashboard.py"
+      stage: "@RETAILWORKS_STAGE/streamlit"
+
+# SQL deployment configuration
+sql:
+  # Schema deployment order
+  schemas:
+    - file: "ddl/schemas/01_create_database.sql"
+      template: true
+      
+  # Table deployment order
+  tables:
+    - file: "ddl/tables/staging_schema_tables.sql"
+      template: true
+      depends_on: ["schemas"]
+      
+    - file: "ddl/tables/sales_schema_tables.sql"
+      template: true
+      depends_on: ["schemas"]
+      
+    - file: "ddl/tables/products_schema_tables.sql"
+      template: true
+      depends_on: ["schemas"]
+      
+    - file: "ddl/tables/customers_schema_tables.sql"
+      template: true
+      depends_on: ["schemas"]
+      
+    - file: "ddl/tables/hr_schema_tables.sql"
+      template: true
+      depends_on: ["schemas"]
+      
+    - file: "ddl/tables/analytics_schema_tables.sql"
+      template: true
+      depends_on: ["schemas", "tables"]
+      
+  # Views and procedures deployment
+  views:
+    - file: "ddl/views/sales_analytics_views.sql"
+      template: true
+      depends_on: ["tables"]
+      
+    - file: "ddl/procedures/business_logic_procedures.sql"
+      template: true
+      depends_on: ["tables"]
+
+# Data loading configuration
+data:
+  sample_data:
+    - file: "dml/sample_data/populate_date_dimension.sql"
+      template: true
+      depends_on: ["analytics_tables"]
+
+# Testing configuration
+testing:
+  pytest:
+    testpaths: ["snowpark/tests"]
+    python_files: ["test_*.py"]
+    addopts: "--tb=short --strict-markers"
+    
+  performance:
+    queries:
+      - name: "monthly_sales_summary"
+        file: "tests/performance/monthly_sales_query.sql"
+        max_execution_time: 5000  # milliseconds
+        
+      - name: "customer_analytics"
+        file: "tests/performance/customer_analytics_query.sql"
+        max_execution_time: 3000  # milliseconds
+
+# CI/CD configuration
+cicd:
+  github_actions:
+    environments: ["dev", "test", "prod"]
+    auto_deploy:
+      dev: true
+      test: false  # Requires manual approval
+      prod: false  # Requires manual approval
+    
+  notifications:
+    slack:
+      channel: "#data-platform"
+      on_success: true
+      on_failure: true
+      
+    email:
+      recipients: ["data-team@company.com"]
+      on_failure: true
+
+# Security and compliance
+security:
+  rbac:
+    roles:
+      - name: "RETAILWORKS_ADMIN"
+        privileges: ["ALL"]
+        schemas: ["ALL"]
+        
+      - name: "RETAILWORKS_DEVELOPER"
+        privileges: ["USAGE", "CREATE TABLE", "CREATE VIEW"]
+        schemas: ["ALL"]
+        
+      - name: "RETAILWORKS_ANALYST"
+        privileges: ["SELECT"]
+        schemas: ["ANALYTICS_SCHEMA", "SALES_SCHEMA"]
+        
+      - name: "RETAILWORKS_READONLY"
+        privileges: ["SELECT"]
+        schemas: ["ANALYTICS_SCHEMA"]
+
+  data_classification:
+    pii_columns:
+      - "CUSTOMERS.EMAIL"
+      - "CUSTOMERS.PHONE"
+      - "EMPLOYEES.EMAIL"
+      - "EMPLOYEES.PHONE"
+    
+  monitoring:
+    query_history: true
+    access_history: true
+    data_sharing: false

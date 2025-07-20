@@ -1,0 +1,495 @@
+pipeline {
+    agent any
+    
+    environment {
+        // Snowflake connection parameters
+        SNOWFLAKE_ACCOUNT = credentials('snowflake-account')
+        SNOWFLAKE_USER = credentials('snowflake-user')
+        SNOWFLAKE_PASSWORD = credentials('snowflake-password')
+        SNOWFLAKE_ROLE = credentials('snowflake-role')
+        SNOWFLAKE_WAREHOUSE = credentials('snowflake-warehouse')
+        SNOWFLAKE_DATABASE = 'RETAILWORKS_DB'
+        
+        // Environment specific schemas
+        DEV_SCHEMA_SUFFIX = '_DEV'
+        TEST_SCHEMA_SUFFIX = '_TEST'
+        PROD_SCHEMA_SUFFIX = ''
+        
+        // Python environment
+        PYTHON_ENV = 'venv'
+    }
+    
+    parameters {
+        choice(
+            name: 'DEPLOYMENT_ENVIRONMENT',
+            choices: ['dev', 'test', 'prod'],
+            description: 'Target deployment environment'
+        )
+        choice(
+            name: 'SCHEMA_TO_DEPLOY',
+            choices: ['all', 'sales', 'products', 'customers', 'hr', 'analytics', 'staging'],
+            description: 'Schema to deploy (or all for complete deployment)'
+        )
+        booleanParam(
+            name: 'RUN_TESTS',
+            defaultValue: true,
+            description: 'Run automated tests'
+        )
+        booleanParam(
+            name: 'DEPLOY_SAMPLE_DATA',
+            defaultValue: false,
+            description: 'Deploy sample data'
+        )
+        booleanParam(
+            name: 'FORCE_DEPLOYMENT',
+            defaultValue: false,
+            description: 'Force deployment even if tests fail'
+        )
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out source code...'
+                checkout scm
+                
+                script {
+                    env.BUILD_TIMESTAMP = sh(
+                        script: "date '+%Y%m%d_%H%M%S'",
+                        returnStdout: true
+                    ).trim()
+                    
+                    // Determine schema suffix based on environment
+                    if (params.DEPLOYMENT_ENVIRONMENT == 'dev') {
+                        env.SCHEMA_SUFFIX = env.DEV_SCHEMA_SUFFIX
+                    } else if (params.DEPLOYMENT_ENVIRONMENT == 'test') {
+                        env.SCHEMA_SUFFIX = env.TEST_SCHEMA_SUFFIX
+                    } else {
+                        env.SCHEMA_SUFFIX = env.PROD_SCHEMA_SUFFIX
+                    }
+                }
+            }
+        }
+        
+        stage('Environment Setup') {
+            steps {
+                echo 'Setting up build environment...'
+                
+                sh '''
+                    # Create Python virtual environment
+                    python3 -m venv ${PYTHON_ENV}
+                    source ${PYTHON_ENV}/bin/activate
+                    
+                    # Install dependencies
+                    pip install --upgrade pip
+                    pip install -r snowpark/requirements.txt
+                    pip install snowflake-connector-python
+                    pip install pytest pytest-html pytest-cov
+                    pip install sqlfluff
+                '''
+            }
+        }
+        
+        stage('Code Quality Checks') {
+            parallel {
+                stage('SQL Linting') {
+                    steps {
+                        echo 'Running SQL linting...'
+                        
+                        sh '''
+                            source ${PYTHON_ENV}/bin/activate
+                            
+                            # Check SQL files for syntax and style
+                            find ddl/ -name "*.sql" -exec sqlfluff lint {} \\; || true
+                            find dml/ -name "*.sql" -exec sqlfluff lint {} \\; || true
+                        '''
+                    }
+                }
+                
+                stage('Python Code Quality') {
+                    steps {
+                        echo 'Running Python code quality checks...'
+                        
+                        sh '''
+                            source ${PYTHON_ENV}/bin/activate
+                            
+                            # Install linting tools
+                            pip install flake8 black isort
+                            
+                            # Check Python code quality
+                            find snowpark/ -name "*.py" -exec flake8 --max-line-length=100 {} \\; || true
+                            find streamlit/ -name "*.py" -exec flake8 --max-line-length=100 {} \\; || true
+                        '''
+                    }
+                }
+            }
+        }
+        
+        stage('Build Validation') {
+            steps {
+                echo 'Validating build artifacts...'
+                
+                script {
+                    // Validate SQL files exist
+                    def sqlFiles = sh(
+                        script: "find ddl/ -name '*.sql' | wc -l",
+                        returnStdout: true
+                    ).trim() as Integer
+                    
+                    if (sqlFiles == 0) {
+                        error("No SQL files found in ddl/ directory")
+                    }
+                    
+                    echo "Found ${sqlFiles} SQL files to deploy"
+                }
+                
+                sh '''
+                    # Validate required directories exist
+                    for dir in ddl dml snowpark streamlit; do
+                        if [ ! -d "$dir" ]; then
+                            echo "Error: Required directory $dir not found"
+                            exit 1
+                        fi
+                    done
+                    
+                    echo "All required directories validated"
+                '''
+            }
+        }
+        
+        stage('Database Schema Deployment') {
+            when {
+                anyOf {
+                    expression { params.SCHEMA_TO_DEPLOY == 'all' }
+                    expression { return true } // Always run for individual schemas
+                }
+            }
+            
+            steps {
+                echo "Deploying database schemas to ${params.DEPLOYMENT_ENVIRONMENT} environment..."
+                
+                script {
+                    def schemasTodeploy = []
+                    
+                    if (params.SCHEMA_TO_DEPLOY == 'all') {
+                        schemasToDeploy = ['schemas', 'sales', 'products', 'customers', 'hr', 'analytics', 'staging']
+                    } else {
+                        schemasToDeloy = [params.SCHEMA_TO_DEPLOY]
+                    }
+                    
+                    // Deploy database and schemas first
+                    sh """
+                        source ${PYTHON_ENV}/bin/activate
+                        python jenkins/deployment/deploy_schemas.py \\
+                            --environment ${params.DEPLOYMENT_ENVIRONMENT} \\
+                            --schema-suffix "${env.SCHEMA_SUFFIX}" \\
+                            --account "\${SNOWFLAKE_ACCOUNT}" \\
+                            --user "\${SNOWFLAKE_USER}" \\
+                            --password "\${SNOWFLAKE_PASSWORD}" \\
+                            --role "\${SNOWFLAKE_ROLE}" \\
+                            --warehouse "\${SNOWFLAKE_WAREHOUSE}" \\
+                            --database "\${SNOWFLAKE_DATABASE}"
+                    """
+                    
+                    // Deploy tables for each schema
+                    for (schema in schemasToDeployed) {
+                        if (schema != 'schemas') {
+                            echo "Deploying ${schema} schema tables..."
+                            
+                            sh """
+                                source ${PYTHON_ENV}/bin/activate
+                                python jenkins/deployment/deploy_tables.py \\
+                                    --schema ${schema} \\
+                                    --environment ${params.DEPLOYMENT_ENVIRONMENT} \\
+                                    --schema-suffix "${env.SCHEMA_SUFFIX}" \\
+                                    --account "\${SNOWFLAKE_ACCOUNT}" \\
+                                    --user "\${SNOWFLAKE_USER}" \\
+                                    --password "\${SNOWFLAKE_PASSWORD}" \\
+                                    --role "\${SNOWFLAKE_ROLE}" \\
+                                    --warehouse "\${SNOWFLAKE_WAREHOUSE}" \\
+                                    --database "\${SNOWFLAKE_DATABASE}"
+                            """
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage('Views and Procedures Deployment') {
+            steps {
+                echo 'Deploying views and stored procedures...'
+                
+                sh """
+                    source ${PYTHON_ENV}/bin/activate
+                    python jenkins/deployment/deploy_views_procedures.py \\
+                        --environment ${params.DEPLOYMENT_ENVIRONMENT} \\
+                        --schema-suffix "${env.SCHEMA_SUFFIX}" \\
+                        --account "\${SNOWFLAKE_ACCOUNT}" \\
+                        --user "\${SNOWFLAKE_USER}" \\
+                        --password "\${SNOWFLAKE_PASSWORD}" \\
+                        --role "\${SNOWFLAKE_ROLE}" \\
+                        --warehouse "\${SNOWFLAKE_WAREHOUSE}" \\
+                        --database "\${SNOWFLAKE_DATABASE}"
+                """
+            }
+        }
+        
+        stage('Sample Data Deployment') {
+            when {
+                expression { params.DEPLOY_SAMPLE_DATA == true }
+            }
+            
+            steps {
+                echo 'Deploying sample data...'
+                
+                sh """
+                    source ${PYTHON_ENV}/bin/activate
+                    python jenkins/deployment/deploy_sample_data.py \\
+                        --environment ${params.DEPLOYMENT_ENVIRONMENT} \\
+                        --schema-suffix "${env.SCHEMA_SUFFIX}" \\
+                        --account "\${SNOWFLAKE_ACCOUNT}" \\
+                        --user "\${SNOWFLAKE_USER}" \\
+                        --password "\${SNOWFLAKE_PASSWORD}" \\
+                        --role "\${SNOWFLAKE_ROLE}" \\
+                        --warehouse "\${SNOWFLAKE_WAREHOUSE}" \\
+                        --database "\${SNOWFLAKE_DATABASE}"
+                """
+            }
+        }
+        
+        stage('Automated Testing') {
+            when {
+                expression { params.RUN_TESTS == true }
+            }
+            
+            parallel {
+                stage('Database Tests') {
+                    steps {
+                        echo 'Running database tests...'
+                        
+                        sh """
+                            source ${PYTHON_ENV}/bin/activate
+                            python -m pytest snowpark/tests/test_database.py \\
+                                --html=reports/database_tests.html \\
+                                --self-contained-html \\
+                                --cov=snowpark/src \\
+                                --cov-report=html:reports/coverage_db \\
+                                --junitxml=reports/database_tests.xml
+                        """
+                    }
+                }
+                
+                stage('ETL Tests') {
+                    steps {
+                        echo 'Running ETL pipeline tests...'
+                        
+                        sh """
+                            source ${PYTHON_ENV}/bin/activate
+                            python -m pytest snowpark/tests/test_etl.py \\
+                                --html=reports/etl_tests.html \\
+                                --self-contained-html \\
+                                --junitxml=reports/etl_tests.xml
+                        """
+                    }
+                }
+                
+                stage('Streamlit Tests') {
+                    steps {
+                        echo 'Running Streamlit application tests...'
+                        
+                        sh """
+                            source ${PYTHON_ENV}/bin/activate
+                            python -m pytest streamlit/tests/ \\
+                                --html=reports/streamlit_tests.html \\
+                                --self-contained-html \\
+                                --junitxml=reports/streamlit_tests.xml
+                        """
+                    }
+                }
+            }
+        }
+        
+        stage('Integration Tests') {
+            when {
+                allOf {
+                    expression { params.RUN_TESTS == true }
+                    expression { params.DEPLOYMENT_ENVIRONMENT != 'prod' }
+                }
+            }
+            
+            steps {
+                echo 'Running integration tests...'
+                
+                sh """
+                    source ${PYTHON_ENV}/bin/activate
+                    python jenkins/tests/integration_tests.py \\
+                        --environment ${params.DEPLOYMENT_ENVIRONMENT} \\
+                        --schema-suffix "${env.SCHEMA_SUFFIX}" \\
+                        --account "\${SNOWFLAKE_ACCOUNT}" \\
+                        --user "\${SNOWFLAKE_USER}" \\
+                        --password "\${SNOWFLAKE_PASSWORD}" \\
+                        --role "\${SNOWFLAKE_ROLE}" \\
+                        --warehouse "\${SNOWFLAKE_WAREHOUSE}" \\
+                        --database "\${SNOWFLAKE_DATABASE}"
+                """
+            }
+        }
+        
+        stage('Performance Tests') {
+            when {
+                allOf {
+                    expression { params.RUN_TESTS == true }
+                    expression { params.DEPLOYMENT_ENVIRONMENT == 'test' }
+                }
+            }
+            
+            steps {
+                echo 'Running performance tests...'
+                
+                sh """
+                    source ${PYTHON_ENV}/bin/activate
+                    python jenkins/tests/performance_tests.py \\
+                        --environment ${params.DEPLOYMENT_ENVIRONMENT} \\
+                        --schema-suffix "${env.SCHEMA_SUFFIX}" \\
+                        --account "\${SNOWFLAKE_ACCOUNT}" \\
+                        --user "\${SNOWFLAKE_USER}" \\
+                        --password "\${SNOWFLAKE_PASSWORD}" \\
+                        --role "\${SNOWFLAKE_ROLE}" \\
+                        --warehouse "\${SNOWFLAKE_WAREHOUSE}" \\
+                        --database "\${SNOWFLAKE_DATABASE}"
+                """
+            }
+        }
+        
+        stage('Deployment Verification') {
+            steps {
+                echo 'Verifying deployment...'
+                
+                sh """
+                    source ${PYTHON_ENV}/bin/activate
+                    python jenkins/deployment/verify_deployment.py \\
+                        --environment ${params.DEPLOYMENT_ENVIRONMENT} \\
+                        --schema-suffix "${env.SCHEMA_SUFFIX}" \\
+                        --account "\${SNOWFLAKE_ACCOUNT}" \\
+                        --user "\${SNOWFLAKE_USER}" \\
+                        --password "\${SNOWFLAKE_PASSWORD}" \\
+                        --role "\${SNOWFLAKE_ROLE}" \\
+                        --warehouse "\${SNOWFLAKE_WAREHOUSE}" \\
+                        --database "\${SNOWFLAKE_DATABASE}"
+                """
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Cleaning up...'
+            
+            // Archive artifacts
+            archiveArtifacts artifacts: 'reports/**/*', allowEmptyArchive: true
+            
+            // Publish test results
+            script {
+                if (fileExists('reports/database_tests.xml')) {
+                    publishTestResults testResultsPattern: 'reports/*_tests.xml'
+                }
+                
+                if (fileExists('reports/coverage_db/index.html')) {
+                    publishHTML([
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'reports/coverage_db',
+                        reportFiles: 'index.html',
+                        reportName: 'Coverage Report'
+                    ])
+                }
+            }
+            
+            // Clean up virtual environment
+            sh '''
+                if [ -d "${PYTHON_ENV}" ]; then
+                    rm -rf ${PYTHON_ENV}
+                fi
+            '''
+        }
+        
+        success {
+            echo 'Deployment completed successfully!'
+            
+            // Send success notification
+            script {
+                if (params.DEPLOYMENT_ENVIRONMENT == 'prod') {
+                    emailext (
+                        subject: "✅ RetailWorks Production Deployment Successful - Build ${env.BUILD_NUMBER}",
+                        body: """
+                            The RetailWorks deployment to ${params.DEPLOYMENT_ENVIRONMENT} environment has completed successfully.
+                            
+                            Build Details:
+                            - Environment: ${params.DEPLOYMENT_ENVIRONMENT}
+                            - Schema: ${params.SCHEMA_TO_DEPLOY}
+                            - Build Number: ${env.BUILD_NUMBER}
+                            - Build Timestamp: ${env.BUILD_TIMESTAMP}
+                            - Tests Run: ${params.RUN_TESTS}
+                            
+                            You can view the build details at: ${env.BUILD_URL}
+                        """,
+                        to: "${env.NOTIFICATION_EMAIL_PROD}",
+                        mimeType: 'text/plain'
+                    )
+                }
+            }
+        }
+        
+        failure {
+            echo 'Deployment failed!'
+            
+            // Send failure notification
+            emailext (
+                subject: "❌ RetailWorks Deployment Failed - Build ${env.BUILD_NUMBER}",
+                body: """
+                    The RetailWorks deployment to ${params.DEPLOYMENT_ENVIRONMENT} environment has failed.
+                    
+                    Build Details:
+                    - Environment: ${params.DEPLOYMENT_ENVIRONMENT}
+                    - Schema: ${params.SCHEMA_TO_DEPLOY}
+                    - Build Number: ${env.BUILD_NUMBER}
+                    - Build Timestamp: ${env.BUILD_TIMESTAMP}
+                    
+                    Please check the build logs for details: ${env.BUILD_URL}
+                    
+                    Failed Stage: ${env.STAGE_NAME}
+                """,
+                to: "${env.NOTIFICATION_EMAIL_DEV}",
+                mimeType: 'text/plain'
+            )
+        }
+        
+        unstable {
+            echo 'Deployment completed with warnings!'
+            
+            // Send unstable notification for test environments
+            script {
+                if (params.DEPLOYMENT_ENVIRONMENT != 'prod') {
+                    emailext (
+                        subject: "⚠️ RetailWorks Deployment Unstable - Build ${env.BUILD_NUMBER}",
+                        body: """
+                            The RetailWorks deployment to ${params.DEPLOYMENT_ENVIRONMENT} environment completed with warnings.
+                            
+                            Some tests may have failed, but the deployment proceeded.
+                            
+                            Build Details:
+                            - Environment: ${params.DEPLOYMENT_ENVIRONMENT}
+                            - Schema: ${params.SCHEMA_TO_DEPLOY}
+                            - Build Number: ${env.BUILD_NUMBER}
+                            
+                            Please review the test results: ${env.BUILD_URL}
+                        """,
+                        to: "${env.NOTIFICATION_EMAIL_DEV}",
+                        mimeType: 'text/plain'
+                    )
+                }
+            }
+        }
+    }
+}
