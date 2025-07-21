@@ -1,0 +1,7 @@
+SEGMENT_ID,SEGMENT_NAME,DESCRIPTION,MIN_ANNUAL_REVENUE,MAX_ANNUAL_REVENUE,DISCOUNT_RATE
+1,Enterprise,Enterprise customer segment,1000000,,0.15
+2,Corporate,Corporate customer segment,100000,999999.0,0.1
+3,Small Business,Small Business customer segment,10000,99999.0,0.05
+4,Individual,Individual customer segment,0,9999.0,0.0
+5,VIP,VIP customer segment,50000,,0.2
+6,Student,Student customer segment,0,5000.0,0.1

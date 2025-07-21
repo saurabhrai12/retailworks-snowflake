@@ -10,6 +10,7 @@ dependencies = [
     "streamlit",
     "pandas",
     "numpy",
+    "faker>=37.4.2",
 ]
 
 [project.optional-dependencies]

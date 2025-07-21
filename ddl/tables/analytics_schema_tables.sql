@@ -5,7 +5,7 @@
 -- Date: 2025-07-19
 -- =====================================================
 
-USE SCHEMA RETAILWORKS_DB.ANALYTICS_SCHEMA;
+USE SCHEMA <% database_name %>.ANALYTICS_SCHEMA<% schema_suffix %>;
 
 -- Date Dimension Table
 CREATE TABLE IF NOT EXISTS DATE_DIM (

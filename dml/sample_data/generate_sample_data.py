@@ -99,7 +99,7 @@ class RetailWorksDataGenerator:
                 'PHONE': self.fake.phone_number(),
                 'EMAIL': self.fake.email(),
                 'WEBSITE': self.fake.url(),
-                'STATUS': random.choice(['ACTIVE', 'INACTIVE'], weights=[0.9, 0.1]),
+                'STATUS': random.choices(['ACTIVE', 'INACTIVE'], weights=[0.9, 0.1], k=1)[0],
                 'RATING': round(random.uniform(3.0, 5.0), 1)
             })
         
@@ -133,7 +133,7 @@ class RetailWorksDataGenerator:
                 'UNIT_PRICE': unit_price,
                 'COST': cost,
                 'LIST_PRICE': list_price,
-                'DISCONTINUED': random.choice([True, False], weights=[0.1, 0.9]),
+                'DISCONTINUED': random.choices([True, False], weights=[0.1, 0.9], k=1)[0],
                 'REORDER_LEVEL': random.randint(5, 50),
                 'UNITS_IN_STOCK': random.randint(0, 1000),
                 'UNITS_ON_ORDER': random.randint(0, 100),
@@ -174,7 +174,7 @@ class RetailWorksDataGenerator:
         data = []
         
         for i in range(1, self.num_customers + 1):
-            customer_type = random.choice(customer_types, weights=[0.7, 0.3])
+            customer_type = random.choices(customer_types, weights=[0.7, 0.3], k=1)[0]
             is_business = customer_type == 'BUSINESS'
             
             # Generate realistic annual income based on customer type
@@ -210,9 +210,9 @@ class RetailWorksDataGenerator:
                 'TOTAL_ORDERS': 0,
                 'TOTAL_SPENT': 0.00,
                 'CREDIT_LIMIT': round(annual_income * random.uniform(0.1, 0.5), 2),
-                'STATUS': random.choice(['ACTIVE', 'INACTIVE'], weights=[0.95, 0.05]),
-                'PREFERRED_LANGUAGE': random.choice(['EN', 'ES', 'FR'], weights=[0.8, 0.15, 0.05]),
-                'MARKETING_OPT_IN': random.choice([True, False], weights=[0.7, 0.3])
+                'STATUS': random.choices(['ACTIVE', 'INACTIVE'], weights=[0.95, 0.05], k=1)[0],
+                'PREFERRED_LANGUAGE': random.choices(['EN', 'ES', 'FR'], weights=[0.8, 0.15, 0.05], k=1)[0],
+                'MARKETING_OPT_IN': random.choices([True, False], weights=[0.7, 0.3], k=1)[0]
             })
         
         return pd.DataFrame(data)

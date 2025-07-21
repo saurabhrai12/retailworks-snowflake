@@ -5,7 +5,7 @@
 -- Date: 2025-07-19
 -- =====================================================
 
-USE SCHEMA RETAILWORKS_DB.PRODUCTS_SCHEMA;
+USE SCHEMA <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>;
 
 -- Categories Table
 CREATE TABLE IF NOT EXISTS CATEGORIES (

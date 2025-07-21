@@ -5,7 +5,7 @@
 -- Date: 2025-07-19
 -- =====================================================
 
-USE SCHEMA RETAILWORKS_DB.SALES_SCHEMA;
+USE SCHEMA <% database_name %>.SALES_SCHEMA<% schema_suffix %>;
 
 -- Sales Territories Table
 CREATE TABLE IF NOT EXISTS SALES_TERRITORIES (

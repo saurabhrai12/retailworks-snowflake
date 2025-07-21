@@ -5,7 +5,7 @@
 -- Date: 2025-07-19
 -- =====================================================
 
-USE SCHEMA RETAILWORKS_DB.SALES_SCHEMA;
+USE SCHEMA <% database_name %>.SALES_SCHEMA<% schema_suffix %>;
 
 -- Order Processing Procedure
 CREATE OR ALTER PROCEDURE SP_PROCESS_ORDER(
@@ -70,7 +70,7 @@ BEGIN
         );
         
         -- Update product inventory
-        UPDATE RETAILWORKS_DB.PRODUCTS_SCHEMA.INVENTORY 
+        UPDATE <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>.INVENTORY 
         SET QUANTITY_AVAILABLE = QUANTITY_AVAILABLE - v_quantity,
             QUANTITY_ALLOCATED = QUANTITY_ALLOCATED + v_quantity
         WHERE PRODUCT_ID = v_product_id;
@@ -126,13 +126,13 @@ BEGIN
     v_customer_number := 'C' || LPAD(SEQ_CUSTOMER_NUMBER.NEXTVAL, 8, '0');
     
     -- Insert address first
-    INSERT INTO RETAILWORKS_DB.CUSTOMERS_SCHEMA.ADDRESSES (
+    INSERT INTO <% database_name %>.CUSTOMERS_SCHEMA<% schema_suffix %>.ADDRESSES (
         ADDRESS_LINE_1, CITY, COUNTRY, ADDRESS_TYPE
     ) VALUES (
         P_ADDRESS_LINE_1, P_CITY, P_COUNTRY, 'BILLING'
     );
     
-    v_address_id := (SELECT MAX(ADDRESS_ID) FROM RETAILWORKS_DB.CUSTOMERS_SCHEMA.ADDRESSES);
+    v_address_id := (SELECT MAX(ADDRESS_ID) FROM <% database_name %>.CUSTOMERS_SCHEMA<% schema_suffix %>.ADDRESSES);
     
     -- Determine customer segment based on annual income
     v_segment_id := CASE 
@@ -143,7 +143,7 @@ BEGIN
     END;
     
     -- Insert customer
-    INSERT INTO RETAILWORKS_DB.CUSTOMERS_SCHEMA.CUSTOMERS (
+    INSERT INTO <% database_name %>.CUSTOMERS_SCHEMA<% schema_suffix %>.CUSTOMERS (
         CUSTOMER_NUMBER, CUSTOMER_TYPE, COMPANY_NAME, FIRST_NAME, LAST_NAME,
         EMAIL, PHONE, ANNUAL_INCOME, SEGMENT_ID, BILLING_ADDRESS_ID,
         SHIPPING_ADDRESS_ID, REGISTRATION_DATE, STATUS
@@ -153,7 +153,7 @@ BEGIN
         v_address_id, CURRENT_DATE(), 'ACTIVE'
     );
     
-    v_customer_id := (SELECT MAX(CUSTOMER_ID) FROM RETAILWORKS_DB.CUSTOMERS_SCHEMA.CUSTOMERS);
+    v_customer_id := (SELECT MAX(CUSTOMER_ID) FROM <% database_name %>.CUSTOMERS_SCHEMA<% schema_suffix %>.CUSTOMERS);
     
     v_result := 'Customer onboarded successfully. Customer ID: ' || v_customer_id || ', Customer Number: ' || v_customer_number;
     RETURN v_result;
@@ -182,7 +182,7 @@ DECLARE
 BEGIN
     -- Get current inventory
     SELECT QUANTITY_ON_HAND INTO v_current_quantity
-    FROM RETAILWORKS_DB.PRODUCTS_SCHEMA.INVENTORY
+    FROM <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>.INVENTORY
     WHERE PRODUCT_ID = P_PRODUCT_ID AND LOCATION_CODE = P_LOCATION_CODE;
     
     -- Calculate new quantity based on transaction type
@@ -197,7 +197,7 @@ BEGIN
     END IF;
     
     -- Update inventory
-    UPDATE RETAILWORKS_DB.PRODUCTS_SCHEMA.INVENTORY
+    UPDATE <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>.INVENTORY
     SET QUANTITY_ON_HAND = v_new_quantity,
         QUANTITY_AVAILABLE = v_new_quantity - QUANTITY_ALLOCATED,
         LAST_RECEIVED_DATE = CASE WHEN P_TRANSACTION_TYPE IN ('RECEIPT', 'RETURN') 
@@ -207,7 +207,7 @@ BEGIN
     WHERE PRODUCT_ID = P_PRODUCT_ID AND LOCATION_CODE = P_LOCATION_CODE;
     
     -- Check for reorder point
-    IF v_new_quantity <= (SELECT REORDER_POINT FROM RETAILWORKS_DB.PRODUCTS_SCHEMA.INVENTORY 
+    IF v_new_quantity <= (SELECT REORDER_POINT FROM <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>.INVENTORY 
                          WHERE PRODUCT_ID = P_PRODUCT_ID AND LOCATION_CODE = P_LOCATION_CODE) THEN
         v_result := 'Inventory updated. WARNING: Stock level below reorder point for Product ID: ' || P_PRODUCT_ID;
     ELSE
@@ -223,7 +223,7 @@ END;
 $$;
 
 -- Sales Commission Calculation Procedure
-USE SCHEMA RETAILWORKS_DB.HR_SCHEMA;
+USE SCHEMA <% database_name %>.HR_SCHEMA<% schema_suffix %>;
 
 CREATE OR ALTER PROCEDURE SP_CALCULATE_SALES_COMMISSION(
     P_EMPLOYEE_ID NUMBER,
@@ -242,13 +242,13 @@ DECLARE
 BEGIN
     -- Get commission rate for the sales rep
     SELECT COMMISSION_RATE INTO v_commission_rate
-    FROM RETAILWORKS_DB.SALES_SCHEMA.SALES_REPS
+    FROM <% database_name %>.SALES_SCHEMA<% schema_suffix %>.SALES_REPS
     WHERE EMPLOYEE_ID = P_EMPLOYEE_ID;
     
     -- Calculate total sales for the period
     SELECT COALESCE(SUM(o.TOTAL_AMOUNT), 0) INTO v_total_sales
-    FROM RETAILWORKS_DB.SALES_SCHEMA.ORDERS o
-    JOIN RETAILWORKS_DB.SALES_SCHEMA.SALES_REPS sr ON o.SALES_REP_ID = sr.SALES_REP_ID
+    FROM <% database_name %>.SALES_SCHEMA<% schema_suffix %>.ORDERS o
+    JOIN <% database_name %>.SALES_SCHEMA<% schema_suffix %>.SALES_REPS sr ON o.SALES_REP_ID = sr.SALES_REP_ID
     WHERE sr.EMPLOYEE_ID = P_EMPLOYEE_ID
       AND o.ORDER_DATE BETWEEN P_PAY_PERIOD_START AND P_PAY_PERIOD_END
       AND o.STATUS = 'COMPLETED';
@@ -276,7 +276,7 @@ END;
 $$;
 
 -- Data Quality Validation Procedure
-USE SCHEMA RETAILWORKS_DB.STAGING_SCHEMA;
+USE SCHEMA <% database_name %>.STAGING_SCHEMA<% schema_suffix %>;
 
 CREATE OR ALTER PROCEDURE SP_VALIDATE_DATA_QUALITY()
 RETURNS STRING
@@ -295,7 +295,7 @@ BEGIN
     SELECT 'CUSTOMERS', 'DUPLICATE', 'Duplicate email addresses found', 'HIGH'
     FROM (
         SELECT EMAIL, COUNT(*) as cnt
-        FROM RETAILWORKS_DB.CUSTOMERS_SCHEMA.CUSTOMERS
+        FROM <% database_name %>.CUSTOMERS_SCHEMA<% schema_suffix %>.CUSTOMERS
         GROUP BY EMAIL
         HAVING COUNT(*) > 1
     ) WHERE cnt > 0;
@@ -303,21 +303,21 @@ BEGIN
     -- Check for products without categories
     INSERT INTO DATA_QUALITY_ISSUES (TABLE_NAME, COLUMN_NAME, ISSUE_TYPE, ISSUE_DESCRIPTION, SEVERITY)
     SELECT 'PRODUCTS', 'CATEGORY_ID', 'MISSING_VALUE', 'Products without valid category', 'MEDIUM'
-    FROM RETAILWORKS_DB.PRODUCTS_SCHEMA.PRODUCTS p
-    LEFT JOIN RETAILWORKS_DB.PRODUCTS_SCHEMA.CATEGORIES c ON p.CATEGORY_ID = c.CATEGORY_ID
+    FROM <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>.PRODUCTS p
+    LEFT JOIN <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>.CATEGORIES c ON p.CATEGORY_ID = c.CATEGORY_ID
     WHERE c.CATEGORY_ID IS NULL;
     
     -- Check for negative inventory
     INSERT INTO DATA_QUALITY_ISSUES (TABLE_NAME, COLUMN_NAME, ISSUE_TYPE, ISSUE_DESCRIPTION, SEVERITY)
     SELECT 'INVENTORY', 'QUANTITY_ON_HAND', 'INVALID_VALUE', 'Negative inventory quantities', 'HIGH'
-    FROM RETAILWORKS_DB.PRODUCTS_SCHEMA.INVENTORY
+    FROM <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>.INVENTORY
     WHERE QUANTITY_ON_HAND < 0;
     
     -- Check for orders without items
     INSERT INTO DATA_QUALITY_ISSUES (TABLE_NAME, ISSUE_TYPE, ISSUE_DESCRIPTION, SEVERITY)
     SELECT 'ORDERS', 'MISSING_ITEMS', 'Orders without order items', 'HIGH'
-    FROM RETAILWORKS_DB.SALES_SCHEMA.ORDERS o
-    LEFT JOIN RETAILWORKS_DB.SALES_SCHEMA.ORDER_ITEMS oi ON o.ORDER_ID = oi.ORDER_ID
+    FROM <% database_name %>.SALES_SCHEMA<% schema_suffix %>.ORDERS o
+    LEFT JOIN <% database_name %>.SALES_SCHEMA<% schema_suffix %>.ORDER_ITEMS oi ON o.ORDER_ID = oi.ORDER_ID
     WHERE oi.ORDER_ID IS NULL;
     
     -- Get count of issues found
@@ -333,8 +333,8 @@ END;
 $$;
 
 -- Create sequences for generating numbers
-USE SCHEMA RETAILWORKS_DB.SALES_SCHEMA;
+USE SCHEMA <% database_name %>.SALES_SCHEMA<% schema_suffix %>;
 CREATE SEQUENCE IF NOT EXISTS SEQ_ORDER_NUMBER START = 1000 INCREMENT = 1;
 
-USE SCHEMA RETAILWORKS_DB.CUSTOMERS_SCHEMA;
+USE SCHEMA <% database_name %>.CUSTOMERS_SCHEMA<% schema_suffix %>;
 CREATE SEQUENCE IF NOT EXISTS SEQ_CUSTOMER_NUMBER START = 100000 INCREMENT = 1;

@@ -1,0 +1,258 @@
+name: RetailWorks Snowflake CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+  SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+  SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+  SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
+  SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+
+jobs:
+  # Test Job - Runs on all branches
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [dev, test]
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install UV
+      run: |
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+    - name: Install Dependencies
+      run: |
+        uv sync
+
+    - name: Set Environment Variables
+      run: |
+        echo "SNOWFLAKE_DATABASE=RETAILWORKS_DB_${{ matrix.environment == 'dev' && 'DEV' || 'TEST' }}" >> $GITHUB_ENV
+
+    - name: Run Schema Validation Tests
+      run: |
+        uv run python snowpark/tests/test_database.py
+
+    - name: Run ETL Pipeline Tests
+      run: |
+        uv run python snowpark/tests/test_etl.py
+
+    - name: Run Data Quality Tests
+      run: |
+        uv run python -m pytest snowpark/tests/ -v --tb=short
+
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results-${{ matrix.environment }}
+        path: |
+          test-results/
+          logs/
+
+  # Security Scan Job
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Run Security Scan
+      uses: securecodewarrior/github-action-add-sarif@v1
+      with:
+        sarif-file: 'security-scan-results.sarif'
+
+    - name: Check for Secrets in Code
+      run: |
+        if grep -r "password\|secret\|key" --include="*.sql" --include="*.py" .; then
+          echo "WARNING: Potential secrets found in code"
+          exit 1
+        fi
+
+  # Development Deployment
+  deploy-dev:
+    name: Deploy to Development
+    runs-on: ubuntu-latest
+    needs: [test, security]
+    if: github.ref == 'refs/heads/develop'
+    environment: development
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install UV
+      run: |
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+    - name: Install Dependencies
+      run: |
+        uv sync
+
+    - name: Set Development Environment
+      run: |
+        echo "SNOWFLAKE_DATABASE=RETAILWORKS_DB_DEV" >> $GITHUB_ENV
+
+    - name: Deploy Database Schema
+      run: |
+        uv run python jenkins/deployment/deploy_schemas.py --environment dev
+
+    - name: Deploy Tables
+      run: |
+        uv run python jenkins/deployment/deploy_tables.py --environment dev
+
+    - name: Deploy Views and Procedures
+      run: |
+        uv run python scripts/deploy_simple.sh dev
+
+    - name: Run Post-Deployment Tests
+      run: |
+        uv run python snowpark/tests/test_database.py
+
+    - name: Deploy Sample Data (if needed)
+      run: |
+        if [ "${{ github.event.inputs.load_sample_data }}" = "true" ]; then
+          uv run python dml/sample_data/load_large_data.py
+        fi
+
+  # Staging Deployment
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [deploy-dev]
+    if: github.ref == 'refs/heads/main'
+    environment: staging
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Dependencies
+      run: |
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        uv sync
+
+    - name: Set Staging Environment
+      run: |
+        echo "SNOWFLAKE_DATABASE=RETAILWORKS_DB_STAGING" >> $GITHUB_ENV
+
+    - name: Deploy to Staging
+      run: |
+        uv run python jenkins/deployment/deploy_schemas.py --environment staging
+        uv run python jenkins/deployment/deploy_tables.py --environment staging
+
+    - name: Run Integration Tests
+      run: |
+        uv run python snowpark/tests/test_etl.py
+
+    - name: Performance Tests
+      run: |
+        uv run python scripts/performance_tests.py
+
+  # Production Deployment (Manual Approval Required)
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [deploy-staging]
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Dependencies
+      run: |
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        uv sync
+
+    - name: Set Production Environment
+      run: |
+        echo "SNOWFLAKE_DATABASE=RETAILWORKS_DB" >> $GITHUB_ENV
+
+    - name: Deploy to Production
+      run: |
+        uv run python jenkins/deployment/deploy_schemas.py --environment prod
+        uv run python jenkins/deployment/deploy_tables.py --environment prod
+
+    - name: Run Smoke Tests
+      run: |
+        uv run python scripts/smoke_tests.py
+
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ github.run_number }}
+        release_name: Release v${{ github.run_number }}
+        body: |
+          Deployed to production
+          
+          Changes in this release:
+          ${{ github.event.head_commit.message }}
+        draft: false
+        prerelease: false
+
+  # Rollback Job (Manual Trigger)
+  rollback:
+    name: Rollback Deployment
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    environment: production
+    
+    steps:
+    - name: Checkout Previous Version
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.rollback_version }}
+
+    - name: Rollback Database Changes
+      run: |
+        uv run python scripts/rollback_deployment.py --version ${{ github.event.inputs.rollback_version }}
+
+# Workflow Configuration
+  cleanup:
+    name: Cleanup Resources
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [test, deploy-dev, deploy-staging, deploy-production]
+    
+    steps:
+    - name: Cleanup Temporary Resources
+      run: |
+        echo "Cleaning up temporary test databases and resources"
+        # Add cleanup commands here

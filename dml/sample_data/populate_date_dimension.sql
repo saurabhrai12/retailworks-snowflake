@@ -5,7 +5,7 @@
 -- Date: 2025-07-19
 -- =====================================================
 
-USE SCHEMA RETAILWORKS_DB.ANALYTICS_SCHEMA;
+USE SCHEMA <% database_name %>.ANALYTICS_SCHEMA<% schema_suffix %>;
 
 -- Create a procedure to populate date dimension
 CREATE OR REPLACE PROCEDURE SP_POPULATE_DATE_DIMENSION(START_DATE DATE, END_DATE DATE)

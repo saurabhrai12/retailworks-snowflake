@@ -1,0 +1,16 @@
+POSITION_ID,POSITION_TITLE,POSITION_CODE,DEPARTMENT_ID,JOB_LEVEL,MIN_SALARY,MAX_SALARY,DESCRIPTION,STATUS
+1,CEO,CEO,1,10,300000,500000,CEO position in CEO department,ACTIVE
+2,VP Sales,VP_SALES,1,9,200000,300000,VP Sales position in VP_SALES department,ACTIVE
+3,Sales Manager,SALES_MGR,1,7,80000,120000,Sales Manager position in SALES_MGR department,ACTIVE
+4,Sales Representative,SALES_REP,1,5,45000,75000,Sales Representative position in SALES_REP department,ACTIVE
+5,Marketing Director,MKT_DIR,2,8,120000,180000,Marketing Director position in MKT_DIR department,ACTIVE
+6,Marketing Manager,MKT_MGR,2,6,65000,95000,Marketing Manager position in MKT_MGR department,ACTIVE
+7,CTO,CTO,3,10,250000,400000,CTO position in CTO department,ACTIVE
+8,IT Manager,IT_MGR,3,7,90000,130000,IT Manager position in IT_MGR department,ACTIVE
+9,Software Engineer,SW_ENG,3,5,70000,120000,Software Engineer position in SW_ENG department,ACTIVE
+10,Data Analyst,DATA_ANAL,3,4,55000,85000,Data Analyst position in DATA_ANAL department,ACTIVE
+11,HR Director,HR_DIR,4,8,100000,150000,HR Director position in HR_DIR department,ACTIVE
+12,HR Manager,HR_MGR,4,6,60000,90000,HR Manager position in HR_MGR department,ACTIVE
+13,CFO,CFO,5,10,200000,350000,CFO position in CFO department,ACTIVE
+14,Finance Manager,FIN_MGR,5,7,75000,110000,Finance Manager position in FIN_MGR department,ACTIVE
+15,Accountant,ACCT,5,4,45000,70000,Accountant position in ACCT department,ACTIVE

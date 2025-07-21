@@ -5,7 +5,7 @@
 -- Date: 2025-07-19
 -- =====================================================
 
-USE SCHEMA RETAILWORKS_DB.HR_SCHEMA;
+USE SCHEMA <% database_name %>.HR_SCHEMA<% schema_suffix %>;
 
 -- Departments Table
 CREATE TABLE IF NOT EXISTS DEPARTMENTS (

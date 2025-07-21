@@ -5,7 +5,7 @@
 -- Date: 2025-07-19
 -- =====================================================
 
-USE SCHEMA RETAILWORKS_DB.CUSTOMERS_SCHEMA;
+USE SCHEMA <% database_name %>.CUSTOMERS_SCHEMA<% schema_suffix %>;
 
 -- Customer Segments Table
 CREATE TABLE IF NOT EXISTS CUSTOMER_SEGMENTS (
