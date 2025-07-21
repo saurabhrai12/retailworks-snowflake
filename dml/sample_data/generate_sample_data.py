@@ -100,7 +100,8 @@ class RetailWorksDataGenerator:
                 'EMAIL': self.fake.email(),
                 'WEBSITE': self.fake.url(),
                 'STATUS': random.choices(['ACTIVE', 'INACTIVE'], weights=[0.9, 0.1], k=1)[0],
-                'RATING': round(random.uniform(3.0, 5.0), 1)
+                'RATING': round(random.uniform(3.0, 5.0), 1),
+                'DISCOUNT': round(random.uniform(5.0, 15.0), 2)  # 5-15% discount range, default 10%
             })
         
         return pd.DataFrame(data)

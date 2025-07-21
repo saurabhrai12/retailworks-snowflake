@@ -1,201 +1,201 @@
-SUPPLIER_ID,SUPPLIER_NAME,CONTACT_NAME,CONTACT_TITLE,ADDRESS,CITY,REGION,POSTAL_CODE,COUNTRY,PHONE,EMAIL,WEBSITE,STATUS,RATING
-1,"Rodriguez, Figueroa and Sanchez",Brian Yang,Sales Manager,600 Jeffery Parkways,New Jamesside,Nebraska,29394,Kiribati,001-740-326-5423,jamesmichael@example.com,https://www.stevens.com/,ACTIVE,3.6
-2,"Carter, Fuller and Mcclure",Corey Jones,Account Manager,1316 Chavez Village,Franciscostad,Indiana,88342,Ethiopia,001-719-228-3276x483,lydiatrujillo@example.com,https://www.gentry.com/,ACTIVE,3.2
-3,Rios Group,Maria Thomas,Sales Manager,88496 Cox Dam,Daviston,Delaware,20534,Niue,(669)216-6978,maldonadoamanda@example.com,https://www.graham-chavez.com/,ACTIVE,3.1
-4,"Gill, Romero and Rodriguez",Sarah Romero,Sales Manager,52880 Burns Creek,Natashaport,Kansas,08093,Dominican Republic,001-411-671-8227,ibrandt@example.net,http://carney-santos.info/,ACTIVE,4.0
-5,"Hayes, Wright and Brown",Julian Chapman,Sales Manager,03105 Willie Harbors,Lewisberg,Washington,75348,Morocco,337.263.1165x6670,zchandler@example.org,http://www.herrera.biz/,ACTIVE,4.4
-6,Ramirez and Sons,Angela Morton,VP Sales,80132 Tucker Forest,Barreraburgh,Missouri,00783,Iceland,274-768-7234x309,williamsthomas@example.net,http://www.miller.com/,ACTIVE,4.2
-7,Wilson-Zamora,Kristopher Harvey,Sales Manager,998 Donovan Ford Suite 346,Lake Debbie,New Jersey,41942,Vanuatu,001-310-579-9118x38425,justin78@example.net,https://www.montoya.com/,ACTIVE,3.3
-8,Wilson-Rodriguez,Denise Jacobs,VP Sales,48740 Cynthia Village Suite 005,Lake Tina,Hawaii,97655,Kenya,+1-768-401-1280,tanderson@example.com,http://fleming.com/,ACTIVE,3.3
-9,Deleon-Henson,Marc Moore,Director,26025 Pham Way,West Erik,Vermont,14669,Hong Kong,2735375433,emurphy@example.com,https://zavala.com/,ACTIVE,3.8
-10,White-Estes,Brian Hamilton,Director,9816 Jonathan Station Suite 088,West Ryan,Texas,43780,Nigeria,414-684-6564x82366,akelley@example.com,https://www.floyd-lawson.com/,ACTIVE,4.2
-11,Ramos-Lowe,Rebecca Moyer,Sales Manager,148 Davis Terrace,Lake Lance,Illinois,19814,Anguilla,8379917693,psanchez@example.net,http://www.robinson-brock.net/,ACTIVE,4.1
-12,Williams-Wright,Joyce Solis,VP Sales,9868 Merritt Summit Suite 743,Katiehaven,New York,82650,Dominican Republic,571-843-4558x122,jasminebrown@example.com,https://brown-wall.biz/,ACTIVE,3.6
-13,"Shah, Smith and Gilmore",Karen Bender,Director,6889 Tracy Groves Suite 706,Elizabethfurt,Washington,22133,Tajikistan,929.480.6990x162,greenmark@example.com,https://ramirez-bean.biz/,ACTIVE,4.4
-14,Conley-Ruiz,Amy Crane,Sales Manager,100 James Brooks,East David,Texas,15494,Mongolia,674.352.9912,hickmanbarbara@example.com,https://www.vargas.com/,ACTIVE,4.5
-15,Terry LLC,Lindsay Martinez,Sales Manager,8651 Smith Manor,Garciastad,South Dakota,60759,Russian Federation,(862)684-9877,melissa14@example.com,http://bishop.com/,ACTIVE,4.7
-16,Freeman LLC,Gina Beard,VP Sales,083 John Lodge Suite 837,Westtown,Colorado,39067,Cyprus,(934)695-7885x6855,john13@example.com,http://www.robinson.com/,ACTIVE,4.3
-17,"Lawrence, Wolf and Carlson",Dr. Elizabeth Ward,Director,82400 Terry Crossroad Suite 109,Taylormouth,Michigan,24665,Austria,671-316-7190x229,davidduran@example.net,http://kerr-evans.org/,ACTIVE,3.7
-18,Torres-Oliver,Natalie Meza,Director,341 John Plaza,East Aaronmouth,Vermont,78333,Latvia,503-444-7134x9361,margaret10@example.org,https://martinez-barker.biz/,ACTIVE,4.4
-19,Mason-Snyder,Andrew Reynolds,Sales Manager,401 Suzanne Villages Apt. 490,South April,New Hampshire,36959,Cocos (Keeling) Islands,001-367-417-5655,robert74@example.net,https://www.miller-king.com/,ACTIVE,3.3
-20,Hancock-Bryan,Sean Murray,Account Manager,85977 James Plaza,West Samuel,Vermont,64033,British Virgin Islands,3935248086,murraydavid@example.org,https://thornton.info/,ACTIVE,3.8
-21,Bryant and Sons,Thomas Romero,Account Manager,46584 Justin Hills,Grimesmouth,Ohio,63984,Guatemala,988-867-5339x63605,ymcneil@example.net,http://martinez.com/,ACTIVE,4.7
-22,Sawyer Group,Thomas Smith,Sales Manager,2174 Hanson Locks,Port Markside,Missouri,42006,Niue,001-378-909-1343x161,heatherberger@example.org,https://www.howard-jordan.com/,ACTIVE,3.1
-23,"Jenkins, Maldonado and White",Leon Reyes,Director,9237 Stevens Shores,Port Stevenport,Utah,72144,Cayman Islands,575-894-6474,yrodriguez@example.net,https://phillips.com/,ACTIVE,3.1
-24,Knight Ltd,Valerie Lozano,Director,3953 Christine Springs Apt. 104,Johnsonstad,Washington,17725,Bermuda,956-623-2858x8424,linda71@example.org,http://diaz.net/,ACTIVE,4.0
-25,Gibson Ltd,Deborah James,VP Sales,37098 Herman Forges Apt. 746,East Brandonton,Maryland,65070,Brazil,438-826-7586,basschristina@example.com,http://ramos.com/,ACTIVE,3.3
-26,Pollard LLC,Vanessa Howard,Director,3171 Darlene Ranch Apt. 053,Port Anne,California,73142,Cote d'Ivoire,001-433-652-9042,danieldelacruz@example.org,http://chapman.com/,ACTIVE,3.9
-27,Williams-Harmon,Nichole Alvarez,VP Sales,917 Sonia Cape Suite 700,Boonechester,Utah,14651,Liechtenstein,001-771-815-9212x499,shawn96@example.org,http://www.hayes-perez.com/,ACTIVE,5.0
-28,Ross-Blair,Erik Scott,Account Manager,711 Christopher Court,Lisaside,Arkansas,77370,Zimbabwe,+1-685-716-5604,lanejason@example.net,https://www.bell.com/,ACTIVE,3.2
-29,Farmer PLC,Jeffrey Hoffman,Sales Manager,402 Park Inlet,Michaelburgh,Georgia,74729,Palestinian Territory,(612)701-8366x7525,wareeric@example.net,http://www.ramos-coleman.org/,ACTIVE,3.3
-30,Perry-Lewis,Haley Rodriguez,Account Manager,403 Joyce Centers Apt. 343,Port Jonathan,Massachusetts,16227,Albania,862.226.8388x5160,umorse@example.net,https://bowman.com/,ACTIVE,3.8
-31,Solis PLC,Michael Cox,Sales Manager,36968 Randy Inlet Suite 352,New Cynthiahaven,North Carolina,25916,United Kingdom,001-955-923-1243x29212,kmaldonado@example.net,https://gonzales.info/,ACTIVE,4.2
-32,"Turner, Hill and Brown",Emily Hayes,VP Sales,4119 Ford Plaza,South Reginashire,Tennessee,25173,Gibraltar,+1-578-920-7151x820,nwarren@example.org,https://hughes-schroeder.org/,ACTIVE,4.9
-33,Mccormick Ltd,Gary Grant,Sales Manager,4925 Brandi Divide Suite 462,West Angelicamouth,Florida,88334,Reunion,001-581-568-5054x2357,ericphillips@example.org,http://anderson.org/,ACTIVE,3.2
-34,Griffith Inc,Michael Young,Director,473 Kyle Valleys Suite 359,Murrayport,Wyoming,50553,Macao,662.339.2407x58181,joshuawhitehead@example.org,https://www.velasquez.com/,ACTIVE,3.7
-35,Brown-Shaw,Zachary Brooks,Director,1522 Justin Village,Hortonberg,Wisconsin,92977,Latvia,390.610.4328x986,kevinwilliams@example.com,https://www.copeland.org/,ACTIVE,3.9
-36,"Smith, Robertson and Allen",Jeffrey Mendez,Director,621 Jones Pine,South Morganton,South Dakota,51210,Holy See (Vatican City State),705-415-3195x205,epollard@example.net,http://www.baldwin.com/,INACTIVE,4.5
-37,Harris-Moody,Emily Collins,Sales Manager,740 Justin Wall Apt. 541,Samuelfurt,West Virginia,58138,Ukraine,(452)677-5841x6169,curtis54@example.com,https://norris.info/,ACTIVE,3.6
-38,Acosta LLC,Jessica Fowler,Account Manager,65820 Melinda Springs,Johnsonland,Kansas,85063,Haiti,(469)709-2755x719,redwards@example.org,http://www.lopez.com/,ACTIVE,4.5
-39,Hampton-Padilla,Logan Benson,Sales Manager,12172 Osborn Valleys Suite 518,Patriciaburgh,Virginia,93504,Vanuatu,001-725-983-1323x705,cherylmiller@example.com,https://jenkins.com/,ACTIVE,4.0
-40,Day-Cole,Haley Humphrey,Sales Manager,68018 Kevin Estates,Sarahbury,Minnesota,68513,Ukraine,414-438-4249x8182,megan90@example.org,http://www.wise.org/,INACTIVE,4.8
-41,Montgomery-Johnson,Kimberly May,Director,3647 Haley Estate Suite 677,West Catherine,Massachusetts,94658,Ghana,001-956-525-8815x3714,colinroberts@example.com,https://www.li.com/,ACTIVE,3.5
-42,Hines Group,Julie Koch DDS,Sales Manager,8733 Williams Haven,Harperfort,Maine,70846,Algeria,262-545-6506,angela16@example.net,https://becker.biz/,ACTIVE,4.0
-43,Norton-Morgan,Nicole Gonzalez,Sales Manager,000 Jennifer Unions Suite 872,West Sarah,Massachusetts,21800,India,+1-749-758-8879x470,whitneybrandy@example.net,http://coffey-patton.org/,INACTIVE,4.1
-44,"Perez, Williams and Castillo",Michelle Hampton,Account Manager,30913 Scott Manor Apt. 636,Salaston,Virginia,18599,Maldives,785.778.6527,chelsea33@example.com,https://www.wise-bush.info/,ACTIVE,4.0
-45,Castillo-Castro,Mikayla Roberts,Account Manager,5240 Moses Common Suite 747,East Maria,Louisiana,74165,Qatar,321-899-3308x330,jennifer12@example.org,http://donovan.com/,ACTIVE,4.7
-46,Morris-Brewer,Ann Andrews,VP Sales,62067 Sharon Well,Nancytown,Maryland,74944,Netherlands,954-678-8728,lisarivera@example.net,https://lopez.org/,INACTIVE,4.9
-47,"Todd, Thompson and Chase",Samantha Robertson,Account Manager,1227 Boyle Avenue,Patrickmouth,Wisconsin,35496,Zimbabwe,649-390-4530x17426,michael33@example.org,https://www.adkins-obrien.biz/,ACTIVE,3.8
-48,"Dunn, Ruiz and Medina",Colleen Wright,Director,785 Samantha Creek,Port Amyhaven,Illinois,75566,Mauritania,(325)987-1397,chavezwilliam@example.com,http://roman.com/,ACTIVE,4.0
-49,"Robinson, Jones and Henderson",Kimberly Brown,Sales Manager,0462 Katie Stream,Brooksfurt,New Hampshire,49980,Honduras,482-551-2868,avilatiffany@example.com,https://wright.com/,ACTIVE,3.1
-50,Lopez-Golden,Amanda Keller,Sales Manager,31190 Harper Squares,East Joyfurt,New Hampshire,31216,Mauritius,702.584.3959,nancy83@example.com,https://hawkins.com/,ACTIVE,3.5
-51,"Shelton, Peters and Williams",Mason James,Account Manager,662 Bennett Throughway Suite 334,Port Steven,Arkansas,74214,Isle of Man,(588)226-3435x17518,nicholas99@example.org,http://www.ramsey.com/,ACTIVE,4.4
-52,Krueger-Smith,Tonya Wilson,Sales Manager,93638 Rowe Light Suite 854,Michaelfort,New Jersey,13425,Spain,001-875-635-5609x3204,jameshall@example.net,http://pena.info/,ACTIVE,4.8
-53,"May, Henry and Jackson",Caroline Cortez,Director,80801 Kathy Loop Apt. 312,East Williamstad,Arkansas,81481,Northern Mariana Islands,+1-697-270-0886x00848,ldrake@example.org,http://www.lee.com/,ACTIVE,3.5
-54,Adams-Sanders,Jared Cunningham,VP Sales,1016 Bennett Mountains,Lake Albertburgh,Colorado,66018,Tanzania,(259)418-0339x74014,alexis39@example.org,https://www.martin-allen.biz/,ACTIVE,3.3
-55,"Mosley, Rivera and Campos",William Ramsey,VP Sales,16315 Novak Islands Apt. 477,West Angela,Missouri,57104,Colombia,+1-796-719-4311x42626,davissherry@example.com,https://anderson.biz/,ACTIVE,3.9
-56,Hawkins-Hunt,Brandon Spencer,VP Sales,0466 Jenny Points Apt. 982,Jacksonview,Maryland,35681,Lithuania,(712)664-6471,jennifersimpson@example.net,http://taylor.biz/,ACTIVE,3.2
-57,Skinner-James,Jessica Jordan,VP Sales,5937 Thompson Locks,Kellyfort,Oregon,32276,Greece,(546)951-9398x2807,marie16@example.net,https://www.turner.biz/,ACTIVE,3.8
-58,Jones-Ewing,James Hunter,Sales Manager,058 Daniel Gateway Suite 290,Rasmussenmouth,Nevada,14387,Algeria,943-788-8993,rford@example.net,http://webb.biz/,ACTIVE,5.0
-59,Wilson Ltd,Eric Gibson,Sales Manager,757 Samuel Square,Floresport,Arizona,93664,Brazil,7518238282,zhall@example.net,http://www.sandoval.com/,ACTIVE,4.5
-60,Vargas-Price,Christine Goodwin,Sales Manager,182 Nguyen Mount,West Emilyfort,North Dakota,84270,Germany,+1-369-469-1557x924,david41@example.org,https://www.price.biz/,ACTIVE,3.4
-61,Tucker PLC,Maria Cooke,VP Sales,4225 Harvey Way,Stephaniefort,Florida,26076,Suriname,(588)676-7677x2190,hillamanda@example.org,https://dixon.net/,ACTIVE,3.4
-62,Weaver-Sherman,Jessica Robinson,VP Sales,34074 Atkins Corners Suite 133,Michellechester,Hawaii,81261,Burundi,430.795.8498,keith48@example.net,http://www.sellers-riddle.com/,ACTIVE,4.8
-63,"Cline, Wright and Dawson",Pam Lowe,VP Sales,94667 Cynthia Trafficway Apt. 684,Shawnfort,Massachusetts,76779,Afghanistan,001-717-451-8636x37454,rkramer@example.org,http://www.bowers.com/,ACTIVE,4.7
-64,Bryant-Braun,Zachary Blankenship,Sales Manager,41541 Beck Run Apt. 064,South Diana,Virginia,12976,Afghanistan,271.729.3870,mcneilrobert@example.org,https://www.reyes.com/,ACTIVE,5.0
-65,Edwards LLC,Raymond Mullins,Sales Manager,218 Chelsey Expressway,Bellborough,South Dakota,98578,Canada,(597)631-1219x65652,wrightcarolyn@example.net,https://www.liu.com/,INACTIVE,4.9
-66,"Myers, Lucas and Bowers",Cynthia Cruz,Account Manager,9180 Peck Curve,Valenciashire,Nebraska,48396,Mayotte,+1-627-810-9104x30068,fmiles@example.net,http://collins.com/,ACTIVE,4.0
-67,Herrera Group,Pamela Santos,Account Manager,6303 Sandy Crescent,Salazarton,Maryland,87805,Saint Vincent and the Grenadines,+1-421-602-0275x88425,wiseanthony@example.com,https://www.joseph-ray.com/,ACTIVE,4.8
-68,Gibson-Ward,Mr. Jacob Scott Jr.,Account Manager,80003 Thomas Lights,East Sarah,Arizona,72966,Spain,001-263-453-6541x951,lindajarvis@example.com,http://ayala-collins.com/,ACTIVE,5.0
-69,"Bryant, Wood and Carter",Nancy Sanchez,Director,738 Edward Lodge Apt. 385,West Aaronfurt,West Virginia,95818,Gambia,338-236-7024,phyllismeyer@example.net,https://miller.biz/,INACTIVE,4.6
-70,Vargas Inc,Victor Young,Director,6557 Hall Flats Apt. 912,East Shannonmouth,Nebraska,16326,Mauritania,(537)747-4112x490,christopherwright@example.com,https://www.evans.biz/,ACTIVE,4.9
-71,Hawkins-Pierce,Brian Leon,VP Sales,03236 Parks Rue,New Brendaland,Alaska,08951,Congo,+1-972-215-1070x2966,lvega@example.com,http://www.ramirez-stephenson.com/,ACTIVE,3.6
-72,"Harvey, Sanchez and Phillips",Juan Brown,Sales Manager,2638 Crystal Unions Apt. 657,Coopershire,North Carolina,42654,Iceland,520-459-3040x785,wrightjohn@example.net,http://www.bradford.com/,ACTIVE,4.1
-73,Young LLC,Melissa Sloan,Director,599 Anna Field,Weaverburgh,New York,05476,Bermuda,5394308705,jennifer50@example.org,http://www.mathis.com/,ACTIVE,4.2
-74,Bush-Bates,Gabrielle Morris,Account Manager,675 Jasmine Points,Jeffreyshire,Idaho,50096,Gambia,001-542-320-9690x2959,vtaylor@example.org,http://jackson-mcclure.com/,ACTIVE,4.0
-75,"Santiago, Daniel and Rogers",Daniel Steele,Account Manager,1006 Oconnor Expressway Suite 765,Garciafort,Oregon,85824,Senegal,+1-832-471-0405x41152,paynerachael@example.org,https://johnson.biz/,ACTIVE,3.1
-76,Brown LLC,Colton Terry,Account Manager,443 Brandon Ports Suite 205,South Christopherfort,Illinois,13213,Anguilla,924.617.1467,maypaul@example.com,https://griffin.info/,ACTIVE,4.9
-77,Baker-Hood,Brittany Horton,Account Manager,58693 Mary Viaduct,Sheppardfort,Oregon,31387,Lebanon,416-508-9899x2172,davidhenderson@example.net,https://www.hernandez.com/,ACTIVE,3.1
-78,Hughes Group,Shannon Stone,Sales Manager,998 Rodriguez Drive,New Brianna,Wisconsin,13634,Uzbekistan,991-948-5646,jacksonrichard@example.net,https://www.preston-rivera.com/,ACTIVE,4.2
-79,Reese LLC,Alicia Roth,Director,4713 Kevin Summit Suite 546,East Scottchester,West Virginia,64000,Senegal,550.582.1486x28902,wrightstephen@example.com,http://colon-wagner.com/,INACTIVE,3.4
-80,"Johnson, Watson and Wheeler",Seth Matthews,Director,2414 Paul Estates Apt. 333,Denisehaven,Alaska,89918,Algeria,922.690.3494x4665,stevenbyrd@example.net,https://www.hunt.com/,ACTIVE,3.8
-81,"Holland, Lynch and Evans",Arthur Mcneil,Director,4432 Rachel Valley Suite 520,Brightview,Nebraska,53532,Iceland,001-409-693-5387x5842,ruizjoyce@example.net,http://davis.com/,ACTIVE,4.9
-82,French-Rivera,Edward York,Sales Manager,99917 Vincent Ways Suite 846,Port Melissaberg,Illinois,45415,Ireland,001-772-252-1752,hayesjason@example.org,http://anderson.biz/,ACTIVE,4.2
-83,Patterson-Woods,Joseph Cross,Sales Manager,8300 Jeremy Wells,Larryville,Missouri,66474,Namibia,721-904-4789x8562,karen26@example.org,http://www.mercer.net/,ACTIVE,3.4
-84,Martinez Ltd,Amanda Mcdowell,Director,909 Ebony Shoal Apt. 016,Jamesside,Kentucky,62681,Reunion,(430)846-1849,huntchristine@example.com,http://www.gonzalez-gonzalez.com/,ACTIVE,3.7
-85,"Dudley, Howard and Ortiz",Joshua Lozano,Sales Manager,3001 Mary Skyway Suite 218,Lake Jenniferview,Tennessee,30799,Korea,247-201-2045x5611,elizabethjackson@example.com,https://davis.biz/,ACTIVE,3.7
-86,Rivers-Nelson,Samuel Marsh,Account Manager,20216 Pham Springs,Whitefurt,Wyoming,47503,New Zealand,6277716701,busherica@example.net,http://mills.com/,ACTIVE,4.1
-87,Reed-Rhodes,Ryan Grant,Director,28772 Karen Islands,West Tara,Arkansas,66945,Czech Republic,+1-366-931-7797,fstewart@example.net,http://www.gutierrez-hawkins.com/,ACTIVE,5.0
-88,Conner PLC,Stefanie Hart,Sales Manager,5037 Castro River Suite 571,Port Donnatown,Michigan,47049,Switzerland,+1-548-585-1027x2614,conradphilip@example.com,http://sherman.org/,ACTIVE,4.1
-89,Barton Group,Kevin Gordon,Sales Manager,80869 Glass Tunnel Apt. 922,South Dianemouth,North Carolina,50919,Italy,+1-634-765-4722x698,jamesweber@example.com,https://www.santos.com/,INACTIVE,3.3
-90,"Wilson, Bell and Castillo",Mary Butler,Sales Manager,0810 Thomas Skyway Apt. 342,Francesberg,Arkansas,91018,Slovenia,638-205-7198x3863,yhughes@example.net,https://www.manning.org/,ACTIVE,4.5
-91,Greer-Pruitt,Maria Fischer,Account Manager,347 Tonya Club,East Jill,Delaware,49941,Armenia,(748)242-2940x57202,tracy98@example.com,http://robinson.net/,ACTIVE,4.2
-92,Perry PLC,Gregory Ware,Director,5439 Barajas View Apt. 157,Lake Christina,South Carolina,32459,Armenia,+1-956-216-4840x85887,rachel35@example.net,http://www.bonilla.net/,ACTIVE,4.3
-93,Sims and Sons,Patricia Hancock,Director,38612 Stephen Isle Apt. 110,Port Johnathan,California,75862,Swaziland,846.367.6650,maychristine@example.net,http://www.reilly-rodriguez.com/,ACTIVE,3.5
-94,"Miller, Hubbard and Kim",Matthew Wells,Sales Manager,68424 Bernard Branch,North Bobby,Oregon,78705,India,+1-481-443-5368,jeffreydavenport@example.org,http://www.marsh.net/,ACTIVE,3.8
-95,Newman-Jones,Danielle Gonzalez,Director,5231 Harvey Fields Suite 775,Heatherberg,Oregon,74800,Haiti,962-705-3364x52577,tony12@example.net,http://vance.com/,ACTIVE,3.7
-96,"Mercado, Jones and Jones",Jonathon Johnson,Account Manager,308 Stephens Plains Suite 256,Port Brittany,Maine,18049,Kyrgyz Republic,481.465.8039x28272,ccrosby@example.org,https://www.baker.com/,ACTIVE,3.5
-97,"Clark, Velez and Ward",Jesse Williams,VP Sales,84498 Nicholas Lane Suite 918,Nicholasbury,North Dakota,53695,Guinea,(677)590-8272x318,jacobcox@example.net,http://www.shepherd-cortez.info/,ACTIVE,3.9
-98,"Mendoza, Clark and Martin",Alison Williams,Sales Manager,80920 Jonathan Falls,Greeneshire,South Dakota,02941,Turkey,001-441-637-9772x3692,jennifercooper@example.com,http://www.cruz-rodriguez.com/,ACTIVE,4.9
-99,"Heath, Gordon and Barnes",Brent Alvarez,Account Manager,811 Hopkins Rapids,Port Erikachester,North Dakota,55640,Heard Island and McDonald Islands,3868376599,jonathancannon@example.org,https://lopez-fletcher.com/,ACTIVE,4.7
-100,"Mills, Meyer and Brooks",Robert Ortiz,Account Manager,69448 Cunningham Ridge,Victoriafurt,Wisconsin,27199,Isle of Man,+1-687-725-8874,qfitzgerald@example.org,http://avery.com/,ACTIVE,3.1
-101,"Mendez, Cohen and Williams",Mark Brock,Director,9611 Walker Common,Lake Patrickfurt,South Carolina,86507,Mali,590-427-7038x4309,warddiana@example.org,http://gomez-foster.org/,ACTIVE,4.6
-102,Holmes Ltd,Tamara Dunn,Sales Manager,4393 Spears Ports Apt. 426,New Charlesport,Michigan,15837,Spain,248.994.7697x35779,scottpatrick@example.org,http://moses-black.com/,ACTIVE,3.4
-103,"Collier, Wright and Davis",Samantha Jones,Account Manager,5539 White Summit,South Jillian,Kansas,96895,Dominican Republic,233-233-9521x117,uwatson@example.com,https://joyce.com/,ACTIVE,3.7
-104,Walker-Ray,Robert Mendoza,VP Sales,562 Bray Square,Stewarttown,Alabama,88857,Cote d'Ivoire,(791)755-9428x4347,victorclark@example.net,https://ramirez-white.com/,INACTIVE,4.5
-105,"Parks, Olsen and Le",Kristi Chase,Account Manager,27026 Taylor Vista,Kristenport,Kentucky,74181,Togo,001-306-912-0347,jordan58@example.net,https://jenkins.org/,ACTIVE,5.0
-106,Ray Ltd,Carrie Deleon,Account Manager,8771 Austin Mountain Apt. 256,Sweeneyland,Colorado,21734,Guam,755.944.9647,bjackson@example.org,http://haynes.com/,ACTIVE,3.0
-107,Brown Group,Allison Sanders,Director,49216 Perez Street,Scottberg,Florida,69542,Taiwan,(900)455-7784,brittanybryant@example.net,https://olson-perez.com/,ACTIVE,3.8
-108,Parker-Gutierrez,Adam Mills,Account Manager,4780 Arroyo Neck,Albertchester,Maine,78751,Djibouti,4858368663,fwalker@example.com,http://wong-patel.com/,ACTIVE,4.6
-109,Lopez-Jones,Brian Gibson,Sales Manager,9735 Edwin Place Apt. 214,Davidmouth,Washington,01576,Djibouti,720-973-5647,riveramegan@example.org,http://jones-harrison.com/,ACTIVE,3.1
-110,Roth-Clayton,Randy Wright,VP Sales,03718 Thomas Springs Suite 520,West Timothyport,Illinois,47742,Tuvalu,3318365024,albertwilliams@example.net,https://www.townsend-wright.info/,ACTIVE,4.6
-111,Parks LLC,Yolanda Garrett,VP Sales,2812 Hall Point,Lindamouth,Washington,25793,Angola,001-565-424-0778x487,mario74@example.net,http://www.moore.com/,ACTIVE,4.6
-112,Smith-Little,Cody Smith,Account Manager,351 Lee Springs Suite 829,Marcusmouth,Delaware,13117,Mali,+1-910-622-0317x31096,diazcatherine@example.org,http://www.henry.com/,ACTIVE,4.3
-113,Grant-Hurley,Jacob Erickson,VP Sales,014 Shirley Path Apt. 138,Lopezhaven,Texas,33106,Montenegro,+1-828-786-1957x6122,amandagreene@example.com,https://gutierrez-schultz.com/,ACTIVE,4.7
-114,"Allen, Gardner and Brooks",Natasha Ward,Director,6004 Zachary Hollow Apt. 433,Andrewview,Oklahoma,67514,Moldova,001-692-710-7522,jesseshepherd@example.org,https://www.jones.info/,ACTIVE,4.0
-115,"Warner, Weiss and Davis",Amanda Stokes,Director,05566 Molly Forks Apt. 604,West Amberberg,Massachusetts,66351,Qatar,520.867.9981,kristie22@example.com,http://mcgee.biz/,INACTIVE,3.2
-116,"Hamilton, Wolfe and Gill",Mr. James Duncan,Director,14659 Daniel Loop,Diazborough,Massachusetts,45658,Nepal,+1-704-425-9792x7033,rodriguezbrian@example.net,http://cooper.com/,ACTIVE,4.9
-117,Ruiz-Rivera,Christy Payne,Director,792 Nicholas Shore Apt. 420,Jamesview,Arkansas,61444,Palau,5168451046,mckeetodd@example.net,http://www.mason.net/,ACTIVE,4.2
-118,"Smith, Wright and Moreno",James Moore,Director,554 Wendy Parkway Suite 046,New Stacybury,Georgia,45299,Ukraine,(721)968-9363x9264,jamietaylor@example.net,http://www.barker-roach.com/,ACTIVE,3.6
-119,Forbes-Daugherty,Timothy Stark,Sales Manager,88125 Jessica Track Suite 664,Reeseview,Georgia,25133,Botswana,(520)599-4999,gracehoward@example.net,https://www.mathis.com/,ACTIVE,4.2
-120,Henry-Taylor,Andrew Duran,Director,6333 Gregory Mill,Wattsmouth,Kansas,56541,Iraq,001-909-965-6999x88081,richjohn@example.net,https://www.hughes.com/,ACTIVE,3.9
-121,Gonzales-Wilkerson,Donna Jackson,Account Manager,082 Gallegos Mission Apt. 812,South Robert,New Hampshire,03766,Christmas Island,793.371.4521x117,gacosta@example.net,http://james.org/,ACTIVE,3.1
-122,"Huffman, Martin and Thomas",Amber Parker,Director,2123 Cindy Glen Apt. 777,New Nicolebury,Indiana,77684,Palestinian Territory,576.271.9903x8498,eddiedelgado@example.org,http://www.lane.com/,ACTIVE,4.3
-123,Rodriguez and Sons,Duane Guerrero,Sales Manager,9501 Morris Light,Port Ronaldside,California,38883,Latvia,(214)358-6833,webbhaley@example.net,https://abbott.org/,ACTIVE,3.6
-124,Ho-Mendez,Nicholas Jimenez PhD,Director,430 Andrew Road,Lake Melaniechester,Nebraska,06463,Grenada,(783)203-4414x488,jenningsmatthew@example.net,http://www.rivera.info/,ACTIVE,3.7
-125,Robles-Brewer,Mr. Steven Herrera,Director,6084 Peters Brook Apt. 955,East Juantown,Michigan,49684,Niue,+1-729-296-2914,robert73@example.com,https://warren.com/,ACTIVE,3.4
-126,Glover-Strickland,Jill Johnson,VP Sales,235 Oconnor Pine Suite 521,East Jenny,New Jersey,51302,Rwanda,610.540.9157x01840,james44@example.net,https://wilson.com/,ACTIVE,4.8
-127,"Castro, Garcia and Daniels",Denise Harding,Director,321 Austin Junction Suite 020,Bergerton,Connecticut,50780,Austria,666-729-9795,jenniferlambert@example.net,http://anderson.info/,ACTIVE,4.7
-128,Bryant Ltd,Pamela Ruiz,Director,94562 Mccormick Islands,Freemanland,New Mexico,15297,Guernsey,372.645.9928x1615,amorales@example.org,http://www.reyes-peterson.org/,ACTIVE,3.9
-129,Mueller-Graham,Kimberly Young,Director,971 Nguyen Court,Thompsonfurt,California,78916,Botswana,+1-696-857-0132x90227,rgonzalez@example.com,https://robbins-herman.com/,ACTIVE,3.9
-130,"Smith, Downs and Powell",Edward Wood,Account Manager,85140 Ryan Ramp,Garrettfurt,Montana,50513,Jordan,+1-832-472-3865,whitney22@example.org,http://www.griffith.biz/,ACTIVE,4.6
-131,Miller Ltd,Shannon English,Account Manager,278 Arnold Mission Suite 532,Jacobsshire,New York,96303,Dominica,001-384-968-9500x975,thomasjessica@example.com,https://www.wu.com/,ACTIVE,3.6
-132,"Schultz, Yates and Edwards",Greg Osborne,Director,8795 Gomez Union Suite 420,Jessicashire,Kentucky,08551,Norfolk Island,392.690.4904x7128,david44@example.com,http://www.thompson.info/,ACTIVE,4.9
-133,Morton-Green,Kari Lloyd,Account Manager,1292 Mullins Loop,Youngmouth,Washington,84069,Chad,895.904.1027,thomas83@example.com,https://thomas-berg.com/,ACTIVE,3.4
-134,Ho-Cole,Tonya Vega,Account Manager,85694 Nelson Unions,West Destinyfurt,New Jersey,89012,San Marino,293.385.2580,jenkinsalicia@example.net,https://hardy.com/,ACTIVE,3.1
-135,Johnson Inc,Kristopher Shannon,VP Sales,111 Nicholas Track,North Heather,Kentucky,39110,Lao People's Democratic Republic,+1-217-646-5421x40665,gregory17@example.org,https://www.vasquez.com/,ACTIVE,4.5
-136,"Schneider, Gaines and Baldwin",Benjamin Duncan,VP Sales,0720 Elizabeth Grove Apt. 569,New Jasminefort,New Mexico,57655,Iraq,001-818-230-6719x8554,diazmelissa@example.com,http://holland-thompson.com/,ACTIVE,4.3
-137,Guerrero-Evans,Brian Barker,Account Manager,73203 Jennifer Ramp Apt. 761,Victormouth,Alaska,05356,Guadeloupe,4505613878,johnsondonald@example.net,http://williams.com/,ACTIVE,3.8
-138,"Williams, Parker and Leon",Christopher Garza,VP Sales,79931 Ronald Valleys,Nguyenshire,Ohio,18501,Gibraltar,809.425.1142,angela73@example.net,http://www.moody.org/,ACTIVE,4.3
-139,Strickland-Smith,Mr. Christopher Davis,Sales Manager,7232 Mills Loop Apt. 290,Lake Vincent,Colorado,82708,Sweden,556-908-3318x1958,joshualee@example.org,https://moore.com/,ACTIVE,4.7
-140,"Diaz, Clark and King",Stefanie Chavez,Sales Manager,082 Kristen Oval,North Pattymouth,Pennsylvania,76491,Greece,(935)931-5313x63631,zamoradustin@example.net,https://www.brooks-ellis.com/,ACTIVE,3.4
-141,"Howard, Nelson and Rogers",Keith Ramirez,VP Sales,7625 Olivia Rapids,Port Laura,South Carolina,22774,Morocco,+1-931-668-7397,blairjill@example.org,http://riley-snow.org/,ACTIVE,3.5
-142,Mcintyre Inc,Andrew Esparza,Sales Manager,8671 Simpson Corner,Lake Jessicaborough,Florida,47477,French Polynesia,210.974.2799,tingram@example.com,http://marshall.com/,ACTIVE,4.6
-143,Barry-Cook,Jeffery Nelson,Director,195 Zachary Spring,Pamelaville,Missouri,48419,Lao People's Democratic Republic,+1-305-952-8183x253,karenhodges@example.com,https://frazier.com/,INACTIVE,4.8
-144,Tucker-Rose,Michael Gregory,VP Sales,9513 Miller Lock Apt. 411,West Daniel,Georgia,65555,Canada,880.946.8275,carterbryan@example.org,https://cooper.org/,ACTIVE,4.1
-145,"Terry, Wilkinson and Wallace",Carlos Clarke,Account Manager,3754 Eddie Haven,Huberburgh,Virginia,70666,France,(422)923-1059,mike38@example.net,http://hernandez-west.com/,ACTIVE,3.9
-146,"Turner, Knapp and Sullivan",Mr. Jimmy Flores Jr.,Director,474 Lauren Stream Suite 517,East Ericaville,Maryland,03751,Iran,+1-637-551-5093x983,millermelissa@example.net,http://henry.org/,ACTIVE,4.7
-147,"Harding, Kerr and Ward",Scott Wood,Director,45547 Jason Mills Suite 742,Chandlerchester,Florida,77463,Netherlands Antilles,823-347-8519,ortizrobin@example.com,http://bradley.biz/,ACTIVE,4.0
-148,Spencer-Williams,Sandra Torres,Account Manager,00244 Martinez Shores Suite 627,North David,Louisiana,65126,Bangladesh,+1-259-679-6471x589,bonniethomas@example.com,http://brown.biz/,ACTIVE,3.2
-149,"Barr, Kelly and Roberts",Taylor Palmer,Director,92855 Nelson Square,Codyshire,Minnesota,19338,American Samoa,(584)457-6521,mariepope@example.net,http://moon-wilson.com/,ACTIVE,3.7
-150,Mendoza LLC,Brenda Ramos,Sales Manager,40132 Hailey Inlet Apt. 321,Vazquezville,California,02965,Singapore,360.631.0890x7140,websterkimberly@example.net,http://www.lambert.com/,ACTIVE,3.5
-151,Singleton LLC,Hannah Martin,Account Manager,911 Allison Stravenue,West George,Wisconsin,70903,Albania,001-813-587-5927x1256,rickjuarez@example.com,http://stone.com/,ACTIVE,3.1
-152,"Roberts, Bowen and Miller",James Bryant DDS,VP Sales,86463 Patricia Unions Suite 520,Powersfurt,New Hampshire,69007,Palestinian Territory,+1-811-326-6912x15353,maryhardy@example.com,https://alvarez-morrison.biz/,ACTIVE,3.9
-153,Dixon-Hernandez,Bryan Burns,Sales Manager,201 Maria Parks,East Patrickmouth,Georgia,40183,Nigeria,+1-711-287-7347x784,ewingnicole@example.org,https://farrell-ramos.com/,ACTIVE,3.8
-154,Thompson Ltd,Elizabeth Mccarthy,Sales Manager,2467 Ashley Overpass Suite 782,South Joseshire,Missouri,81364,Philippines,(745)800-9025x590,pattersonvictoria@example.com,https://www.sanchez.com/,ACTIVE,4.5
-155,"Jones, Torres and Morgan",Gabriel Murray,VP Sales,864 Heather Radial Apt. 569,Morrisville,New York,13615,Portugal,+1-535-678-5294x56371,brandon96@example.org,http://www.rogers.info/,ACTIVE,4.9
-156,Clark-Flynn,Elizabeth Brock,Director,853 Morales Road Suite 820,New Victor,Texas,97783,Wallis and Futuna,548.496.9083x572,megan65@example.org,http://colon-lucas.com/,ACTIVE,4.7
-157,"Burke, Sullivan and Wilson",David Wilcox,VP Sales,8660 Erik Dale Apt. 448,Lake Melissa,Washington,64181,Slovenia,3018594165,joelduncan@example.net,http://wilkerson-young.com/,ACTIVE,4.5
-158,Murphy-Silva,Paul Young,Account Manager,21234 Ortiz Wall Apt. 785,West Amyfort,Utah,32790,Fiji,(557)654-0900,sparker@example.com,http://www.price-browning.biz/,ACTIVE,3.5
-159,Turner-Mayer,Elizabeth Villarreal,VP Sales,5604 Madeline Overpass,Mclaughlinmouth,Virginia,55861,Turkey,724-981-5698,gilldanielle@example.org,https://www.morales.com/,ACTIVE,3.7
-160,Johnston-Rodriguez,Micheal Saunders,VP Sales,657 Russo Dale,Glennshire,Massachusetts,37436,Congo,265-526-6930,mccannjames@example.net,http://www.williamson-burke.com/,ACTIVE,4.7
-161,Rubio and Sons,Autumn Higgins,Account Manager,7133 Sophia Via Suite 476,South Melissa,Rhode Island,28755,Swaziland,736-926-2044x3973,smithdean@example.com,https://www.reyes.com/,INACTIVE,4.1
-162,Hawkins Inc,David Odonnell,VP Sales,48964 Lambert Curve,New Harryburgh,North Carolina,65098,Venezuela,672-715-8624x15027,qcampbell@example.net,https://stafford-stewart.info/,ACTIVE,4.3
-163,Peters Ltd,Jessica Lopez,Sales Manager,20742 Graham Park,South Michaelside,New York,60500,Lithuania,621-551-3422,foxashley@example.com,http://www.rhodes-clay.com/,ACTIVE,3.3
-164,Maldonado-Becker,Kevin Bean,VP Sales,01777 Wheeler Avenue Suite 097,Staceyshire,Florida,28205,Tokelau,8456018961,johnwise@example.com,http://www.martin.com/,ACTIVE,3.5
-165,"Goodwin, Valdez and Martinez",Jeffrey Drake MD,Director,1583 Griffin Loaf,Adamschester,Colorado,99655,Jamaica,(992)366-1085x732,taylor17@example.com,http://www.leach.com/,ACTIVE,3.7
-166,"Williams, Jones and Williams",Jeffery Davis,VP Sales,4918 Daniel Shore Suite 226,North Robertport,Massachusetts,77467,Saint Kitts and Nevis,879.245.2321x941,fosteralexander@example.net,https://sullivan.info/,ACTIVE,4.9
-167,Montgomery-Dickson,Michael Vaughn,VP Sales,1220 Daniel Brook Apt. 037,Lake John,South Dakota,71094,Comoros,447-927-6012,cruiz@example.net,http://www.hudson-bass.com/,ACTIVE,3.2
-168,Smith-Mccoy,Veronica Allison,Sales Manager,76789 Hall Circle Apt. 695,West Patriciachester,New Mexico,15828,Lithuania,+1-557-760-2437x573,sanderson@example.net,https://delgado.com/,ACTIVE,3.1
-169,"Clark, Vazquez and Miller",Mr. Christopher Vasquez,Director,4338 Yvette Knolls Suite 522,Port Brycechester,Delaware,81446,Denmark,683-474-5508,mccarthysara@example.com,https://www.harrington.com/,ACTIVE,3.1
-170,"Williams, Garcia and Soto",Susan Moore,Sales Manager,787 Eric Lakes Suite 213,Montestown,Kansas,62585,Guam,482-814-5653x2863,dhardin@example.net,https://www.thomas-smith.net/,ACTIVE,4.9
-171,Miller LLC,Raymond Hamilton,Account Manager,29084 Morales Springs Suite 550,Rachelberg,Vermont,53445,Kiribati,+1-738-899-7563x4108,abigailfernandez@example.org,http://peterson.net/,ACTIVE,4.2
-172,"Green, Collier and Torres",Jonathan Dennis,Account Manager,8510 Shane Ports Apt. 753,West Kevin,Texas,94198,Montserrat,+1-826-883-1589x35712,davisroger@example.org,https://www.miller-rhodes.biz/,ACTIVE,4.3
-173,"Hansen, Maxwell and Wiggins",Mallory Barajas,Account Manager,622 Todd Mount Apt. 881,South Thomas,West Virginia,21058,Western Sahara,+1-651-296-1159,davidtorres@example.com,https://johnson-thomas.org/,ACTIVE,3.5
-174,Williams-Shannon,Cindy Fuentes,Director,18510 Olson Inlet Suite 567,Port Dillon,South Dakota,60916,Senegal,272.951.9966x365,debbie20@example.net,https://www.hansen.org/,ACTIVE,4.2
-175,Bernard PLC,John Prince,Sales Manager,820 Buchanan Gardens,Millerside,Rhode Island,42500,Iran,001-707-805-6260,christopher18@example.org,https://www.scott.com/,ACTIVE,3.3
-176,Farley-Gregory,Tyrone White,Director,6152 Orozco Green,Davidville,Arkansas,27050,Dominican Republic,001-899-337-8861x40578,ojohnson@example.org,http://richmond.net/,ACTIVE,3.1
-177,"Glover, Torres and Russell",Mark Harris,Director,8238 Ali Point,Williamsmouth,South Carolina,38413,Palau,(500)674-9465,martinamanda@example.org,https://www.hale-rivas.net/,ACTIVE,4.8
-178,Johns-Clark,Rebekah Henson,VP Sales,474 Eileen Islands Suite 379,Allenberg,Tennessee,00769,New Caledonia,900.326.8768x1180,teresa69@example.com,https://www.terrell.com/,ACTIVE,4.4
-179,Smith-Paul,Melanie Fletcher,Sales Manager,94337 Johnson Park,North James,South Dakota,52416,Bouvet Island (Bouvetoya),498-372-8399x921,jordanhudson@example.org,https://www.johnson.org/,ACTIVE,4.7
-180,Becker-Ware,Jeffery Nunez,Account Manager,6641 Simpson Path,Lake Jeffreyview,Nebraska,70285,Kiribati,706-635-1903x61332,garrettcolin@example.com,https://www.robles.com/,ACTIVE,4.5
-181,Wells LLC,Samantha Stone,Sales Manager,99717 Christopher Circle,South Lawrenceland,Florida,08627,Uruguay,804.396.1108x046,mhall@example.net,http://marshall-patterson.org/,ACTIVE,4.1
-182,"Garcia, Curtis and Lowe",Joseph Matthews,Sales Manager,09193 Dana Glens,Robertmouth,Idaho,32371,Burundi,4024496854,vparker@example.com,https://www.willis.net/,ACTIVE,3.9
-183,"Trevino, Henderson and Gonzalez",Terry Glover,Director,77959 Jensen Manor Suite 217,South Jeffreytown,South Dakota,29733,Puerto Rico,879.433.7563,coxcharles@example.org,http://www.alexander-welch.com/,ACTIVE,4.3
-184,Hester and Sons,Christopher Mcclure,Sales Manager,8323 Gregory Greens,North Marieberg,Missouri,86336,Solomon Islands,853-347-3552,thomassandra@example.org,http://brooks.com/,ACTIVE,4.6
-185,Hines PLC,Joseph Clarke,Sales Manager,04289 Clark Common Suite 912,Potterhaven,Mississippi,65851,Maldives,225.558.7774x969,patriciahayes@example.org,https://www.coleman-bennett.com/,ACTIVE,3.7
-186,Scott-Miller,Elizabeth Stone,VP Sales,078 Simmons Mountain,Ortizfort,Massachusetts,36286,Hong Kong,3276341514,coreyjones@example.org,http://leonard.com/,ACTIVE,3.9
-187,"Ochoa, Sutton and Hill",Yolanda Murillo,Director,44566 Thomas Passage Apt. 633,South Jesus,Pennsylvania,72933,Saudi Arabia,275.715.3663x778,barbaraanderson@example.net,http://flowers.biz/,ACTIVE,4.8
-188,"Medina, Nguyen and Johnson",Tammy Hernandez,VP Sales,999 Baird Ford Suite 186,South Daniel,Oregon,59684,Northern Mariana Islands,812-618-2097x0231,jessekeller@example.org,https://www.stone-jackson.biz/,ACTIVE,4.7
-189,Moore-Rodriguez,Karen Jones,Director,34672 Matthews Parkway,Hilltown,Georgia,58923,Bahrain,(993)785-9777x9014,peter26@example.org,http://cruz-hopkins.org/,ACTIVE,3.5
-190,Long Inc,Seth Hill,Sales Manager,137 Riddle Plaza Apt. 511,Robertburgh,Kentucky,27681,Madagascar,8702176563,kingjenna@example.org,https://murray-miller.com/,ACTIVE,3.9
-191,"Dodson, Taylor and Hoover",Carolyn Smith,VP Sales,41862 Emily Branch,Ericstad,Idaho,28900,Rwanda,9832708164,williamsnicholas@example.org,http://gonzalez.biz/,ACTIVE,4.3
-192,Hays LLC,Melanie Brown,Director,220 Hunt Via,Marcusborough,South Carolina,27648,Vietnam,+1-466-213-3155,avaldez@example.com,http://jones.org/,ACTIVE,4.7
-193,Williams-Mcclure,Randall Porter,Account Manager,892 Haley Rapid,Tinafurt,Utah,91428,Burkina Faso,225-571-5099x76838,jensenpenny@example.com,http://harvey.com/,ACTIVE,3.7
-194,Jimenez-Harris,Martin Young,Director,524 Schneider Trace Apt. 864,East Melaniemouth,Michigan,32253,Costa Rica,+1-903-239-6852,kanechad@example.org,http://www.martinez.org/,ACTIVE,4.8
-195,"Guerra, Frederick and Young",Neil Collins,Director,62934 Ray Roads,West Michelle,New Mexico,10988,Zambia,(266)827-7689x627,wdickerson@example.com,http://www.james-torres.com/,ACTIVE,4.0
-196,Hart-Castillo,Miguel Gonzalez,Account Manager,08576 Bentley Summit,Patrickport,Tennessee,77611,Barbados,(801)869-2364x58750,johnjohnson@example.com,http://www.jacobs-blackburn.com/,ACTIVE,4.4
-197,Wright-Lane,Candice Wilson,VP Sales,669 April Field,Martinchester,Kentucky,91181,Gabon,686.294.6119x52436,lisasmith@example.org,https://roberts.com/,ACTIVE,3.5
-198,"Taylor, Tucker and Shaw",Keith Lewis,VP Sales,23467 Miranda Expressway,West Christopherville,Louisiana,08924,Guam,2932771004,clarklatoya@example.com,https://sherman-munoz.com/,ACTIVE,4.0
-199,Maldonado-Cooper,David Ward,Sales Manager,9055 Aaron Ways Suite 209,Port Alyssabury,Mississippi,59734,Niger,+1-978-863-0505x05739,baileysheila@example.com,http://lawson-joseph.net/,ACTIVE,3.4
-200,"Glover, Moran and Johnson",Mr. Ronnie Davies DVM,Account Manager,71783 Jason Terrace Apt. 160,West Raven,Wyoming,37248,Cyprus,001-747-812-8715x3991,yvaldez@example.net,https://www.green.com/,ACTIVE,4.2
+SUPPLIER_ID,SUPPLIER_NAME,CONTACT_NAME,CONTACT_TITLE,ADDRESS,CITY,REGION,POSTAL_CODE,COUNTRY,PHONE,EMAIL,WEBSITE,STATUS,RATING,DISCOUNT
+1,"Rodriguez, Figueroa and Sanchez",Brian Yang,Sales Manager,600 Jeffery Parkways,New Jamesside,Nebraska,29394,Kiribati,001-740-326-5423,jamesmichael@example.com,https://www.stevens.com/,ACTIVE,3.6,7.23
+2,"Carter, Fuller and Mcclure",Corey Jones,Sales Manager,1316 Chavez Village,Franciscostad,Indiana,88342,Ethiopia,001-719-228-3276x483,lydiatrujillo@example.com,https://www.gentry.com/,ACTIVE,4.8,5.87
+3,Rios Group,Maria Thomas,VP Sales,88496 Cox Dam,Daviston,Delaware,20534,Niue,(669)216-6978,maldonadoamanda@example.com,https://www.graham-chavez.com/,ACTIVE,3.2,7.33
+4,"Gill, Romero and Rodriguez",Sarah Romero,Sales Manager,52880 Burns Creek,Natashaport,Kansas,08093,Dominican Republic,001-411-671-8227,ibrandt@example.net,http://carney-santos.info/,ACTIVE,4.4,12.01
+5,"Hayes, Wright and Brown",Julian Chapman,VP Sales,03105 Willie Harbors,Lewisberg,Washington,75348,Morocco,337.263.1165x6670,zchandler@example.org,http://www.herrera.biz/,ACTIVE,4.2,13.09
+6,Ramirez and Sons,Angela Morton,Sales Manager,80132 Tucker Forest,Barreraburgh,Missouri,00783,Iceland,274-768-7234x309,williamsthomas@example.net,http://www.miller.com/,ACTIVE,3.3,9.23
+7,Wilson-Zamora,Kristopher Harvey,Director,998 Donovan Ford Suite 346,Lake Debbie,New Jersey,41942,Vanuatu,001-310-579-9118x38425,justin78@example.net,https://www.montoya.com/,ACTIVE,4.9,8.37
+8,Wilson-Rodriguez,Denise Jacobs,Sales Manager,48740 Cynthia Village Suite 005,Lake Tina,Hawaii,97655,Kenya,+1-768-401-1280,tanderson@example.com,http://fleming.com/,ACTIVE,3.7,8.44
+9,Deleon-Henson,Marc Moore,Director,26025 Pham Way,West Erik,Vermont,14669,Hong Kong,2735375433,emurphy@example.com,https://zavala.com/,ACTIVE,4.5,10.36
+10,White-Estes,Brian Hamilton,VP Sales,9816 Jonathan Station Suite 088,West Ryan,Texas,43780,Nigeria,414-684-6564x82366,akelley@example.com,https://www.floyd-lawson.com/,ACTIVE,3.6,11.29
+11,Ramos-Lowe,Rebecca Moyer,Director,148 Davis Terrace,Lake Lance,Illinois,19814,Anguilla,8379917693,psanchez@example.net,http://www.robinson-brock.net/,ACTIVE,4.4,5.46
+12,Williams-Wright,Joyce Solis,Account Manager,9868 Merritt Summit Suite 743,Katiehaven,New York,82650,Dominican Republic,571-843-4558x122,jasminebrown@example.com,https://brown-wall.biz/,ACTIVE,5.0,13.55
+13,"Shah, Smith and Gilmore",Karen Bender,Sales Manager,6889 Tracy Groves Suite 706,Elizabethfurt,Washington,22133,Tajikistan,929.480.6990x162,greenmark@example.com,https://ramirez-bean.biz/,ACTIVE,3.9,13.34
+14,Conley-Ruiz,Amy Crane,Account Manager,100 James Brooks,East David,Texas,15494,Mongolia,674.352.9912,hickmanbarbara@example.com,https://www.vargas.com/,ACTIVE,3.4,7.67
+15,Terry LLC,Lindsay Martinez,Sales Manager,8651 Smith Manor,Garciastad,South Dakota,60759,Russian Federation,(862)684-9877,melissa14@example.com,http://bishop.com/,ACTIVE,3.3,12.29
+16,Freeman LLC,Gina Beard,Account Manager,083 John Lodge Suite 837,Westtown,Colorado,39067,Cyprus,(934)695-7885x6855,john13@example.com,http://www.robinson.com/,ACTIVE,3.5,14.25
+17,"Lawrence, Wolf and Carlson",Dr. Elizabeth Ward,Account Manager,82400 Terry Crossroad Suite 109,Taylormouth,Michigan,24665,Austria,671-316-7190x229,davidduran@example.net,http://kerr-evans.org/,ACTIVE,4.7,12.76
+18,Torres-Oliver,Natalie Meza,Account Manager,341 John Plaza,East Aaronmouth,Vermont,78333,Latvia,503-444-7134x9361,margaret10@example.org,https://martinez-barker.biz/,ACTIVE,4.6,9.01
+19,Mason-Snyder,Andrew Reynolds,Sales Manager,401 Suzanne Villages Apt. 490,South April,New Hampshire,36959,Cocos (Keeling) Islands,001-367-417-5655,robert74@example.net,https://www.miller-king.com/,ACTIVE,4.9,13.76
+20,Hancock-Bryan,Sean Murray,Director,85977 James Plaza,West Samuel,Vermont,64033,British Virgin Islands,3935248086,murraydavid@example.org,https://thornton.info/,ACTIVE,4.0,13.85
+21,Bryant and Sons,Thomas Romero,VP Sales,46584 Justin Hills,Grimesmouth,Ohio,63984,Guatemala,988-867-5339x63605,ymcneil@example.net,http://martinez.com/,ACTIVE,3.3,12.45
+22,Sawyer Group,Thomas Smith,Director,2174 Hanson Locks,Port Markside,Missouri,42006,Niue,001-378-909-1343x161,heatherberger@example.org,https://www.howard-jordan.com/,ACTIVE,3.9,10.84
+23,"Jenkins, Maldonado and White",Leon Reyes,Director,9237 Stevens Shores,Port Stevenport,Utah,72144,Cayman Islands,575-894-6474,yrodriguez@example.net,https://phillips.com/,ACTIVE,5.0,10.1
+24,Knight Ltd,Valerie Lozano,Sales Manager,3953 Christine Springs Apt. 104,Johnsonstad,Washington,17725,Bermuda,956-623-2858x8424,linda71@example.org,http://diaz.net/,ACTIVE,4.7,6.53
+25,Gibson Ltd,Deborah James,Account Manager,37098 Herman Forges Apt. 746,East Brandonton,Maryland,65070,Brazil,438-826-7586,basschristina@example.com,http://ramos.com/,ACTIVE,3.8,5.64
+26,Pollard LLC,Vanessa Howard,VP Sales,3171 Darlene Ranch Apt. 053,Port Anne,California,73142,Cote d'Ivoire,001-433-652-9042,danieldelacruz@example.org,http://chapman.com/,ACTIVE,3.9,7.51
+27,Williams-Harmon,Nichole Alvarez,Sales Manager,917 Sonia Cape Suite 700,Boonechester,Utah,14651,Liechtenstein,001-771-815-9212x499,shawn96@example.org,http://www.hayes-perez.com/,ACTIVE,3.2,13.85
+28,Ross-Blair,Erik Scott,Director,711 Christopher Court,Lisaside,Arkansas,77370,Zimbabwe,+1-685-716-5604,lanejason@example.net,https://www.bell.com/,ACTIVE,3.7,7.94
+29,Farmer PLC,Jeffrey Hoffman,Account Manager,402 Park Inlet,Michaelburgh,Georgia,74729,Palestinian Territory,(612)701-8366x7525,wareeric@example.net,http://www.ramos-coleman.org/,ACTIVE,4.9,13.76
+30,Perry-Lewis,Haley Rodriguez,Director,403 Joyce Centers Apt. 343,Port Jonathan,Massachusetts,16227,Albania,862.226.8388x5160,umorse@example.net,https://bowman.com/,INACTIVE,4.5,10.08
+31,Solis PLC,Michael Cox,Sales Manager,36968 Randy Inlet Suite 352,New Cynthiahaven,North Carolina,25916,United Kingdom,001-955-923-1243x29212,kmaldonado@example.net,https://gonzales.info/,ACTIVE,3.6,11.39
+32,"Turner, Hill and Brown",Emily Hayes,Account Manager,4119 Ford Plaza,South Reginashire,Tennessee,25173,Gibraltar,+1-578-920-7151x820,nwarren@example.org,https://hughes-schroeder.org/,ACTIVE,4.5,10.39
+33,Mccormick Ltd,Gary Grant,Sales Manager,4925 Brandi Divide Suite 462,West Angelicamouth,Florida,88334,Reunion,001-581-568-5054x2357,ericphillips@example.org,http://anderson.org/,ACTIVE,4.0,6.12
+34,Griffith Inc,Michael Young,Director,473 Kyle Valleys Suite 359,Murrayport,Wyoming,50553,Macao,662.339.2407x58181,joshuawhitehead@example.org,https://www.velasquez.com/,ACTIVE,4.7,8.08
+35,Brown-Shaw,Zachary Brooks,Sales Manager,1522 Justin Village,Hortonberg,Wisconsin,92977,Latvia,390.610.4328x986,kevinwilliams@example.com,https://www.copeland.org/,ACTIVE,4.1,5.79
+36,"Smith, Robertson and Allen",Jeffrey Mendez,VP Sales,621 Jones Pine,South Morganton,South Dakota,51210,Holy See (Vatican City State),705-415-3195x205,epollard@example.net,http://www.baldwin.com/,ACTIVE,5.0,10.33
+37,Harris-Moody,Emily Collins,Account Manager,740 Justin Wall Apt. 541,Samuelfurt,West Virginia,58138,Ukraine,(452)677-5841x6169,curtis54@example.com,https://norris.info/,ACTIVE,4.0,10.5
+38,Acosta LLC,Jessica Fowler,Director,65820 Melinda Springs,Johnsonland,Kansas,85063,Haiti,(469)709-2755x719,redwards@example.org,http://www.lopez.com/,ACTIVE,4.2,14.64
+39,Hampton-Padilla,Logan Benson,Account Manager,12172 Osborn Valleys Suite 518,Patriciaburgh,Virginia,93504,Vanuatu,001-725-983-1323x705,cherylmiller@example.com,https://jenkins.com/,ACTIVE,3.8,11.72
+40,Day-Cole,Haley Humphrey,Director,68018 Kevin Estates,Sarahbury,Minnesota,68513,Ukraine,414-438-4249x8182,megan90@example.org,http://www.wise.org/,ACTIVE,4.0,6.21
+41,Montgomery-Johnson,Kimberly May,Account Manager,3647 Haley Estate Suite 677,West Catherine,Massachusetts,94658,Ghana,001-956-525-8815x3714,colinroberts@example.com,https://www.li.com/,ACTIVE,3.0,10.54
+42,Hines Group,Julie Koch DDS,Account Manager,8733 Williams Haven,Harperfort,Maine,70846,Algeria,262-545-6506,angela16@example.net,https://becker.biz/,ACTIVE,4.4,5.59
+43,Norton-Morgan,Nicole Gonzalez,Sales Manager,000 Jennifer Unions Suite 872,West Sarah,Massachusetts,21800,India,+1-749-758-8879x470,whitneybrandy@example.net,http://coffey-patton.org/,INACTIVE,4.7,5.71
+44,"Perez, Williams and Castillo",Michelle Hampton,Account Manager,30913 Scott Manor Apt. 636,Salaston,Virginia,18599,Maldives,785.778.6527,chelsea33@example.com,https://www.wise-bush.info/,ACTIVE,4.0,10.39
+45,Castillo-Castro,Mikayla Roberts,VP Sales,5240 Moses Common Suite 747,East Maria,Louisiana,74165,Qatar,321-899-3308x330,jennifer12@example.org,http://donovan.com/,ACTIVE,3.9,9.07
+46,Morris-Brewer,Ann Andrews,Sales Manager,62067 Sharon Well,Nancytown,Maryland,74944,Netherlands,954-678-8728,lisarivera@example.net,https://lopez.org/,ACTIVE,3.9,9.24
+47,"Todd, Thompson and Chase",Samantha Robertson,VP Sales,1227 Boyle Avenue,Patrickmouth,Wisconsin,35496,Zimbabwe,649-390-4530x17426,michael33@example.org,https://www.adkins-obrien.biz/,ACTIVE,3.1,11.53
+48,"Dunn, Ruiz and Medina",Colleen Wright,Sales Manager,785 Samantha Creek,Port Amyhaven,Illinois,75566,Mauritania,(325)987-1397,chavezwilliam@example.com,http://roman.com/,ACTIVE,4.5,13.01
+49,"Robinson, Jones and Henderson",Kimberly Brown,Sales Manager,0462 Katie Stream,Brooksfurt,New Hampshire,49980,Honduras,482-551-2868,avilatiffany@example.com,https://wright.com/,ACTIVE,3.4,9.49
+50,Lopez-Golden,Amanda Keller,VP Sales,31190 Harper Squares,East Joyfurt,New Hampshire,31216,Mauritius,702.584.3959,nancy83@example.com,https://hawkins.com/,ACTIVE,3.9,13.74
+51,"Shelton, Peters and Williams",Mason James,Sales Manager,662 Bennett Throughway Suite 334,Port Steven,Arkansas,74214,Isle of Man,(588)226-3435x17518,nicholas99@example.org,http://www.ramsey.com/,ACTIVE,4.7,10.5
+52,Krueger-Smith,Tonya Wilson,Sales Manager,93638 Rowe Light Suite 854,Michaelfort,New Jersey,13425,Spain,001-875-635-5609x3204,jameshall@example.net,http://pena.info/,ACTIVE,4.1,5.15
+53,"May, Henry and Jackson",Caroline Cortez,Sales Manager,80801 Kathy Loop Apt. 312,East Williamstad,Arkansas,81481,Northern Mariana Islands,+1-697-270-0886x00848,ldrake@example.org,http://www.lee.com/,INACTIVE,4.7,6.66
+54,Adams-Sanders,Jared Cunningham,VP Sales,1016 Bennett Mountains,Lake Albertburgh,Colorado,66018,Tanzania,(259)418-0339x74014,alexis39@example.org,https://www.martin-allen.biz/,ACTIVE,4.7,14.02
+55,"Mosley, Rivera and Campos",William Ramsey,Account Manager,16315 Novak Islands Apt. 477,West Angela,Missouri,57104,Colombia,+1-796-719-4311x42626,davissherry@example.com,https://anderson.biz/,ACTIVE,5.0,7.65
+56,Hawkins-Hunt,Brandon Spencer,VP Sales,0466 Jenny Points Apt. 982,Jacksonview,Maryland,35681,Lithuania,(712)664-6471,jennifersimpson@example.net,http://taylor.biz/,ACTIVE,4.4,12.31
+57,Skinner-James,Jessica Jordan,VP Sales,5937 Thompson Locks,Kellyfort,Oregon,32276,Greece,(546)951-9398x2807,marie16@example.net,https://www.turner.biz/,ACTIVE,3.6,14.69
+58,Jones-Ewing,James Hunter,Sales Manager,058 Daniel Gateway Suite 290,Rasmussenmouth,Nevada,14387,Algeria,943-788-8993,rford@example.net,http://webb.biz/,ACTIVE,3.1,10.84
+59,Wilson Ltd,Eric Gibson,Account Manager,757 Samuel Square,Floresport,Arizona,93664,Brazil,7518238282,zhall@example.net,http://www.sandoval.com/,ACTIVE,4.0,13.51
+60,Vargas-Price,Christine Goodwin,Sales Manager,182 Nguyen Mount,West Emilyfort,North Dakota,84270,Germany,+1-369-469-1557x924,david41@example.org,https://www.price.biz/,ACTIVE,4.4,7.35
+61,Tucker PLC,Maria Cooke,Sales Manager,4225 Harvey Way,Stephaniefort,Florida,26076,Suriname,(588)676-7677x2190,hillamanda@example.org,https://dixon.net/,INACTIVE,4.1,10.79
+62,Weaver-Sherman,Jessica Robinson,Sales Manager,34074 Atkins Corners Suite 133,Michellechester,Hawaii,81261,Burundi,430.795.8498,keith48@example.net,http://www.sellers-riddle.com/,ACTIVE,3.8,10.84
+63,"Cline, Wright and Dawson",Pam Lowe,Director,94667 Cynthia Trafficway Apt. 684,Shawnfort,Massachusetts,76779,Afghanistan,001-717-451-8636x37454,rkramer@example.org,http://www.bowers.com/,INACTIVE,3.4,12.16
+64,Bryant-Braun,Zachary Blankenship,Account Manager,41541 Beck Run Apt. 064,South Diana,Virginia,12976,Afghanistan,271.729.3870,mcneilrobert@example.org,https://www.reyes.com/,ACTIVE,3.3,11.46
+65,Edwards LLC,Raymond Mullins,VP Sales,218 Chelsey Expressway,Bellborough,South Dakota,98578,Canada,(597)631-1219x65652,wrightcarolyn@example.net,https://www.liu.com/,ACTIVE,4.5,5.73
+66,"Myers, Lucas and Bowers",Cynthia Cruz,VP Sales,9180 Peck Curve,Valenciashire,Nebraska,48396,Mayotte,+1-627-810-9104x30068,fmiles@example.net,http://collins.com/,ACTIVE,4.1,6.0
+67,Herrera Group,Pamela Santos,Account Manager,6303 Sandy Crescent,Salazarton,Maryland,87805,Saint Vincent and the Grenadines,+1-421-602-0275x88425,wiseanthony@example.com,https://www.joseph-ray.com/,ACTIVE,3.3,8.49
+68,Gibson-Ward,Mr. Jacob Scott Jr.,Sales Manager,80003 Thomas Lights,East Sarah,Arizona,72966,Spain,001-263-453-6541x951,lindajarvis@example.com,http://ayala-collins.com/,ACTIVE,3.7,6.58
+69,"Bryant, Wood and Carter",Nancy Sanchez,Director,738 Edward Lodge Apt. 385,West Aaronfurt,West Virginia,95818,Gambia,338-236-7024,phyllismeyer@example.net,https://miller.biz/,ACTIVE,5.0,11.54
+70,Vargas Inc,Victor Young,Sales Manager,6557 Hall Flats Apt. 912,East Shannonmouth,Nebraska,16326,Mauritania,(537)747-4112x490,christopherwright@example.com,https://www.evans.biz/,ACTIVE,4.1,14.32
+71,Hawkins-Pierce,Brian Leon,Sales Manager,03236 Parks Rue,New Brendaland,Alaska,08951,Congo,+1-972-215-1070x2966,lvega@example.com,http://www.ramirez-stephenson.com/,INACTIVE,3.3,6.15
+72,"Harvey, Sanchez and Phillips",Juan Brown,Sales Manager,2638 Crystal Unions Apt. 657,Coopershire,North Carolina,42654,Iceland,520-459-3040x785,wrightjohn@example.net,http://www.bradford.com/,ACTIVE,3.3,7.82
+73,Young LLC,Melissa Sloan,Account Manager,599 Anna Field,Weaverburgh,New York,05476,Bermuda,5394308705,jennifer50@example.org,http://www.mathis.com/,ACTIVE,3.4,11.34
+74,Bush-Bates,Gabrielle Morris,Director,675 Jasmine Points,Jeffreyshire,Idaho,50096,Gambia,001-542-320-9690x2959,vtaylor@example.org,http://jackson-mcclure.com/,ACTIVE,3.5,14.08
+75,"Santiago, Daniel and Rogers",Daniel Steele,Sales Manager,1006 Oconnor Expressway Suite 765,Garciafort,Oregon,85824,Senegal,+1-832-471-0405x41152,paynerachael@example.org,https://johnson.biz/,ACTIVE,3.8,7.77
+76,Brown LLC,Colton Terry,Sales Manager,443 Brandon Ports Suite 205,South Christopherfort,Illinois,13213,Anguilla,924.617.1467,maypaul@example.com,https://griffin.info/,ACTIVE,3.3,14.8
+77,Baker-Hood,Brittany Horton,Account Manager,58693 Mary Viaduct,Sheppardfort,Oregon,31387,Lebanon,416-508-9899x2172,davidhenderson@example.net,https://www.hernandez.com/,ACTIVE,4.1,9.28
+78,Hughes Group,Shannon Stone,Sales Manager,998 Rodriguez Drive,New Brianna,Wisconsin,13634,Uzbekistan,991-948-5646,jacksonrichard@example.net,https://www.preston-rivera.com/,ACTIVE,4.9,11.91
+79,Reese LLC,Alicia Roth,Account Manager,4713 Kevin Summit Suite 546,East Scottchester,West Virginia,64000,Senegal,550.582.1486x28902,wrightstephen@example.com,http://colon-wagner.com/,ACTIVE,4.7,10.83
+80,"Johnson, Watson and Wheeler",Seth Matthews,Account Manager,2414 Paul Estates Apt. 333,Denisehaven,Alaska,89918,Algeria,922.690.3494x4665,stevenbyrd@example.net,https://www.hunt.com/,ACTIVE,3.1,8.65
+81,"Holland, Lynch and Evans",Arthur Mcneil,Sales Manager,4432 Rachel Valley Suite 520,Brightview,Nebraska,53532,Iceland,001-409-693-5387x5842,ruizjoyce@example.net,http://davis.com/,ACTIVE,3.4,7.5
+82,French-Rivera,Edward York,Sales Manager,99917 Vincent Ways Suite 846,Port Melissaberg,Illinois,45415,Ireland,001-772-252-1752,hayesjason@example.org,http://anderson.biz/,ACTIVE,4.1,13.75
+83,Patterson-Woods,Joseph Cross,Account Manager,8300 Jeremy Wells,Larryville,Missouri,66474,Namibia,721-904-4789x8562,karen26@example.org,http://www.mercer.net/,INACTIVE,3.5,6.63
+84,Martinez Ltd,Amanda Mcdowell,Account Manager,909 Ebony Shoal Apt. 016,Jamesside,Kentucky,62681,Reunion,(430)846-1849,huntchristine@example.com,http://www.gonzalez-gonzalez.com/,ACTIVE,3.0,12.37
+85,"Dudley, Howard and Ortiz",Joshua Lozano,Director,3001 Mary Skyway Suite 218,Lake Jenniferview,Tennessee,30799,Korea,247-201-2045x5611,elizabethjackson@example.com,https://davis.biz/,ACTIVE,3.8,11.7
+86,Rivers-Nelson,Samuel Marsh,Account Manager,20216 Pham Springs,Whitefurt,Wyoming,47503,New Zealand,6277716701,busherica@example.net,http://mills.com/,ACTIVE,4.6,6.08
+87,Reed-Rhodes,Ryan Grant,Sales Manager,28772 Karen Islands,West Tara,Arkansas,66945,Czech Republic,+1-366-931-7797,fstewart@example.net,http://www.gutierrez-hawkins.com/,ACTIVE,3.4,13.17
+88,Conner PLC,Stefanie Hart,VP Sales,5037 Castro River Suite 571,Port Donnatown,Michigan,47049,Switzerland,+1-548-585-1027x2614,conradphilip@example.com,http://sherman.org/,ACTIVE,4.6,13.71
+89,Barton Group,Kevin Gordon,Account Manager,80869 Glass Tunnel Apt. 922,South Dianemouth,North Carolina,50919,Italy,+1-634-765-4722x698,jamesweber@example.com,https://www.santos.com/,ACTIVE,3.4,8.28
+90,"Wilson, Bell and Castillo",Mary Butler,Sales Manager,0810 Thomas Skyway Apt. 342,Francesberg,Arkansas,91018,Slovenia,638-205-7198x3863,yhughes@example.net,https://www.manning.org/,INACTIVE,3.6,11.41
+91,Greer-Pruitt,Maria Fischer,VP Sales,347 Tonya Club,East Jill,Delaware,49941,Armenia,(748)242-2940x57202,tracy98@example.com,http://robinson.net/,ACTIVE,4.7,8.31
+92,Perry PLC,Gregory Ware,Sales Manager,5439 Barajas View Apt. 157,Lake Christina,South Carolina,32459,Armenia,+1-956-216-4840x85887,rachel35@example.net,http://www.bonilla.net/,ACTIVE,4.9,6.79
+93,Sims and Sons,Patricia Hancock,Director,38612 Stephen Isle Apt. 110,Port Johnathan,California,75862,Swaziland,846.367.6650,maychristine@example.net,http://www.reilly-rodriguez.com/,ACTIVE,4.2,8.46
+94,"Miller, Hubbard and Kim",Matthew Wells,Director,68424 Bernard Branch,North Bobby,Oregon,78705,India,+1-481-443-5368,jeffreydavenport@example.org,http://www.marsh.net/,ACTIVE,5.0,6.16
+95,Newman-Jones,Danielle Gonzalez,Account Manager,5231 Harvey Fields Suite 775,Heatherberg,Oregon,74800,Haiti,962-705-3364x52577,tony12@example.net,http://vance.com/,ACTIVE,4.4,5.02
+96,"Mercado, Jones and Jones",Jonathon Johnson,Account Manager,308 Stephens Plains Suite 256,Port Brittany,Maine,18049,Kyrgyz Republic,481.465.8039x28272,ccrosby@example.org,https://www.baker.com/,ACTIVE,3.1,11.64
+97,"Clark, Velez and Ward",Jesse Williams,Director,84498 Nicholas Lane Suite 918,Nicholasbury,North Dakota,53695,Guinea,(677)590-8272x318,jacobcox@example.net,http://www.shepherd-cortez.info/,ACTIVE,4.3,6.25
+98,"Mendoza, Clark and Martin",Alison Williams,Director,80920 Jonathan Falls,Greeneshire,South Dakota,02941,Turkey,001-441-637-9772x3692,jennifercooper@example.com,http://www.cruz-rodriguez.com/,ACTIVE,4.3,8.26
+99,"Heath, Gordon and Barnes",Brent Alvarez,Director,811 Hopkins Rapids,Port Erikachester,North Dakota,55640,Heard Island and McDonald Islands,3868376599,jonathancannon@example.org,https://lopez-fletcher.com/,ACTIVE,3.4,11.65
+100,"Mills, Meyer and Brooks",Robert Ortiz,VP Sales,69448 Cunningham Ridge,Victoriafurt,Wisconsin,27199,Isle of Man,+1-687-725-8874,qfitzgerald@example.org,http://avery.com/,ACTIVE,4.8,11.16
+101,"Mendez, Cohen and Williams",Mark Brock,Director,9611 Walker Common,Lake Patrickfurt,South Carolina,86507,Mali,590-427-7038x4309,warddiana@example.org,http://gomez-foster.org/,ACTIVE,4.7,8.04
+102,Holmes Ltd,Tamara Dunn,Account Manager,4393 Spears Ports Apt. 426,New Charlesport,Michigan,15837,Spain,248.994.7697x35779,scottpatrick@example.org,http://moses-black.com/,ACTIVE,4.2,11.55
+103,"Collier, Wright and Davis",Samantha Jones,VP Sales,5539 White Summit,South Jillian,Kansas,96895,Dominican Republic,233-233-9521x117,uwatson@example.com,https://joyce.com/,ACTIVE,4.4,10.11
+104,Walker-Ray,Robert Mendoza,Account Manager,562 Bray Square,Stewarttown,Alabama,88857,Cote d'Ivoire,(791)755-9428x4347,victorclark@example.net,https://ramirez-white.com/,ACTIVE,3.6,11.64
+105,"Parks, Olsen and Le",Kristi Chase,Director,27026 Taylor Vista,Kristenport,Kentucky,74181,Togo,001-306-912-0347,jordan58@example.net,https://jenkins.org/,ACTIVE,4.9,7.35
+106,Ray Ltd,Carrie Deleon,Director,8771 Austin Mountain Apt. 256,Sweeneyland,Colorado,21734,Guam,755.944.9647,bjackson@example.org,http://haynes.com/,ACTIVE,3.4,5.24
+107,Brown Group,Allison Sanders,Account Manager,49216 Perez Street,Scottberg,Florida,69542,Taiwan,(900)455-7784,brittanybryant@example.net,https://olson-perez.com/,INACTIVE,4.2,12.68
+108,Parker-Gutierrez,Adam Mills,VP Sales,4780 Arroyo Neck,Albertchester,Maine,78751,Djibouti,4858368663,fwalker@example.com,http://wong-patel.com/,ACTIVE,4.3,6.94
+109,Lopez-Jones,Brian Gibson,VP Sales,9735 Edwin Place Apt. 214,Davidmouth,Washington,01576,Djibouti,720-973-5647,riveramegan@example.org,http://jones-harrison.com/,ACTIVE,3.5,11.56
+110,Roth-Clayton,Randy Wright,Sales Manager,03718 Thomas Springs Suite 520,West Timothyport,Illinois,47742,Tuvalu,3318365024,albertwilliams@example.net,https://www.townsend-wright.info/,ACTIVE,4.7,13.85
+111,Parks LLC,Yolanda Garrett,VP Sales,2812 Hall Point,Lindamouth,Washington,25793,Angola,001-565-424-0778x487,mario74@example.net,http://www.moore.com/,ACTIVE,4.6,11.96
+112,Smith-Little,Cody Smith,VP Sales,351 Lee Springs Suite 829,Marcusmouth,Delaware,13117,Mali,+1-910-622-0317x31096,diazcatherine@example.org,http://www.henry.com/,ACTIVE,3.5,13.48
+113,Grant-Hurley,Jacob Erickson,VP Sales,014 Shirley Path Apt. 138,Lopezhaven,Texas,33106,Montenegro,+1-828-786-1957x6122,amandagreene@example.com,https://gutierrez-schultz.com/,ACTIVE,3.9,10.31
+114,"Allen, Gardner and Brooks",Natasha Ward,Director,6004 Zachary Hollow Apt. 433,Andrewview,Oklahoma,67514,Moldova,001-692-710-7522,jesseshepherd@example.org,https://www.jones.info/,INACTIVE,4.8,11.13
+115,"Warner, Weiss and Davis",Amanda Stokes,VP Sales,05566 Molly Forks Apt. 604,West Amberberg,Massachusetts,66351,Qatar,520.867.9981,kristie22@example.com,http://mcgee.biz/,ACTIVE,4.1,13.97
+116,"Hamilton, Wolfe and Gill",Mr. James Duncan,VP Sales,14659 Daniel Loop,Diazborough,Massachusetts,45658,Nepal,+1-704-425-9792x7033,rodriguezbrian@example.net,http://cooper.com/,ACTIVE,4.5,13.4
+117,Ruiz-Rivera,Christy Payne,Director,792 Nicholas Shore Apt. 420,Jamesview,Arkansas,61444,Palau,5168451046,mckeetodd@example.net,http://www.mason.net/,ACTIVE,4.0,11.27
+118,"Smith, Wright and Moreno",James Moore,Director,554 Wendy Parkway Suite 046,New Stacybury,Georgia,45299,Ukraine,(721)968-9363x9264,jamietaylor@example.net,http://www.barker-roach.com/,ACTIVE,4.4,7.34
+119,Forbes-Daugherty,Timothy Stark,Director,88125 Jessica Track Suite 664,Reeseview,Georgia,25133,Botswana,(520)599-4999,gracehoward@example.net,https://www.mathis.com/,ACTIVE,4.1,6.38
+120,Henry-Taylor,Andrew Duran,Account Manager,6333 Gregory Mill,Wattsmouth,Kansas,56541,Iraq,001-909-965-6999x88081,richjohn@example.net,https://www.hughes.com/,ACTIVE,3.3,7.14
+121,Gonzales-Wilkerson,Donna Jackson,VP Sales,082 Gallegos Mission Apt. 812,South Robert,New Hampshire,03766,Christmas Island,793.371.4521x117,gacosta@example.net,http://james.org/,ACTIVE,4.1,9.16
+122,"Huffman, Martin and Thomas",Amber Parker,Account Manager,2123 Cindy Glen Apt. 777,New Nicolebury,Indiana,77684,Palestinian Territory,576.271.9903x8498,eddiedelgado@example.org,http://www.lane.com/,ACTIVE,3.8,12.7
+123,Rodriguez and Sons,Duane Guerrero,Sales Manager,9501 Morris Light,Port Ronaldside,California,38883,Latvia,(214)358-6833,webbhaley@example.net,https://abbott.org/,ACTIVE,4.5,8.8
+124,Ho-Mendez,Nicholas Jimenez PhD,Sales Manager,430 Andrew Road,Lake Melaniechester,Nebraska,06463,Grenada,(783)203-4414x488,jenningsmatthew@example.net,http://www.rivera.info/,INACTIVE,3.6,8.9
+125,Robles-Brewer,Mr. Steven Herrera,VP Sales,6084 Peters Brook Apt. 955,East Juantown,Michigan,49684,Niue,+1-729-296-2914,robert73@example.com,https://warren.com/,ACTIVE,4.5,13.0
+126,Glover-Strickland,Jill Johnson,Account Manager,235 Oconnor Pine Suite 521,East Jenny,New Jersey,51302,Rwanda,610.540.9157x01840,james44@example.net,https://wilson.com/,ACTIVE,3.5,9.86
+127,"Castro, Garcia and Daniels",Denise Harding,VP Sales,321 Austin Junction Suite 020,Bergerton,Connecticut,50780,Austria,666-729-9795,jenniferlambert@example.net,http://anderson.info/,ACTIVE,4.4,9.04
+128,Bryant Ltd,Pamela Ruiz,Account Manager,94562 Mccormick Islands,Freemanland,New Mexico,15297,Guernsey,372.645.9928x1615,amorales@example.org,http://www.reyes-peterson.org/,ACTIVE,4.8,14.81
+129,Mueller-Graham,Kimberly Young,Sales Manager,971 Nguyen Court,Thompsonfurt,California,78916,Botswana,+1-696-857-0132x90227,rgonzalez@example.com,https://robbins-herman.com/,INACTIVE,4.2,11.63
+130,"Smith, Downs and Powell",Edward Wood,Sales Manager,85140 Ryan Ramp,Garrettfurt,Montana,50513,Jordan,+1-832-472-3865,whitney22@example.org,http://www.griffith.biz/,ACTIVE,3.3,9.62
+131,Miller Ltd,Shannon English,Sales Manager,278 Arnold Mission Suite 532,Jacobsshire,New York,96303,Dominica,001-384-968-9500x975,thomasjessica@example.com,https://www.wu.com/,ACTIVE,3.7,9.55
+132,"Schultz, Yates and Edwards",Greg Osborne,Director,8795 Gomez Union Suite 420,Jessicashire,Kentucky,08551,Norfolk Island,392.690.4904x7128,david44@example.com,http://www.thompson.info/,ACTIVE,3.8,12.52
+133,Morton-Green,Kari Lloyd,VP Sales,1292 Mullins Loop,Youngmouth,Washington,84069,Chad,895.904.1027,thomas83@example.com,https://thomas-berg.com/,ACTIVE,3.2,5.19
+134,Ho-Cole,Tonya Vega,Sales Manager,85694 Nelson Unions,West Destinyfurt,New Jersey,89012,San Marino,293.385.2580,jenkinsalicia@example.net,https://hardy.com/,INACTIVE,3.7,11.5
+135,Johnson Inc,Kristopher Shannon,Sales Manager,111 Nicholas Track,North Heather,Kentucky,39110,Lao People's Democratic Republic,+1-217-646-5421x40665,gregory17@example.org,https://www.vasquez.com/,ACTIVE,4.9,6.99
+136,"Schneider, Gaines and Baldwin",Benjamin Duncan,Sales Manager,0720 Elizabeth Grove Apt. 569,New Jasminefort,New Mexico,57655,Iraq,001-818-230-6719x8554,diazmelissa@example.com,http://holland-thompson.com/,ACTIVE,3.5,9.74
+137,Guerrero-Evans,Brian Barker,Sales Manager,73203 Jennifer Ramp Apt. 761,Victormouth,Alaska,05356,Guadeloupe,4505613878,johnsondonald@example.net,http://williams.com/,ACTIVE,3.4,11.99
+138,"Williams, Parker and Leon",Christopher Garza,Director,79931 Ronald Valleys,Nguyenshire,Ohio,18501,Gibraltar,809.425.1142,angela73@example.net,http://www.moody.org/,ACTIVE,4.2,12.48
+139,Strickland-Smith,Mr. Christopher Davis,Sales Manager,7232 Mills Loop Apt. 290,Lake Vincent,Colorado,82708,Sweden,556-908-3318x1958,joshualee@example.org,https://moore.com/,ACTIVE,3.3,8.11
+140,"Diaz, Clark and King",Stefanie Chavez,Sales Manager,082 Kristen Oval,North Pattymouth,Pennsylvania,76491,Greece,(935)931-5313x63631,zamoradustin@example.net,https://www.brooks-ellis.com/,INACTIVE,4.2,14.08
+141,"Howard, Nelson and Rogers",Keith Ramirez,VP Sales,7625 Olivia Rapids,Port Laura,South Carolina,22774,Morocco,+1-931-668-7397,blairjill@example.org,http://riley-snow.org/,ACTIVE,4.4,5.76
+142,Mcintyre Inc,Andrew Esparza,Account Manager,8671 Simpson Corner,Lake Jessicaborough,Florida,47477,French Polynesia,210.974.2799,tingram@example.com,http://marshall.com/,ACTIVE,4.5,13.5
+143,Barry-Cook,Jeffery Nelson,Sales Manager,195 Zachary Spring,Pamelaville,Missouri,48419,Lao People's Democratic Republic,+1-305-952-8183x253,karenhodges@example.com,https://frazier.com/,ACTIVE,4.1,5.41
+144,Tucker-Rose,Michael Gregory,VP Sales,9513 Miller Lock Apt. 411,West Daniel,Georgia,65555,Canada,880.946.8275,carterbryan@example.org,https://cooper.org/,ACTIVE,3.1,11.48
+145,"Terry, Wilkinson and Wallace",Carlos Clarke,Sales Manager,3754 Eddie Haven,Huberburgh,Virginia,70666,France,(422)923-1059,mike38@example.net,http://hernandez-west.com/,ACTIVE,4.6,6.06
+146,"Turner, Knapp and Sullivan",Mr. Jimmy Flores Jr.,Director,474 Lauren Stream Suite 517,East Ericaville,Maryland,03751,Iran,+1-637-551-5093x983,millermelissa@example.net,http://henry.org/,ACTIVE,4.7,12.07
+147,"Harding, Kerr and Ward",Scott Wood,VP Sales,45547 Jason Mills Suite 742,Chandlerchester,Florida,77463,Netherlands Antilles,823-347-8519,ortizrobin@example.com,http://bradley.biz/,ACTIVE,4.0,11.5
+148,Spencer-Williams,Sandra Torres,VP Sales,00244 Martinez Shores Suite 627,North David,Louisiana,65126,Bangladesh,+1-259-679-6471x589,bonniethomas@example.com,http://brown.biz/,ACTIVE,4.7,10.92
+149,"Barr, Kelly and Roberts",Taylor Palmer,Director,92855 Nelson Square,Codyshire,Minnesota,19338,American Samoa,(584)457-6521,mariepope@example.net,http://moon-wilson.com/,ACTIVE,4.7,5.87
+150,Mendoza LLC,Brenda Ramos,VP Sales,40132 Hailey Inlet Apt. 321,Vazquezville,California,02965,Singapore,360.631.0890x7140,websterkimberly@example.net,http://www.lambert.com/,ACTIVE,3.9,11.1
+151,Singleton LLC,Hannah Martin,VP Sales,911 Allison Stravenue,West George,Wisconsin,70903,Albania,001-813-587-5927x1256,rickjuarez@example.com,http://stone.com/,ACTIVE,4.0,8.25
+152,"Roberts, Bowen and Miller",James Bryant DDS,VP Sales,86463 Patricia Unions Suite 520,Powersfurt,New Hampshire,69007,Palestinian Territory,+1-811-326-6912x15353,maryhardy@example.com,https://alvarez-morrison.biz/,ACTIVE,4.6,8.4
+153,Dixon-Hernandez,Bryan Burns,Director,201 Maria Parks,East Patrickmouth,Georgia,40183,Nigeria,+1-711-287-7347x784,ewingnicole@example.org,https://farrell-ramos.com/,ACTIVE,4.0,6.91
+154,Thompson Ltd,Elizabeth Mccarthy,Account Manager,2467 Ashley Overpass Suite 782,South Joseshire,Missouri,81364,Philippines,(745)800-9025x590,pattersonvictoria@example.com,https://www.sanchez.com/,ACTIVE,4.0,12.58
+155,"Jones, Torres and Morgan",Gabriel Murray,VP Sales,864 Heather Radial Apt. 569,Morrisville,New York,13615,Portugal,+1-535-678-5294x56371,brandon96@example.org,http://www.rogers.info/,ACTIVE,4.0,12.93
+156,Clark-Flynn,Elizabeth Brock,Sales Manager,853 Morales Road Suite 820,New Victor,Texas,97783,Wallis and Futuna,548.496.9083x572,megan65@example.org,http://colon-lucas.com/,ACTIVE,3.8,7.43
+157,"Burke, Sullivan and Wilson",David Wilcox,Director,8660 Erik Dale Apt. 448,Lake Melissa,Washington,64181,Slovenia,3018594165,joelduncan@example.net,http://wilkerson-young.com/,ACTIVE,4.1,9.26
+158,Murphy-Silva,Paul Young,Director,21234 Ortiz Wall Apt. 785,West Amyfort,Utah,32790,Fiji,(557)654-0900,sparker@example.com,http://www.price-browning.biz/,ACTIVE,3.9,8.07
+159,Turner-Mayer,Elizabeth Villarreal,Account Manager,5604 Madeline Overpass,Mclaughlinmouth,Virginia,55861,Turkey,724-981-5698,gilldanielle@example.org,https://www.morales.com/,ACTIVE,3.4,6.2
+160,Johnston-Rodriguez,Micheal Saunders,Account Manager,657 Russo Dale,Glennshire,Massachusetts,37436,Congo,265-526-6930,mccannjames@example.net,http://www.williamson-burke.com/,ACTIVE,4.5,7.76
+161,Rubio and Sons,Autumn Higgins,Director,7133 Sophia Via Suite 476,South Melissa,Rhode Island,28755,Swaziland,736-926-2044x3973,smithdean@example.com,https://www.reyes.com/,INACTIVE,4.7,7.96
+162,Hawkins Inc,David Odonnell,Director,48964 Lambert Curve,New Harryburgh,North Carolina,65098,Venezuela,672-715-8624x15027,qcampbell@example.net,https://stafford-stewart.info/,ACTIVE,3.0,10.34
+163,Peters Ltd,Jessica Lopez,Director,20742 Graham Park,South Michaelside,New York,60500,Lithuania,621-551-3422,foxashley@example.com,http://www.rhodes-clay.com/,ACTIVE,3.1,7.92
+164,Maldonado-Becker,Kevin Bean,Account Manager,01777 Wheeler Avenue Suite 097,Staceyshire,Florida,28205,Tokelau,8456018961,johnwise@example.com,http://www.martin.com/,ACTIVE,4.5,6.03
+165,"Goodwin, Valdez and Martinez",Jeffrey Drake MD,Sales Manager,1583 Griffin Loaf,Adamschester,Colorado,99655,Jamaica,(992)366-1085x732,taylor17@example.com,http://www.leach.com/,ACTIVE,3.9,9.4
+166,"Williams, Jones and Williams",Jeffery Davis,Account Manager,4918 Daniel Shore Suite 226,North Robertport,Massachusetts,77467,Saint Kitts and Nevis,879.245.2321x941,fosteralexander@example.net,https://sullivan.info/,INACTIVE,3.5,13.62
+167,Montgomery-Dickson,Michael Vaughn,Sales Manager,1220 Daniel Brook Apt. 037,Lake John,South Dakota,71094,Comoros,447-927-6012,cruiz@example.net,http://www.hudson-bass.com/,ACTIVE,3.8,5.74
+168,Smith-Mccoy,Veronica Allison,Sales Manager,76789 Hall Circle Apt. 695,West Patriciachester,New Mexico,15828,Lithuania,+1-557-760-2437x573,sanderson@example.net,https://delgado.com/,ACTIVE,4.6,14.49
+169,"Clark, Vazquez and Miller",Mr. Christopher Vasquez,Sales Manager,4338 Yvette Knolls Suite 522,Port Brycechester,Delaware,81446,Denmark,683-474-5508,mccarthysara@example.com,https://www.harrington.com/,INACTIVE,3.2,12.64
+170,"Williams, Garcia and Soto",Susan Moore,Account Manager,787 Eric Lakes Suite 213,Montestown,Kansas,62585,Guam,482-814-5653x2863,dhardin@example.net,https://www.thomas-smith.net/,ACTIVE,3.8,14.09
+171,Miller LLC,Raymond Hamilton,Director,29084 Morales Springs Suite 550,Rachelberg,Vermont,53445,Kiribati,+1-738-899-7563x4108,abigailfernandez@example.org,http://peterson.net/,ACTIVE,5.0,8.05
+172,"Green, Collier and Torres",Jonathan Dennis,Sales Manager,8510 Shane Ports Apt. 753,West Kevin,Texas,94198,Montserrat,+1-826-883-1589x35712,davisroger@example.org,https://www.miller-rhodes.biz/,ACTIVE,4.5,14.48
+173,"Hansen, Maxwell and Wiggins",Mallory Barajas,Account Manager,622 Todd Mount Apt. 881,South Thomas,West Virginia,21058,Western Sahara,+1-651-296-1159,davidtorres@example.com,https://johnson-thomas.org/,ACTIVE,3.5,5.81
+174,Williams-Shannon,Cindy Fuentes,Account Manager,18510 Olson Inlet Suite 567,Port Dillon,South Dakota,60916,Senegal,272.951.9966x365,debbie20@example.net,https://www.hansen.org/,ACTIVE,3.2,5.03
+175,Bernard PLC,John Prince,VP Sales,820 Buchanan Gardens,Millerside,Rhode Island,42500,Iran,001-707-805-6260,christopher18@example.org,https://www.scott.com/,ACTIVE,3.9,5.33
+176,Farley-Gregory,Tyrone White,Director,6152 Orozco Green,Davidville,Arkansas,27050,Dominican Republic,001-899-337-8861x40578,ojohnson@example.org,http://richmond.net/,ACTIVE,4.4,9.54
+177,"Glover, Torres and Russell",Mark Harris,Account Manager,8238 Ali Point,Williamsmouth,South Carolina,38413,Palau,(500)674-9465,martinamanda@example.org,https://www.hale-rivas.net/,INACTIVE,4.6,11.25
+178,Johns-Clark,Rebekah Henson,Account Manager,474 Eileen Islands Suite 379,Allenberg,Tennessee,00769,New Caledonia,900.326.8768x1180,teresa69@example.com,https://www.terrell.com/,ACTIVE,4.1,11.48
+179,Smith-Paul,Melanie Fletcher,Director,94337 Johnson Park,North James,South Dakota,52416,Bouvet Island (Bouvetoya),498-372-8399x921,jordanhudson@example.org,https://www.johnson.org/,ACTIVE,3.1,6.66
+180,Becker-Ware,Jeffery Nunez,Director,6641 Simpson Path,Lake Jeffreyview,Nebraska,70285,Kiribati,706-635-1903x61332,garrettcolin@example.com,https://www.robles.com/,ACTIVE,4.6,14.21
+181,Wells LLC,Samantha Stone,VP Sales,99717 Christopher Circle,South Lawrenceland,Florida,08627,Uruguay,804.396.1108x046,mhall@example.net,http://marshall-patterson.org/,ACTIVE,4.4,12.0
+182,"Garcia, Curtis and Lowe",Joseph Matthews,Director,09193 Dana Glens,Robertmouth,Idaho,32371,Burundi,4024496854,vparker@example.com,https://www.willis.net/,ACTIVE,4.0,5.8
+183,"Trevino, Henderson and Gonzalez",Terry Glover,Sales Manager,77959 Jensen Manor Suite 217,South Jeffreytown,South Dakota,29733,Puerto Rico,879.433.7563,coxcharles@example.org,http://www.alexander-welch.com/,ACTIVE,4.5,11.04
+184,Hester and Sons,Christopher Mcclure,Sales Manager,8323 Gregory Greens,North Marieberg,Missouri,86336,Solomon Islands,853-347-3552,thomassandra@example.org,http://brooks.com/,ACTIVE,4.9,13.36
+185,Hines PLC,Joseph Clarke,Sales Manager,04289 Clark Common Suite 912,Potterhaven,Mississippi,65851,Maldives,225.558.7774x969,patriciahayes@example.org,https://www.coleman-bennett.com/,INACTIVE,4.3,7.7
+186,Scott-Miller,Elizabeth Stone,Sales Manager,078 Simmons Mountain,Ortizfort,Massachusetts,36286,Hong Kong,3276341514,coreyjones@example.org,http://leonard.com/,ACTIVE,3.4,10.19
+187,"Ochoa, Sutton and Hill",Yolanda Murillo,VP Sales,44566 Thomas Passage Apt. 633,South Jesus,Pennsylvania,72933,Saudi Arabia,275.715.3663x778,barbaraanderson@example.net,http://flowers.biz/,INACTIVE,3.4,10.85
+188,"Medina, Nguyen and Johnson",Tammy Hernandez,VP Sales,999 Baird Ford Suite 186,South Daniel,Oregon,59684,Northern Mariana Islands,812-618-2097x0231,jessekeller@example.org,https://www.stone-jackson.biz/,INACTIVE,3.9,9.08
+189,Moore-Rodriguez,Karen Jones,Director,34672 Matthews Parkway,Hilltown,Georgia,58923,Bahrain,(993)785-9777x9014,peter26@example.org,http://cruz-hopkins.org/,ACTIVE,4.7,8.3
+190,Long Inc,Seth Hill,VP Sales,137 Riddle Plaza Apt. 511,Robertburgh,Kentucky,27681,Madagascar,8702176563,kingjenna@example.org,https://murray-miller.com/,ACTIVE,4.9,13.14
+191,"Dodson, Taylor and Hoover",Carolyn Smith,Sales Manager,41862 Emily Branch,Ericstad,Idaho,28900,Rwanda,9832708164,williamsnicholas@example.org,http://gonzalez.biz/,ACTIVE,3.6,8.23
+192,Hays LLC,Melanie Brown,VP Sales,220 Hunt Via,Marcusborough,South Carolina,27648,Vietnam,+1-466-213-3155,avaldez@example.com,http://jones.org/,ACTIVE,4.6,5.01
+193,Williams-Mcclure,Randall Porter,VP Sales,892 Haley Rapid,Tinafurt,Utah,91428,Burkina Faso,225-571-5099x76838,jensenpenny@example.com,http://harvey.com/,ACTIVE,3.4,8.62
+194,Jimenez-Harris,Martin Young,VP Sales,524 Schneider Trace Apt. 864,East Melaniemouth,Michigan,32253,Costa Rica,+1-903-239-6852,kanechad@example.org,http://www.martinez.org/,ACTIVE,4.5,7.04
+195,"Guerra, Frederick and Young",Neil Collins,Account Manager,62934 Ray Roads,West Michelle,New Mexico,10988,Zambia,(266)827-7689x627,wdickerson@example.com,http://www.james-torres.com/,INACTIVE,3.9,11.98
+196,Hart-Castillo,Miguel Gonzalez,Sales Manager,08576 Bentley Summit,Patrickport,Tennessee,77611,Barbados,(801)869-2364x58750,johnjohnson@example.com,http://www.jacobs-blackburn.com/,ACTIVE,4.3,12.99
+197,Wright-Lane,Candice Wilson,Account Manager,669 April Field,Martinchester,Kentucky,91181,Gabon,686.294.6119x52436,lisasmith@example.org,https://roberts.com/,ACTIVE,3.0,9.08
+198,"Taylor, Tucker and Shaw",Keith Lewis,Account Manager,23467 Miranda Expressway,West Christopherville,Louisiana,08924,Guam,2932771004,clarklatoya@example.com,https://sherman-munoz.com/,INACTIVE,4.8,9.61
+199,Maldonado-Cooper,David Ward,Sales Manager,9055 Aaron Ways Suite 209,Port Alyssabury,Mississippi,59734,Niger,+1-978-863-0505x05739,baileysheila@example.com,http://lawson-joseph.net/,ACTIVE,3.3,14.33
+200,"Glover, Moran and Johnson",Mr. Ronnie Davies DVM,Director,71783 Jason Terrace Apt. 160,West Raven,Wyoming,37248,Cyprus,001-747-812-8715x3991,yvaldez@example.net,https://www.green.com/,ACTIVE,3.5,13.35

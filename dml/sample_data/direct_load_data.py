@@ -95,7 +95,7 @@ def main():
             'CONTACT_TITLE': 'CONTACT_TITLE', 'ADDRESS': 'ADDRESS', 'CITY': 'CITY',
             'REGION': 'REGION', 'POSTAL_CODE': 'POSTAL_CODE', 'COUNTRY': 'COUNTRY',
             'PHONE': 'PHONE', 'EMAIL': 'EMAIL', 'WEBSITE': 'WEBSITE',
-            'STATUS': 'STATUS', 'RATING': 'RATING'
+            'STATUS': 'STATUS', 'RATING': 'RATING', 'DISCOUNT': 'DISCOUNT'
         }
         load_csv_to_table(conn, 'suppliers.csv', 'PRODUCTS_SCHEMA_DEV', 'SUPPLIERS', supplier_mapping)
         

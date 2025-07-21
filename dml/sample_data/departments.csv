@@ -1,11 +1,11 @@
 DEPARTMENT_ID,DEPARTMENT_NAME,DEPARTMENT_CODE,DESCRIPTION,BUDGET,LOCATION,PHONE,EMAIL
-1,Sales,SALES,Sales department,2000000,New Monica,(380)418-9923,sales@retailworks.com
-2,Marketing,MKT,Marketing department,1500000,North Claudia,(273)201-8599,mkt@retailworks.com
-3,Information Technology,IT,Information Technology department,3000000,South Cristina,6423614135,it@retailworks.com
-4,Human Resources,HR,Human Resources department,800000,North James,(708)493-8833,hr@retailworks.com
-5,Finance,FIN,Finance department,1200000,North Sara,610.903.9962,fin@retailworks.com
-6,Operations,OPS,Operations department,2500000,Lake Amberfort,001-247-364-6952x826,ops@retailworks.com
-7,Customer Service,CS,Customer Service department,1000000,Williamston,001-710-832-6884,cs@retailworks.com
-8,Research & Development,RD,Research & Development department,4000000,Haystown,(592)935-5400,rd@retailworks.com
-9,Legal,LEG,Legal department,600000,Williamville,001-535-637-5907x13489,leg@retailworks.com
-10,Procurement,PROC,Procurement department,500000,Port Taylorbury,219.333.9171x383,proc@retailworks.com
+1,Sales,SALES,Sales department,2000000,Port William,(835)655-7512x705,sales@retailworks.com
+2,Marketing,MKT,Marketing department,1500000,East Brooke,849.734.1881,mkt@retailworks.com
+3,Information Technology,IT,Information Technology department,3000000,Gonzalezburgh,+1-213-875-9641x88384,it@retailworks.com
+4,Human Resources,HR,Human Resources department,800000,Lake Benjamin,8475135398,hr@retailworks.com
+5,Finance,FIN,Finance department,1200000,Anthonyton,805-498-3750x50983,fin@retailworks.com
+6,Operations,OPS,Operations department,2500000,Haydenshire,4272016511,ops@retailworks.com
+7,Customer Service,CS,Customer Service department,1000000,Smithtown,(767)696-7040x086,cs@retailworks.com
+8,Research & Development,RD,Research & Development department,4000000,Port Crystal,677.979.1249x00327,rd@retailworks.com
+9,Legal,LEG,Legal department,600000,Stephanieton,(309)614-3599x0358,leg@retailworks.com
+10,Procurement,PROC,Procurement department,500000,East Nancy,001-649-875-8940x326,proc@retailworks.com
