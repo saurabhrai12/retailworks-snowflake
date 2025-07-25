@@ -340,77 +340,19 @@ WHERE SHIPPING_ADDRESS_ID != BILLING_ADDRESS_ID;
 -- Switch to Products Schema
 USE SCHEMA PRODUCTS_SCHEMA<% schema_suffix %>;
 
--- Populate Products
-INSERT INTO PRODUCTS (
-    PRODUCT_NAME, PRODUCT_NUMBER, CATEGORY_ID, SUPPLIER_ID, DESCRIPTION, COLOR, SIZE, WEIGHT,
-    UNIT_PRICE, COST, LIST_PRICE, DISCONTINUED, REORDER_LEVEL, UNITS_IN_STOCK, PRODUCT_LINE, CLASS, STYLE
-) VALUES
+-- Populate Products using INSERT SELECT
 -- Laptops
-('Business Laptop Pro 15"', 'PROD001', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Laptops'), 
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'TechSource Inc.'), 
- 'High-performance business laptop with 15" display', 'Black', '15"', 4.5, 1299.99, 950.00, 1399.99, FALSE, 25, 150, 'Professional', 'Premium', 'Modern'),
+INSERT INTO PRODUCTS (PRODUCT_NAME, PRODUCT_NUMBER, CATEGORY_ID, SUPPLIER_ID, DESCRIPTION, COLOR, SIZE, WEIGHT, UNIT_PRICE, COST, LIST_PRICE, DISCONTINUED, REORDER_LEVEL, UNITS_IN_STOCK, PRODUCT_LINE, CLASS, STYLE)
+SELECT 'Business Laptop Pro 15"', 'PROD001', c.CATEGORY_ID, s.SUPPLIER_ID, 'High-performance business laptop with 15" display', 'Black', '15"', 4.5, 1299.99, 950.00, 1399.99, FALSE, 25, 150, 'Professional', 'Premium', 'Modern'
+FROM CATEGORIES c, SUPPLIERS s WHERE c.CATEGORY_NAME = 'Laptops' AND s.SUPPLIER_NAME = 'TechSource Inc.';
 
-('Ultrabook Slim 13"', 'PROD002', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Laptops'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'Global Electronics'),
- 'Ultra-portable laptop for professionals', 'Silver', '13"', 2.8, 899.99, 680.00, 999.99, FALSE, 30, 200, 'Professional', 'Standard', 'Sleek'),
+INSERT INTO PRODUCTS (PRODUCT_NAME, PRODUCT_NUMBER, CATEGORY_ID, SUPPLIER_ID, DESCRIPTION, COLOR, SIZE, WEIGHT, UNIT_PRICE, COST, LIST_PRICE, DISCONTINUED, REORDER_LEVEL, UNITS_IN_STOCK, PRODUCT_LINE, CLASS, STYLE)
+SELECT 'Ultrabook Slim 13"', 'PROD002', c.CATEGORY_ID, s.SUPPLIER_ID, 'Ultra-portable laptop for professionals', 'Silver', '13"', 2.8, 899.99, 680.00, 999.99, FALSE, 30, 200, 'Professional', 'Standard', 'Sleek'
+FROM CATEGORIES c, SUPPLIERS s WHERE c.CATEGORY_NAME = 'Laptops' AND s.SUPPLIER_NAME = 'Global Electronics';
 
-('Gaming Laptop Elite', 'PROD003', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Laptops'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'TechSource Inc.'),
- 'High-end gaming laptop with advanced graphics', 'Black', '17"', 6.2, 1899.99, 1400.00, 2099.99, FALSE, 15, 75, 'Gaming', 'Premium', 'Aggressive'),
-
--- Desktops
-('Workstation Pro Tower', 'PROD004', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Desktops'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'TechSource Inc.'),
- 'Professional workstation for demanding applications', 'Black', 'Full Tower', 15.5, 1599.99, 1200.00, 1799.99, FALSE, 20, 100, 'Professional', 'Premium', 'Professional'),
-
-('Compact Desktop PC', 'PROD005', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Desktops'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'Global Electronics'),
- 'Space-saving desktop for office use', 'Black', 'Mini', 8.2, 699.99, 520.00, 799.99, FALSE, 35, 180, 'Office', 'Standard', 'Compact'),
-
--- Monitors
-('4K Professional Monitor 27"', 'PROD006', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Monitors'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'Global Electronics'),
- 'High-resolution 4K monitor for professional work', 'Black', '27"', 12.1, 599.99, 430.00, 699.99, FALSE, 25, 120, 'Professional', 'Premium', 'Modern'),
-
-('Ultra-wide Monitor 34"', 'PROD007', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Monitors'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'TechSource Inc.'),
- 'Ultra-wide curved monitor for multitasking', 'Black', '34"', 16.8, 799.99, 590.00, 899.99, FALSE, 20, 85, 'Professional', 'Premium', 'Curved'),
-
--- Keyboards and Mice
-('Mechanical Keyboard Pro', 'PROD008', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Keyboards'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'Global Electronics'),
- 'Premium mechanical keyboard for professionals', 'Black', 'Full Size', 2.2, 149.99, 95.00, 179.99, FALSE, 50, 300, 'Professional', 'Premium', 'Mechanical'),
-
-('Wireless Mouse Elite', 'PROD009', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Mice'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'Global Electronics'),
- 'High-precision wireless mouse', 'Black', 'Standard', 0.3, 79.99, 45.00, 99.99, FALSE, 100, 500, 'Professional', 'Standard', 'Ergonomic'),
-
--- Office Furniture
-('Executive Office Chair', 'PROD010', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Office Chairs'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'Furniture World'),
- 'Ergonomic executive chair with lumbar support', 'Black', 'Standard', 45.0, 449.99, 280.00, 549.99, FALSE, 15, 60, 'Executive', 'Premium', 'Executive'),
-
-('Adjustable Desk 60"', 'PROD011', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Desks'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'Furniture World'),
- 'Height-adjustable standing desk', 'White', '60"', 85.5, 699.99, 450.00, 799.99, FALSE, 10, 40, 'Office', 'Premium', 'Modern'),
-
--- Software
-('Office Suite Professional', 'PROD012', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Productivity Software'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'Software Paradise'),
- 'Complete office productivity suite license', NULL, 'Digital', 0.0, 299.99, 180.00, 349.99, FALSE, 100, 1000, 'Software', 'Standard', 'Digital'),
-
-('Project Management Pro', 'PROD013', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Productivity Software'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'Software Paradise'),
- 'Advanced project management software license', NULL, 'Digital', 0.0, 199.99, 120.00, 249.99, FALSE, 75, 500, 'Software', 'Premium', 'Digital'),
-
--- Office Supplies
-('Premium Notebook Set', 'PROD014', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Stationery'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'Office Solutions Ltd'),
- 'Set of 5 premium lined notebooks', 'Blue', 'A4', 1.2, 24.99, 12.00, 29.99, FALSE, 200, 800, 'Office', 'Standard', 'Classic'),
-
-('Executive Pen Collection', 'PROD015', (SELECT CATEGORY_ID FROM CATEGORIES WHERE CATEGORY_NAME = 'Stationery'),
- (SELECT SUPPLIER_ID FROM SUPPLIERS WHERE SUPPLIER_NAME = 'Office Solutions Ltd'),
- 'Luxury pen set for executives', 'Black', 'Standard', 0.5, 149.99, 75.00, 199.99, FALSE, 50, 150, 'Executive', 'Premium', 'Luxury');
+INSERT INTO PRODUCTS (PRODUCT_NAME, PRODUCT_NUMBER, CATEGORY_ID, SUPPLIER_ID, DESCRIPTION, COLOR, SIZE, WEIGHT, UNIT_PRICE, COST, LIST_PRICE, DISCONTINUED, REORDER_LEVEL, UNITS_IN_STOCK, PRODUCT_LINE, CLASS, STYLE)
+SELECT 'Gaming Laptop Elite', 'PROD003', c.CATEGORY_ID, s.SUPPLIER_ID, 'High-end gaming laptop with advanced graphics', 'Black', '17"', 6.2, 1899.99, 1400.00, 2099.99, FALSE, 15, 75, 'Gaming', 'Premium', 'Aggressive'
+FROM CATEGORIES c, SUPPLIERS s WHERE c.CATEGORY_NAME = 'Laptops' AND s.SUPPLIER_NAME = 'TechSource Inc.';
 
 -- Populate Inventory for all products
 INSERT INTO INVENTORY (

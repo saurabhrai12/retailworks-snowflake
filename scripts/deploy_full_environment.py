@@ -196,6 +196,7 @@ class EnvironmentDeployer:
         logger.info("📊 Deploying database tables...")
         
         tables_dir = self.project_root / "ddl" / "tables"
+        #table_files = list(tables_dir.glob("*.sql"))
         table_files = [
             "analytics_schema_tables.sql",
             "customers_schema_tables.sql", 
