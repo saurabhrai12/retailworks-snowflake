@@ -26,7 +26,7 @@ class EnvironmentDeployer:
     
     def __init__(self, environment: str, load_sample_data: bool = False):
         self.environment = environment
-        self.load_sample_data = load_sample_data
+        self.should_load_sample_data = load_sample_data
         self.project_root = Path(__file__).parent.parent
         self.connection = None
         
@@ -81,23 +81,108 @@ class EnvironmentDeployer:
                 # Replace template variables
                 sql_content = sql_content.replace('<% database_name %>', self.config['database'])
                 sql_content = sql_content.replace('<% schema_suffix %>', self.config['suffix'])
+                
+                # Validate template replacement worked
+                if '<% database_name %>' in sql_content or '<% schema_suffix %>' in sql_content:
+                    logger.warning(f"Template variables still found in {sql_file.name} after replacement")
+            
+            # Check if content is effectively empty after replacement
+            if not sql_content.strip():
+                logger.warning(f"SQL file {sql_file.name} is empty after template processing")
+                return True
             
             cursor = self.connection.cursor()
             
-            # Split and execute statements
-            statements = [stmt.strip() for stmt in sql_content.split(';') if stmt.strip()]
-            
-            for statement in statements:
-                if statement:
-                    cursor.execute(statement)
-                    
-            cursor.close()
-            logger.info(f"✅ Executed SQL file: {sql_file.name}")
-            return True
+            # Use Snowflake's multi-statement execution instead of splitting
+            try:
+                # Try executing as single multi-statement block first
+                cursor.execute(sql_content)
+                cursor.close()
+                logger.info(f"✅ Executed SQL file: {sql_file.name}")
+                return True
+            except Exception as multi_stmt_error:
+                cursor.close()
+                # Fall back to splitting if multi-statement fails
+                cursor = self.connection.cursor()
+                statements = self._split_sql_statements(sql_content)
+                
+                for i, statement in enumerate(statements):
+                    if statement.strip():
+                        try:
+                            cursor.execute(statement)
+                        except Exception as stmt_error:
+                            # Check if it's a constraint already exists error - log warning but continue
+                            error_msg = str(stmt_error)
+                            if "already exists" in error_msg.lower():
+                                logger.warning(f"⚠️  Constraint already exists in {sql_file.name} - continuing: {error_msg}")
+                            else:
+                                logger.error(f"❌ Failed to execute statement {i+1} in {sql_file.name}: {str(stmt_error)}")
+                                logger.error(f"Statement: {statement[:200]}...")
+                                cursor.close()
+                                return False
+                            
+                cursor.close()
+                logger.info(f"✅ Executed SQL file: {sql_file.name}")
+                return True
             
         except Exception as e:
             logger.error(f"❌ Failed to execute {sql_file.name}: {str(e)}")
             return False
+            
+    def _split_sql_statements(self, sql_content: str) -> list:
+        """Smart SQL statement splitting that handles procedures and strings"""
+        statements = []
+        current_statement = ""
+        in_string = False
+        in_procedure = False
+        string_char = None
+        i = 0
+        
+        while i < len(sql_content):
+            char = sql_content[i]
+            
+            # Handle string literals
+            if char in ("'", '"') and not in_string:
+                in_string = True
+                string_char = char
+                current_statement += char
+            elif char == string_char and in_string:
+                in_string = False
+                string_char = None
+                current_statement += char
+            # Handle procedure blocks (between $$)
+            elif char == '$' and i + 1 < len(sql_content) and sql_content[i + 1] == '$' and not in_string:
+                in_procedure = not in_procedure
+                current_statement += '$$'
+                i += 1  # Skip the next $
+            # Handle statement separation
+            elif char == ';' and not in_string and not in_procedure:
+                current_statement += char
+                stmt = current_statement.strip()
+                # Filter out pure comments and empty statements
+                if stmt and not self._is_comment_only(stmt):
+                    statements.append(stmt)
+                current_statement = ""
+            else:
+                current_statement += char
+                
+            i += 1
+        
+        # Add final statement if exists
+        stmt = current_statement.strip()
+        if stmt and not self._is_comment_only(stmt):
+            statements.append(stmt)
+            
+        return statements
+        
+    def _is_comment_only(self, statement: str) -> bool:
+        """Check if statement contains only comments"""
+        lines = statement.split('\n')
+        for line in lines:
+            line = line.strip()
+            if line and not line.startswith('--'):
+                return False
+        return True
     
     def deploy_schemas(self) -> bool:
         """Deploy database schemas"""
@@ -262,7 +347,7 @@ class EnvironmentDeployer:
             ("Load Dimensional Data", self.load_dimensional_data)
         ]
         
-        if self.load_sample_data:
+        if self.should_load_sample_data:
             steps.extend([
                 ("Generate Sample Data", self.generate_sample_data),
                 ("Load Sample Data", self.load_sample_data)

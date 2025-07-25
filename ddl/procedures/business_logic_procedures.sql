@@ -8,13 +8,13 @@
 USE SCHEMA <% database_name %>.SALES_SCHEMA<% schema_suffix %>;
 
 -- Order Processing Procedure
-CREATE OR ALTER PROCEDURE SP_PROCESS_ORDER(
+CREATE OR REPLACE PROCEDURE SP_PROCESS_ORDER(
     P_CUSTOMER_ID NUMBER,
     P_SALES_REP_ID NUMBER,
     P_SHIP_ADDRESS VARCHAR,
     P_SHIP_CITY VARCHAR,
     P_SHIP_COUNTRY VARCHAR,
-    P_ORDER_ITEMS ARRAY
+    P_ORDER_ITEMS VARIANT
 )
 RETURNS STRING
 LANGUAGE SQL
@@ -99,7 +99,7 @@ END;
 $$;
 
 -- Customer Onboarding Procedure
-CREATE OR ALTER PROCEDURE SP_ONBOARD_CUSTOMER(
+CREATE OR REPLACE PROCEDURE SP_ONBOARD_CUSTOMER(
     P_CUSTOMER_TYPE VARCHAR,
     P_COMPANY_NAME VARCHAR,
     P_FIRST_NAME VARCHAR,
@@ -165,67 +165,76 @@ END;
 $$;
 
 -- Inventory Management Procedure
-CREATE OR ALTER PROCEDURE SP_UPDATE_INVENTORY(
-    P_PRODUCT_ID NUMBER,
-    P_LOCATION_CODE VARCHAR,
-    P_QUANTITY_RECEIVED NUMBER,
-    P_TRANSACTION_TYPE VARCHAR -- 'RECEIPT', 'ADJUSTMENT', 'RETURN'
+CREATE OR REPLACE PROCEDURE SP_UPDATE_INVENTORY(
+    P_PRODUCT_ID FLOAT,
+    P_LOCATION_CODE STRING,
+    P_QUANTITY_RECEIVED FLOAT,
+    P_TRANSACTION_TYPE STRING -- 'RECEIPT', 'ADJUSTMENT', 'RETURN'
 )
 RETURNS STRING
-LANGUAGE SQL
+LANGUAGE JAVASCRIPT
 AS
 $$
-DECLARE
-    v_current_quantity NUMBER;
-    v_new_quantity NUMBER;
-    v_result STRING;
-BEGIN
-    -- Get current inventory
-    SELECT QUANTITY_ON_HAND INTO v_current_quantity
-    FROM <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>.INVENTORY
-    WHERE PRODUCT_ID = P_PRODUCT_ID AND LOCATION_CODE = P_LOCATION_CODE;
+try {
+    // Get current inventory
+    var stmt = snowflake.createStatement({
+        sqlText: `SELECT QUANTITY_ON_HAND, QUANTITY_ALLOCATED, REORDER_POINT 
+                  FROM <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>.INVENTORY
+                  WHERE PRODUCT_ID = ? AND LOCATION_CODE = ?`,
+        binds: [P_PRODUCT_ID, P_LOCATION_CODE]
+    });
+    var result = stmt.execute();
     
-    -- Calculate new quantity based on transaction type
-    IF (P_TRANSACTION_TYPE = 'RECEIPT') THEN
-        v_new_quantity := v_current_quantity + P_QUANTITY_RECEIVED;
-    ELSEIF (P_TRANSACTION_TYPE = 'ADJUSTMENT') THEN
-        v_new_quantity := P_QUANTITY_RECEIVED; -- Direct adjustment
-    ELSEIF (P_TRANSACTION_TYPE = 'RETURN') THEN
-        v_new_quantity := v_current_quantity + P_QUANTITY_RECEIVED;
-    ELSE
-        RETURN 'Invalid transaction type: ' || P_TRANSACTION_TYPE;
-    END IF;
+    if (!result.next()) {
+        return 'Error: Product not found in inventory';
+    }
     
-    -- Update inventory
-    UPDATE <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>.INVENTORY
-    SET QUANTITY_ON_HAND = v_new_quantity,
-        QUANTITY_AVAILABLE = v_new_quantity - QUANTITY_ALLOCATED,
-        LAST_RECEIVED_DATE = CASE WHEN P_TRANSACTION_TYPE IN ('RECEIPT', 'RETURN') 
-                                 THEN CURRENT_DATE() 
-                                 ELSE LAST_RECEIVED_DATE END,
-        MODIFIED_DATE = CURRENT_TIMESTAMP()
-    WHERE PRODUCT_ID = P_PRODUCT_ID AND LOCATION_CODE = P_LOCATION_CODE;
+    var currentQuantity = result.getColumnValue(1);
+    var quantityAllocated = result.getColumnValue(2);
+    var reorderPoint = result.getColumnValue(3);
+    var newQuantity;
     
-    -- Check for reorder point
-    IF v_new_quantity <= (SELECT REORDER_POINT FROM <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>.INVENTORY 
-                         WHERE PRODUCT_ID = P_PRODUCT_ID AND LOCATION_CODE = P_LOCATION_CODE) THEN
-        v_result := 'Inventory updated. WARNING: Stock level below reorder point for Product ID: ' || P_PRODUCT_ID;
-    ELSE
-        v_result := 'Inventory updated successfully for Product ID: ' || P_PRODUCT_ID || ', New quantity: ' || v_new_quantity;
-    END IF;
+    // Calculate new quantity based on transaction type
+    if (P_TRANSACTION_TYPE === 'RECEIPT') {
+        newQuantity = currentQuantity + P_QUANTITY_RECEIVED;
+    } else if (P_TRANSACTION_TYPE === 'ADJUSTMENT') {
+        newQuantity = P_QUANTITY_RECEIVED; // Direct adjustment
+    } else if (P_TRANSACTION_TYPE === 'RETURN') {
+        newQuantity = currentQuantity + P_QUANTITY_RECEIVED;
+    } else {
+        return 'Invalid transaction type: ' + P_TRANSACTION_TYPE;
+    }
     
-    RETURN v_result;
+    // Update inventory
+    var updateStmt = snowflake.createStatement({
+        sqlText: `UPDATE <% database_name %>.PRODUCTS_SCHEMA<% schema_suffix %>.INVENTORY
+                  SET QUANTITY_ON_HAND = ?,
+                      QUANTITY_AVAILABLE = ? - QUANTITY_ALLOCATED,
+                      LAST_RECEIVED_DATE = CASE WHEN ? IN ('RECEIPT', 'RETURN') 
+                                               THEN CURRENT_DATE() 
+                                               ELSE LAST_RECEIVED_DATE END,
+                      MODIFIED_DATE = CURRENT_TIMESTAMP()
+                  WHERE PRODUCT_ID = ? AND LOCATION_CODE = ?`,
+        binds: [newQuantity, newQuantity, P_TRANSACTION_TYPE, P_PRODUCT_ID, P_LOCATION_CODE]
+    });
+    updateStmt.execute();
     
-EXCEPTION
-    WHEN OTHER THEN
-        RETURN 'Error updating inventory: ' || SQLERRM;
-END;
+    // Check for reorder point and return result
+    if (newQuantity <= reorderPoint) {
+        return 'Inventory updated. WARNING: Stock level below reorder point for Product ID: ' + P_PRODUCT_ID;
+    } else {
+        return 'Inventory updated successfully for Product ID: ' + P_PRODUCT_ID + ', New quantity: ' + newQuantity;
+    }
+    
+} catch (err) {
+    return 'Error updating inventory: ' + err.message;
+}
 $$;
 
 -- Sales Commission Calculation Procedure
 USE SCHEMA <% database_name %>.HR_SCHEMA<% schema_suffix %>;
 
-CREATE OR ALTER PROCEDURE SP_CALCULATE_SALES_COMMISSION(
+CREATE OR REPLACE PROCEDURE SP_CALCULATE_SALES_COMMISSION(
     P_EMPLOYEE_ID NUMBER,
     P_PAY_PERIOD_START DATE,
     P_PAY_PERIOD_END DATE
@@ -278,7 +287,7 @@ $$;
 -- Data Quality Validation Procedure
 USE SCHEMA <% database_name %>.STAGING_SCHEMA<% schema_suffix %>;
 
-CREATE OR ALTER PROCEDURE SP_VALIDATE_DATA_QUALITY()
+CREATE OR REPLACE PROCEDURE SP_VALIDATE_DATA_QUALITY()
 RETURNS STRING
 LANGUAGE SQL
 AS
